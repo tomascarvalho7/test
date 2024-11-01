@@ -15,6 +15,7 @@ distro
 ecos
 exceptiongroup
 executing
+evaluate
 filelock
 flatbuffers
 fonttools
@@ -55,7 +56,6 @@ parso
 patsy
 Pillow
 platformdirs
-playsound
 prompt-toolkit
 protobuf
 psutil
