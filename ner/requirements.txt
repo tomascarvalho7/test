@@ -68,7 +68,6 @@ pyreadline3
 pyserial
 python-dateutil
 pytz
-pywin32
 PyYAML
 pyzmq
 qdldl
