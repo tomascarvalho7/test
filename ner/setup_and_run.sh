@@ -1,6 +1,6 @@
 #!/bin/bash
 
-python -m venv myenv
+python3 -m venv myenv
 source myenv/bin/activate
 sudo apt update && sudo apt install python3.x
 
