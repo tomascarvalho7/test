@@ -4,13 +4,28 @@
 # nodes the script "container_handler.sh" with the respective attributes. Change the parameters DATASETS, MODELS and
 # ALLOCATION_TIME to your liking (MODELS has to have a model for every dataset in DATASETS, even if it repeats models).
 
-DATASETS=("conLL2003")
-MODELS=("BAND")
-MODEL_TYPE=""  # ['', word2vec, fasttext]
-ALLOCATION_TIME="8"  # in hours
+#i want to run stratified, random, for each script
+# should i deploy one container per each(6), or one per python script? the computations are nothing special, so ill occupy 6 nodes
 
-for i in "${!DATASETS[@]}"; do
-  oarsub -l {"network_address='alakazam-0$((i+1))'"},walltime="${ALLOCATION_TIME}":00:00 "./container_handler.sh ${DATASETS[$i]} ${MODELS[$i]} ${MODEL_TYPE}"
+TYPES=("crf" "token" "span")
+DATA_SPLITS=("rand" "stratified")
+ALLOCATION_TIME="5"  # in hours
+
+# Loop through each combination of TYPE and DATA_SPLIT
+for i in "${!TYPES[@]}"; do
+  for DATA_SPLIT in "${DATA_SPLITS[@]}"; do
+    # Skip i=5 as the corresponding node is occupied
+    if [[ "$i" -eq 5 ]]; then
+      echo "Skipping node for TYPE=${TYPES[$i]} due to occupation on node 5"
+      continue
+    fi
+
+    # Submit a job for each TYPE and DATA_SPLIT combination
+    oarsub -l {"network_address='alakazam-0$((i+1))'"},walltime="${ALLOCATION_TIME}:00:00" \
+      "./handle_container.sh ${TYPES[$i]} $DATA_SPLIT"
+    
+    echo "Submitted job for TYPE=${TYPES[$i]}, DATA_SPLIT=$DATA_SPLIT on node alakazam-0$((i+1))"
+  done
 done
 
 exit

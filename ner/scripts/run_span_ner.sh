@@ -6,12 +6,18 @@
 #SBATCH --time=3:00
 #SBATCH --partition=infofil01
 
+DATA_SPLIT=$1
 
-DATA=bandspanstratified
+if [[ "$DATA_SPLIT" != "rand" && "$DATA_SPLIT" != "stratified" ]]; then
+  echo "Invalid DATA_SPLIT: $DATA_SPLIT. Must be 'rand' or 'stratified'."
+  exit 1
+fi
+
+DATA=bandspan${DATA_SPLIT}
 EXP=$DATA
 
-
 echo CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES
+
 mkdir -p output/"$EXP"
 
 python -u $DBG pure/run_entity.py \

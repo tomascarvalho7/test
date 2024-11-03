@@ -21,6 +21,16 @@ WORKDIR /usr/src/app/test/ner
 RUN python3 -m pip install --upgrade pip && \
     pip install -r requirements.txt && pip install --upgrade setuptools wheel
 
-# Run the training script
-CMD ["./scripts/run_token_ner.sh"]
+# Ensure all scripts are executable
+RUN chmod +x ./scripts/*.sh
 
+# Declare build-time variables
+ARG TYPE
+ARG DATA_SPLIT
+
+# Set environment variables
+ENV TYPE=$TYPE
+ENV DATA_SPLIT=$DATA_SPLIT
+
+# Run the training script, using sh -c for variable expansion in CMD
+CMD sh -c "./scripts/run_${TYPE}_token.sh ${DATA_SPLIT}"
