@@ -17,7 +17,7 @@ echo "Output directory: $OUTPUT_DIR"
 
 BERT_BASE_DIR=bert-base-cased
 
-python -u $DBG BERT-BiLSTM-CRF-NER-pytorch/ner.py \
+python3 -u $DBG BERT-BiLSTM-CRF-NER-pytorch/ner.py \
     --model_name_or_path ${BERT_BASE_DIR} \
     --do_train True \
     --do_eval True \

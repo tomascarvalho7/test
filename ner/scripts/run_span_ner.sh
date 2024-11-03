@@ -20,7 +20,7 @@ echo CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES
 
 mkdir -p output/"$EXP"
 
-python -u $DBG pure/run_entity.py \
+python3 -u $DBG pure/run_entity.py \
     --do_eval --eval_test --do_train \
     --context_window 0 \
     --task band \
