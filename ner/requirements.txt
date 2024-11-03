@@ -6,3 +6,5 @@ accelerate
 seqeval
 setuptools
 wheel
+tensorboardX
+pytorch-crf
