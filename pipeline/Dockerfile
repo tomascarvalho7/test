@@ -33,4 +33,4 @@ ENV TYPE=$TYPE
 ENV DATA_SPLIT=$DATA_SPLIT
 
 # Run the training script, using sh -c for variable expansion in CMD
-CMD sh -c "./scripts/run_${TYPE}_token.sh ${DATA_SPLIT}"
+CMD sh -c "./scripts/run_${TYPE}_ner.sh ${DATA_SPLIT}"

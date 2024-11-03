@@ -9,7 +9,7 @@
 
 TYPES=("crf" "token" "span")
 DATA_SPLITS=("rand" "stratified")
-ALLOCATION_TIME="5"  # in hours
+ALLOCATION_TIME="1"  # in hours
 
 # Loop through each combination of TYPE and DATA_SPLIT
 for i in "${!TYPES[@]}"; do
