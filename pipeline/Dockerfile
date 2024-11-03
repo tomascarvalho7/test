@@ -19,7 +19,7 @@ WORKDIR /usr/src/app/test/ner
 
 # Install Python packages from requirements.txt
 RUN python3 -m pip install --upgrade pip && \
-    pip install -r requirements.txt
+    pip install -r requirements.txt && pip install --upgrade setuptools wheel
 
 # Run the training script
 CMD ["./scripts/run_token_ner.sh"]
