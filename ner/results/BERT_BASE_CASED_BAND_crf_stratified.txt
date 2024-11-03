@@ -1,2019 +1,0 @@
-ner-pipeline-container
-Untagged: ner-pipeline-image:latest
-Deleted: sha256:28cb323850f06017691044b15b3f400d4d8ef7a8c6b96d35687dcc5909d0cb59
-
-==========
-== CUDA ==
-==========
-
-CUDA Version 11.4.3
-
-Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
-
-This container image and its contents are governed by the NVIDIA Deep Learning Container License.
-By pulling and using the container, you accept the terms and conditions of this license:
-https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
-
-A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
-
-Output directory: output/bandcrfstratified
-11/03/2024 21:57:32 - INFO - __main__ -   device: cuda n_gpu: 1
-11/03/2024 21:57:32 - INFO - utils -   loading labels info from train file and dump in output/bandcrfstratified
-11/03/2024 21:57:33 - INFO - pytorch_transformers.file_utils -   https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt not found in cache or force_download set to True, downloading to /tmp/tmp6igg86zv
-  0%|          | 0/213450 [00:00<?, ?B/s]  8%|▊         | 17408/213450 [00:00<00:01, 129800.92B/s] 33%|███▎      | 69632/213450 [00:00<00:00, 280023.52B/s] 57%|█████▋    | 121856/213450 [00:00<00:00, 327635.90B/s]100%|██████████| 213450/213450 [00:00<00:00, 522798.84B/s]
-11/03/2024 21:57:34 - INFO - pytorch_transformers.file_utils -   copying /tmp/tmp6igg86zv to cache at /root/.cache/torch/pytorch_transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
-11/03/2024 21:57:34 - INFO - pytorch_transformers.file_utils -   creating metadata file for /root/.cache/torch/pytorch_transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
-11/03/2024 21:57:34 - INFO - pytorch_transformers.file_utils -   removing temp file /tmp/tmp6igg86zv
-11/03/2024 21:57:34 - INFO - pytorch_transformers.tokenization_utils -   loading file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt from cache at /root/.cache/torch/pytorch_transformers/5e8a2b4893d13790ed4150ca1906be5f7a03d6c4ddf62296c383f6db42814db2.e13dbb970cb325137104fb2e5f36fe865f27746c6b526f6352861b1980eb80b1
-11/03/2024 21:57:34 - INFO - pytorch_transformers.file_utils -   https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json not found in cache or force_download set to True, downloading to /tmp/tmpbp5f3t00
-  0%|          | 0/433 [00:00<?, ?B/s]100%|██████████| 433/433 [00:00<00:00, 2092319.85B/s]
-11/03/2024 21:57:35 - INFO - pytorch_transformers.file_utils -   copying /tmp/tmpbp5f3t00 to cache at /root/.cache/torch/pytorch_transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
-11/03/2024 21:57:35 - INFO - pytorch_transformers.file_utils -   creating metadata file for /root/.cache/torch/pytorch_transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
-11/03/2024 21:57:35 - INFO - pytorch_transformers.file_utils -   removing temp file /tmp/tmpbp5f3t00
-11/03/2024 21:57:35 - INFO - pytorch_transformers.modeling_utils -   loading configuration file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json from cache at /root/.cache/torch/pytorch_transformers/b945b69218e98b3e2c95acf911789741307dec43c698d35fad11c1ae28bda352.9da767be51e1327499df13488672789394e2ca38b877837e52618a67d7002391
-11/03/2024 21:57:35 - INFO - pytorch_transformers.modeling_utils -   Model config {
-  "architectures": [
-    "BertForMaskedLM"
-  ],
-  "attention_probs_dropout_prob": 0.1,
-  "finetuning_task": null,
-  "hidden_act": "gelu",
-  "hidden_dropout_prob": 0.1,
-  "hidden_size": 768,
-  "initializer_range": 0.02,
-  "intermediate_size": 3072,
-  "layer_norm_eps": 1e-12,
-  "max_position_embeddings": 512,
-  "model_type": "bert",
-  "num_attention_heads": 12,
-  "num_hidden_layers": 12,
-  "num_labels": 11,
-  "output_attentions": false,
-  "output_hidden_states": false,
-  "pad_token_id": 0,
-  "pruned_heads": {},
-  "torchscript": false,
-  "type_vocab_size": 2,
-  "vocab_size": 28996
-}
-
-11/03/2024 21:57:35 - INFO - pytorch_transformers.file_utils -   https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin not found in cache or force_download set to True, downloading to /tmp/tmpyjfk2y73
-  0%|          | 0/435779157 [00:00<?, ?B/s]  0%|          | 17408/435779157 [00:00<57:13, 126901.53B/s]  0%|          | 52224/435779157 [00:00<36:05, 201205.75B/s]  0%|          | 121856/435779157 [00:00<21:21, 340055.70B/s]  0%|          | 278528/435779157 [00:00<11:04, 655027.89B/s]  0%|          | 574464/435779157 [00:00<06:04, 1194417.08B/s]  0%|          | 1201152/435779157 [00:00<03:06, 2335168.94B/s]  1%|          | 2437120/435779157 [00:00<01:36, 4505728.78B/s]  1%|          | 4896768/435779157 [00:01<00:49, 8760047.65B/s]  2%|▏         | 7108608/435779157 [00:01<00:38, 11039095.37B/s]  2%|▏         | 9877504/435779157 [00:01<00:30, 13833022.82B/s]  3%|▎         | 12040192/435779157 [00:01<00:29, 14371684.29B/s]  3%|▎         | 14628864/435779157 [00:01<00:26, 15715118.24B/s]  4%|▍         | 16988160/435779157 [00:01<00:25, 16134398.80B/s]  5%|▍         | 19625984/435779157 [00:01<00:24, 17030539.15B/s]  5%|▌         | 22607872/435779157 [00:02<00:22, 18327997.18B/s]  6%|▌         | 25524224/435779157 [00:02<00:21, 19167208.54B/s]  7%|▋         | 28620800/435779157 [00:02<00:20, 20173901.86B/s]  7%|▋         | 31668224/435779157 [00:02<00:19, 20761664.37B/s]  8%|▊         | 34666496/435779157 [00:02<00:19, 21056920.42B/s]  9%|▊         | 37599232/435779157 [00:02<00:18, 21127645.23B/s]  9%|▉         | 40646656/435779157 [00:02<00:18, 21418528.28B/s] 10%|█         | 43661312/435779157 [00:03<00:18, 21573586.94B/s] 11%|█         | 46675968/435779157 [00:03<00:17, 21666118.51B/s] 11%|█▏        | 49412096/435779157 [00:03<00:18, 21125940.66B/s] 12%|█▏        | 52393984/435779157 [00:03<00:18, 21173226.30B/s] 13%|█▎        | 55392256/435779157 [00:03<00:17, 21339805.83B/s] 13%|█▎        | 58275840/435779157 [00:03<00:17, 21224336.69B/s] 14%|█▍        | 61224960/435779157 [00:03<00:16, 22460920.66B/s] 15%|█▍        | 64032768/435779157 [00:03<00:15, 23847348.20B/s] 15%|█▌        | 66460672/435779157 [00:04<00:15, 23432722.51B/s] 16%|█▌        | 68831232/435779157 [00:04<00:16, 21695041.81B/s] 16%|█▋        | 71032832/435779157 [00:04<00:17, 21105425.00B/s] 17%|█▋        | 73162752/435779157 [00:04<00:17, 20867363.56B/s] 17%|█▋        | 75921408/435779157 [00:04<00:17, 20892840.75B/s] 18%|█▊        | 78739456/435779157 [00:04<00:17, 20701876.32B/s] 19%|█▊        | 81639424/435779157 [00:04<00:17, 20739748.41B/s] 19%|█▉        | 84604928/435779157 [00:04<00:16, 20962385.70B/s] 20%|██        | 87439360/435779157 [00:05<00:15, 22627810.50B/s] 21%|██        | 89864192/435779157 [00:05<00:15, 23043230.73B/s] 21%|██        | 92200960/435779157 [00:05<00:15, 22129128.25B/s] 22%|██▏       | 94436352/435779157 [00:05<00:16, 21077836.28B/s] 22%|██▏       | 96565248/435779157 [00:05<00:16, 20464456.08B/s] 23%|██▎       | 99170304/435779157 [00:05<00:15, 21733421.86B/s] 23%|██▎       | 101610496/435779157 [00:05<00:14, 22470058.23B/s] 24%|██▍       | 103876608/435779157 [00:05<00:15, 21897192.50B/s] 24%|██▍       | 106080256/435779157 [00:05<00:15, 21416794.15B/s] 25%|██▍       | 108294144/435779157 [00:06<00:15, 21620338.22B/s] 25%|██▌       | 110704640/435779157 [00:06<00:14, 22236068.13B/s] 26%|██▌       | 112935936/435779157 [00:06<00:14, 21897255.09B/s] 26%|██▋       | 115131392/435779157 [00:06<00:14, 21689988.70B/s] 27%|██▋       | 117323776/435779157 [00:06<00:14, 21412240.13B/s] 28%|██▊       | 119977984/435779157 [00:06<00:13, 22896914.41B/s] 28%|██▊       | 122274816/435779157 [00:06<00:14, 21554864.07B/s] 29%|██▊       | 124449792/435779157 [00:06<00:14, 21381702.35B/s] 29%|██▉       | 126709760/435779157 [00:06<00:14, 21729010.29B/s] 30%|██▉       | 129398784/435779157 [00:06<00:14, 21270212.22B/s] 30%|███       | 132315136/435779157 [00:07<00:12, 23436117.65B/s] 31%|███       | 134688768/435779157 [00:07<00:13, 22134439.52B/s] 31%|███▏      | 136933376/435779157 [00:07<00:13, 21662203.59B/s] 32%|███▏      | 139120640/435779157 [00:07<00:13, 21225680.93B/s] 32%|███▏      | 141359104/435779157 [00:07<00:14, 20875137.82B/s] 33%|███▎      | 144242688/435779157 [00:07<00:12, 23090350.51B/s] 34%|███▎      | 146576384/435779157 [00:07<00:12, 22542738.95B/s] 34%|███▍      | 148848640/435779157 [00:07<00:13, 21000531.58B/s] 35%|███▍      | 151271424/435779157 [00:08<00:13, 20514869.32B/s] 35%|███▌      | 153942016/435779157 [00:08<00:12, 22172966.70B/s] 36%|███▌      | 156235776/435779157 [00:08<00:13, 20702752.55B/s] 36%|███▋      | 158955520/435779157 [00:08<00:12, 22439966.76B/s] 37%|███▋      | 161248256/435779157 [00:08<00:12, 22101293.87B/s] 38%|███▊      | 163491840/435779157 [00:08<00:13, 20769969.40B/s] 38%|███▊      | 165935104/435779157 [00:08<00:13, 20318524.43B/s] 39%|███▉      | 168884224/435779157 [00:08<00:12, 20557688.32B/s] 39%|███▉      | 171948032/435779157 [00:08<00:12, 20945114.29B/s] 40%|████      | 175093760/435779157 [00:09<00:12, 21453081.84B/s] 41%|████      | 178206720/435779157 [00:09<00:11, 21814226.39B/s] 42%|████▏     | 181221376/435779157 [00:09<00:11, 21594324.05B/s] 42%|████▏     | 184203264/435779157 [00:09<00:11, 21501006.43B/s] 43%|████▎     | 187316224/435779157 [00:09<00:11, 21817091.96B/s] 44%|████▎     | 190445568/435779157 [00:09<00:11, 22091269.41B/s] 44%|████▍     | 193411072/435779157 [00:09<00:10, 22306972.33B/s] 45%|████▌     | 196147200/435779157 [00:10<00:11, 21509537.15B/s] 46%|████▌     | 199260160/435779157 [00:10<00:10, 21850804.41B/s] 46%|████▋     | 202225664/435779157 [00:10<00:09, 23515157.26B/s] 47%|████▋     | 204615680/435779157 [00:10<00:10, 22735633.97B/s] 47%|████▋     | 206911488/435779157 [00:10<00:10, 21787221.62B/s] 48%|████▊     | 209319936/435779157 [00:10<00:10, 20914340.69B/s] 49%|████▊     | 211957760/435779157 [00:10<00:10, 22310310.34B/s] 49%|████▉     | 214546432/435779157 [00:10<00:09, 22550608.16B/s] 50%|████▉     | 217004032/435779157 [00:10<00:09, 22855658.88B/s] 50%|█████     | 219308032/435779157 [00:11<00:10, 21593903.88B/s] 51%|█████     | 221689856/435779157 [00:11<00:09, 21461268.78B/s] 51%|█████▏    | 224180224/435779157 [00:11<00:09, 22042605.12B/s] 52%|█████▏    | 226523136/435779157 [00:11<00:09, 22064087.79B/s] 53%|█████▎    | 228898816/435779157 [00:11<00:09, 22118123.17B/s] 53%|█████▎    | 231117824/435779157 [00:11<00:09, 21700674.64B/s] 54%|█████▎    | 233699328/435779157 [00:11<00:09, 21363101.88B/s] 54%|█████▍    | 236595200/435779157 [00:11<00:08, 23445511.49B/s] 55%|█████▍    | 238963712/435779157 [00:11<00:08, 22375358.59B/s] 55%|█████▌    | 241223680/435779157 [00:12<00:08, 22233908.24B/s] 56%|█████▌    | 243462144/435779157 [00:12<00:08, 21989957.99B/s] 56%|█████▋    | 245788672/435779157 [00:12<00:08, 22352230.50B/s] 57%|█████▋    | 248033280/435779157 [00:12<00:08, 22161694.39B/s] 57%|█████▋    | 250255360/435779157 [00:12<00:08, 21117703.69B/s] 58%|█████▊    | 252735488/435779157 [00:12<00:08, 22159142.92B/s] 59%|█████▊    | 254966784/435779157 [00:12<00:08, 21024152.34B/s] 59%|█████▉    | 257439744/435779157 [00:12<00:08, 21937552.69B/s] 60%|█████▉    | 259652608/435779157 [00:12<00:08, 21949827.53B/s] 60%|██████    | 261928960/435779157 [00:13<00:08, 21253821.52B/s] 61%|██████    | 264068096/435779157 [00:13<00:08, 21174855.15B/s] 61%|██████    | 266513408/435779157 [00:13<00:07, 22114831.76B/s] 62%|██████▏   | 268798976/435779157 [00:13<00:07, 22329913.48B/s] 62%|██████▏   | 271040512/435779157 [00:13<00:07, 20822576.36B/s] 63%|██████▎   | 273356800/435779157 [00:13<00:07, 21478563.26B/s] 63%|██████▎   | 276051968/435779157 [00:13<00:07, 21572967.99B/s] 64%|██████▍   | 278530048/435779157 [00:13<00:07, 22460662.09B/s] 64%|██████▍   | 280794112/435779157 [00:13<00:07, 22057355.47B/s] 65%|██████▍   | 283012096/435779157 [00:14<00:07, 20635456.03B/s] 66%|██████▌   | 285784064/435779157 [00:14<00:07, 21277551.70B/s] 66%|██████▌   | 288513024/435779157 [00:14<00:06, 22900497.56B/s] 67%|██████▋   | 290829312/435779157 [00:14<00:06, 22516490.85B/s] 67%|██████▋   | 293098496/435779157 [00:14<00:06, 21909018.21B/s] 68%|██████▊   | 295302144/435779157 [00:14<00:06, 20660890.22B/s] 68%|██████▊   | 298153984/435779157 [00:14<00:06, 22170429.46B/s] 69%|██████▉   | 300386304/435779157 [00:14<00:06, 22209403.89B/s] 69%|██████▉   | 302618624/435779157 [00:14<00:06, 21589776.39B/s] 70%|██████▉   | 304786432/435779157 [00:15<00:06, 21122335.16B/s] 71%|███████   | 307509248/435779157 [00:15<00:06, 21274894.14B/s] 71%|███████   | 310196224/435779157 [00:15<00:05, 22457111.17B/s] 72%|███████▏  | 312451072/435779157 [00:15<00:05, 22070102.29B/s] 72%|███████▏  | 314662912/435779157 [00:15<00:05, 21277640.85B/s] 73%|███████▎  | 317061120/435779157 [00:15<00:05, 21285073.05B/s] 73%|███████▎  | 319387648/435779157 [00:15<00:05, 21125746.03B/s] 74%|███████▍  | 321959936/435779157 [00:15<00:05, 21973837.35B/s] 74%|███████▍  | 324162560/435779157 [00:15<00:05, 21297429.63B/s] 75%|███████▍  | 326318080/435779157 [00:16<00:05, 19831911.28B/s] 76%|███████▌  | 329365504/435779157 [00:16<00:05, 20609483.96B/s] 76%|███████▋  | 332429312/435779157 [00:16<00:04, 21140851.00B/s] 77%|███████▋  | 335476736/435779157 [00:16<00:04, 21453948.42B/s] 78%|███████▊  | 338589696/435779157 [00:16<00:04, 21814890.01B/s] 78%|███████▊  | 341374976/435779157 [00:16<00:04, 22764169.93B/s] 79%|███████▉  | 343663616/435779157 [00:16<00:04, 22639650.43B/s] 79%|███████▉  | 345933824/435779157 [00:16<00:04, 21951020.39B/s] 80%|███████▉  | 348157952/435779157 [00:17<00:03, 22023141.40B/s] 80%|████████  | 350517248/435779157 [00:17<00:03, 22429717.35B/s] 81%|████████  | 352764928/435779157 [00:17<00:03, 21677577.66B/s] 81%|████████▏ | 354937856/435779157 [00:17<00:03, 21528709.14B/s] 82%|████████▏ | 357382144/435779157 [00:17<00:03, 20528801.62B/s] 83%|████████▎ | 360278016/435779157 [00:17<00:03, 22822084.45B/s] 83%|████████▎ | 362594304/435779157 [00:17<00:03, 22412186.26B/s] 84%|████████▎ | 364859392/435779157 [00:17<00:03, 21709627.42B/s] 84%|████████▍ | 367048704/435779157 [00:17<00:03, 20683968.77B/s] 85%|████████▍ | 369719296/435779157 [00:18<00:03, 21654343.60B/s] 85%|████████▌ | 372197376/435779157 [00:18<00:02, 22515708.41B/s] 86%|████████▌ | 374465536/435779157 [00:18<00:02, 22100350.61B/s] 86%|████████▋ | 376687616/435779157 [00:18<00:02, 21275755.39B/s] 87%|████████▋ | 378877952/435779157 [00:18<00:02, 21166956.55B/s] 88%|████████▊ | 381679616/435779157 [00:18<00:02, 21599862.78B/s] 88%|████████▊ | 384279552/435779157 [00:18<00:02, 22806582.74B/s] 89%|████████▊ | 386572288/435779157 [00:18<00:02, 22040583.79B/s] 89%|████████▉ | 388790272/435779157 [00:18<00:02, 21887691.29B/s] 90%|████████▉ | 390985728/435779157 [00:19<00:02, 21375896.45B/s] 90%|█████████ | 393508864/435779157 [00:19<00:02, 20841852.12B/s] 91%|█████████ | 396392448/435779157 [00:19<00:01, 22890056.76B/s] 91%|█████████▏| 398704640/435779157 [00:19<00:01, 22399039.01B/s] 92%|█████████▏| 400960512/435779157 [00:19<00:01, 22325978.97B/s] 93%|█████████▎| 403204096/435779157 [00:19<00:01, 21452588.93B/s] 93%|█████████▎| 405714944/435779157 [00:19<00:01, 21113963.69B/s] 94%|█████████▎| 408303616/435779157 [00:19<00:01, 22418916.39B/s] 94%|█████████▍| 410565632/435779157 [00:19<00:01, 22149054.31B/s] 95%|█████████▍| 412793856/435779157 [00:19<00:01, 21970003.11B/s] 95%|█████████▌| 414999552/435779157 [00:20<00:00, 21587328.28B/s] 96%|█████████▌| 417445888/435779157 [00:20<00:00, 22073847.65B/s] 96%|█████████▋| 419658752/435779157 [00:20<00:00, 20849958.23B/s] 97%|█████████▋| 421951488/435779157 [00:20<00:00, 20050201.30B/s] 98%|█████████▊| 424966144/435779157 [00:20<00:00, 21027877.76B/s] 98%|█████████▊| 427702272/435779157 [00:20<00:00, 22696040.13B/s] 99%|█████████▊| 429997056/435779157 [00:20<00:00, 22319178.62B/s] 99%|█████████▉| 432244736/435779157 [00:20<00:00, 21320322.41B/s]100%|█████████▉| 434392064/435779157 [00:21<00:00, 20738198.73B/s]100%|██████████| 435779157/435779157 [00:21<00:00, 20684527.30B/s]
-11/03/2024 21:57:57 - INFO - pytorch_transformers.file_utils -   copying /tmp/tmpyjfk2y73 to cache at /root/.cache/torch/pytorch_transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
-11/03/2024 21:57:57 - INFO - pytorch_transformers.file_utils -   creating metadata file for /root/.cache/torch/pytorch_transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
-11/03/2024 21:57:57 - INFO - pytorch_transformers.file_utils -   removing temp file /tmp/tmpyjfk2y73
-11/03/2024 21:57:57 - INFO - pytorch_transformers.modeling_utils -   loading weights file https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-pytorch_model.bin from cache at /root/.cache/torch/pytorch_transformers/35d8b9d36faaf46728a0192d82bf7d00137490cd6074e8500778afed552a67e5.3fadbea36527ae472139fe84cddaa65454d7429f12d543d80bfc3ad70de55ac2
-/usr/local/lib/python3.8/dist-packages/pytorch_transformers/modeling_utils.py:539: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
-  state_dict = torch.load(resolved_archive_file, map_location='cpu')
-11/03/2024 21:57:58 - INFO - pytorch_transformers.modeling_utils -   Weights of BERT_BiLSTM_CRF not initialized from pretrained model: ['birnn.weight_ih_l0', 'birnn.weight_hh_l0', 'birnn.bias_ih_l0', 'birnn.bias_hh_l0', 'birnn.weight_ih_l0_reverse', 'birnn.weight_hh_l0_reverse', 'birnn.bias_ih_l0_reverse', 'birnn.bias_hh_l0_reverse', 'hidden2tag.weight', 'hidden2tag.bias', 'crf.start_transitions', 'crf.end_transitions', 'crf.transitions']
-11/03/2024 21:57:58 - INFO - pytorch_transformers.modeling_utils -   Weights from pretrained model not used in BERT_BiLSTM_CRF: ['cls.predictions.bias', 'cls.predictions.transform.dense.weight', 'cls.predictions.transform.dense.bias', 'cls.predictions.decoder.weight', 'cls.seq_relationship.weight', 'cls.seq_relationship.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.LayerNorm.bias']
-convert examples: 0it [00:00, ?it/s]11/03/2024 21:57:59 - INFO - utils -   *** Example ***
-11/03/2024 21:57:59 - INFO - utils -   guid: 0
-11/03/2024 21:57:59 - INFO - utils -   tokens: [CLS] las ve ##gas public health officials say dozens of people linked to a tuberculosis outbreak at a neon ##ata ##l unit have tested positive for the disease . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:57:59 - INFO - utils -   input_ids: 101 17496 1396 11305 1470 2332 3878 1474 10366 1104 1234 5128 1106 170 18436 8010 1120 170 24762 6575 1233 2587 1138 7289 3112 1111 1103 3653 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   label_ids: 3 2 8 8 3 3 3 3 3 3 3 3 3 3 10 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   *** Example ***
-11/03/2024 21:57:59 - INFO - utils -   guid: 1
-11/03/2024 21:57:59 - INFO - utils -   tokens: [CLS] the southern ne ##va ##da health district reported on mon ##day that of the 97 ##7 people tested , 59 showed indication ##s of the disease and 2 showed signs of being con ##tag ##ious . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:57:59 - INFO - utils -   input_ids: 101 1103 2359 24928 2497 1810 2332 1629 2103 1113 19863 6194 1115 1104 1103 5311 1559 1234 7289 117 4589 2799 12754 1116 1104 1103 3653 1105 123 2799 5300 1104 1217 14255 21365 4179 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   label_ids: 3 3 3 4 0 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   *** Example ***
-11/03/2024 21:57:59 - INFO - utils -   guid: 2
-11/03/2024 21:57:59 - INFO - utils -   tokens: [CLS] d ##r j ##oe is ##er , chief medical officer at the health district , says the report demonstrates the importance of catching tuberculosis early . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:57:59 - INFO - utils -   input_ids: 101 173 1197 179 7745 1110 1200 117 2705 2657 2575 1120 1103 2332 1629 117 1867 1103 2592 17798 1103 4495 1104 9256 18436 1346 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 10 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   *** Example ***
-11/03/2024 21:57:59 - INFO - utils -   guid: 3
-11/03/2024 21:57:59 - INFO - utils -   tokens: [CLS] health officials tested hundreds of babies , family members , and staff who were at summer ##lin hospital medical center ' s neon ##ata ##l intensive care unit this past summer [ 2013 ] , saying they wanted to take extra pre ##ca ##ution ##s after the death of a mother and her twin babies . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:57:59 - INFO - utils -   input_ids: 101 2332 3878 7289 5229 1104 12237 117 1266 1484 117 1105 2546 1150 1127 1120 2247 2836 2704 2657 2057 112 188 24762 6575 1233 12885 1920 2587 1142 1763 2247 164 1381 166 117 2157 1152 1458 1106 1321 3908 3073 2599 12964 1116 1170 1103 1473 1104 170 1534 1105 1123 5930 12237 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   *** Example ***
-11/03/2024 21:57:59 - INFO - utils -   guid: 4
-11/03/2024 21:57:59 - INFO - utils -   tokens: [CLS] they contacted the parents of about 140 babies who were at the unit between mid - may and mid - au ##gus ##t [ 2013 ] . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:57:59 - INFO - utils -   input_ids: 101 1152 12017 1103 2153 1104 1164 8183 12237 1150 1127 1120 1103 2587 1206 2286 118 1336 1105 2286 118 12686 12909 1204 164 1381 166 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:57:59 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-convert examples: 131it [00:00, 1304.03it/s]convert examples: 262it [00:00, 1292.66it/s]convert examples: 392it [00:00, 1293.81it/s]convert examples: 532it [00:00, 1330.85it/s]convert examples: 666it [00:00, 1291.73it/s]convert examples: 796it [00:00, 1280.12it/s]convert examples: 933it [00:00, 1306.25it/s]convert examples: 1064it [00:00, 1298.36it/s]convert examples: 1194it [00:00, 1291.56it/s]convert examples: 1327it [00:01, 1302.40it/s]convert examples: 1458it [00:01, 1263.48it/s]convert examples: 1609it [00:01, 1335.48it/s]convert examples: 1743it [00:01, 1333.39it/s]convert examples: 1878it [00:01, 1335.88it/s]convert examples: 2012it [00:01, 1305.73it/s]convert examples: 2144it [00:01, 1308.13it/s]convert examples: 2277it [00:01, 1314.20it/s]convert examples: 2409it [00:01, 1304.99it/s]convert examples: 2540it [00:01, 1260.85it/s]convert examples: 2673it [00:02, 1278.70it/s]convert examples: 2809it [00:02, 1299.83it/s]convert examples: 2947it [00:02, 1322.22it/s]convert examples: 3081it [00:02, 1325.26it/s]convert examples: 3214it [00:02, 1279.55it/s]convert examples: 3343it [00:02, 1265.55it/s]convert examples: 3471it [00:02, 1267.59it/s]convert examples: 3604it [00:02, 1285.83it/s]convert examples: 3733it [00:02, 1247.93it/s]convert examples: 3883it [00:02, 1318.96it/s]convert examples: 4016it [00:03, 1316.00it/s]convert examples: 4150it [00:03, 1314.00it/s]convert examples: 4285it [00:03, 1322.83it/s]convert examples: 4419it [00:03, 1325.18it/s]convert examples: 4560it [00:03, 1348.42it/s]convert examples: 4695it [00:03, 1299.34it/s]convert examples: 4826it [00:03, 1265.90it/s]convert examples: 4953it [00:03, 1215.71it/s]convert examples: 5099it [00:03, 1282.81it/s]convert examples: 5231it [00:04, 1292.67it/s]convert examples: 5370it [00:04, 1320.15it/s]convert examples: 5507it [00:04, 1333.34it/s]convert examples: 5641it [00:04, 1328.20it/s]convert examples: 5775it [00:04, 1317.77it/s]convert examples: 5907it [00:04, 1312.78it/s]convert examples: 6043it [00:04, 1325.52it/s]convert examples: 6176it [00:04, 1233.17it/s]convert examples: 6301it [00:04, 1194.89it/s]convert examples: 6435it [00:04, 1234.52it/s]convert examples: 6577it [00:05, 1286.51it/s]convert examples: 6710it [00:05, 1297.26it/s]convert examples: 6841it [00:05, 1294.37it/s]convert examples: 6971it [00:05, 1272.28it/s]convert examples: 7099it [00:05, 1257.40it/s]convert examples: 7228it [00:05, 1265.01it/s]convert examples: 7355it [00:05, 1248.83it/s]convert examples: 7481it [00:05, 1208.94it/s]convert examples: 7614it [00:05, 1243.18it/s]convert examples: 7749it [00:06, 1271.71it/s]convert examples: 7877it [00:06, 1265.22it/s]convert examples: 8004it [00:06, 1245.25it/s]convert examples: 8134it [00:06, 1260.39it/s]convert examples: 8261it [00:06, 1256.39it/s]convert examples: 8398it [00:06, 1288.15it/s]convert examples: 8527it [00:06, 1271.03it/s]convert examples: 8659it [00:06, 1285.12it/s]convert examples: 8793it [00:06, 1292.27it/s]convert examples: 8941it [00:06, 1344.64it/s]convert examples: 9087it [00:07, 1375.87it/s]convert examples: 9225it [00:07, 1366.60it/s]convert examples: 9362it [00:07, 1348.57it/s]convert examples: 9497it [00:07, 1292.95it/s]convert examples: 9627it [00:07, 1277.65it/s]convert examples: 9756it [00:07, 1266.17it/s]convert examples: 9897it [00:07, 1306.02it/s]convert examples: 10038it [00:07, 1332.40it/s]convert examples: 10172it [00:07, 1300.94it/s]convert examples: 10305it [00:07, 1307.03it/s]convert examples: 10436it [00:08, 1292.74it/s]convert examples: 10542it [00:08, 1293.35it/s]
-convert examples: 0it [00:00, ?it/s]11/03/2024 21:58:08 - INFO - utils -   *** Example ***
-11/03/2024 21:58:08 - INFO - utils -   guid: 0
-11/03/2024 21:58:08 - INFO - utils -   tokens: [CLS] 14 soldiers in north queen ##sla ##nd have been taken to a military hospital with a potentially fatal infection possibly from a disease carried by rats . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:58:08 - INFO - utils -   input_ids: 101 1489 2803 1107 1564 5746 26597 3276 1138 1151 1678 1106 170 1764 2704 1114 170 9046 11874 8974 3566 1121 170 3653 2446 1118 13475 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   label_ids: 3 3 3 3 3 4 0 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   *** Example ***
-11/03/2024 21:58:08 - INFO - utils -   guid: 1
-11/03/2024 21:58:08 - INFO - utils -   tokens: [CLS] the group fell ill while involved in a regular military exercise in inn ##is ##fa ##il earlier this week . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:58:08 - INFO - utils -   input_ids: 101 1103 1372 2204 5178 1229 2017 1107 170 2366 1764 6730 1107 14880 1548 8057 2723 2206 1142 1989 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   *** Example ***
-11/03/2024 21:58:08 - INFO - utils -   guid: 2
-11/03/2024 21:58:08 - INFO - utils -   tokens: [CLS] the 14 soldiers are currently in the hospital at lava ##rack barracks , at towns ##ville , suspected to be infected with le ##pt ##os ##pi ##rosis . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:58:08 - INFO - utils -   input_ids: 101 1103 1489 2803 1132 1971 1107 1103 2704 1120 16135 21580 14539 117 1120 4281 2138 117 6321 1106 1129 10594 1114 5837 6451 2155 8508 21556 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 10 1 1 1 1 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   *** Example ***
-11/03/2024 21:58:08 - INFO - utils -   guid: 3
-11/03/2024 21:58:08 - INFO - utils -   tokens: [CLS] an army spokesman said blood tests were being carried out to determine the exact cause of the illness . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:58:08 - INFO - utils -   input_ids: 101 1126 2306 15465 1163 1892 5715 1127 1217 2446 1149 1106 4959 1103 6129 2612 1104 1103 6946 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   label_ids: 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   *** Example ***
-11/03/2024 21:58:08 - INFO - utils -   guid: 4
-11/03/2024 21:58:08 - INFO - utils -   tokens: [CLS] le ##pt ##os ##pi ##rosis is a bacterial disease that can damage the liver , lungs and kidney , and may be fatal in some cases . [SEP] **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL** **NULL**
-11/03/2024 21:58:08 - INFO - utils -   input_ids: 101 5837 6451 2155 8508 21556 1110 170 19560 3653 1115 1169 3290 1103 11911 117 8682 1105 16042 117 1105 1336 1129 11874 1107 1199 2740 119 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-11/03/2024 21:58:08 - INFO - utils -   label_ids: 3 10 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-convert examples: 120it [00:00, 1189.89it/s]convert examples: 252it [00:00, 1263.60it/s]convert examples: 379it [00:00, 1261.31it/s]convert examples: 513it [00:00, 1292.16it/s]convert examples: 651it [00:00, 1321.25it/s]convert examples: 799it [00:00, 1369.37it/s]convert examples: 936it [00:00, 1353.89it/s]convert examples: 1072it [00:00, 1325.72it/s]convert examples: 1207it [00:00, 1331.92it/s]convert examples: 1341it [00:01, 1303.42it/s]convert examples: 1472it [00:01, 1287.81it/s]convert examples: 1501it [00:01, 1293.99it/s]
-11/03/2024 21:58:09 - INFO - __main__ -   ***** Running training *****
-11/03/2024 21:58:09 - INFO - __main__ -     Num examples = 10542
-11/03/2024 21:58:09 - INFO - __main__ -     Num Epochs = 10
-11/03/2024 21:58:09 - INFO - __main__ -     Total optimization steps = 3300
-Epoch:   0%|          | 0/10 [00:00<?, ?it/s]
-Iteration:   0%|          | 0/330 [00:00<?, ?it/s][A/usr/local/lib/python3.8/dist-packages/torchcrf/__init__.py:249: UserWarning: where received a uint8 condition tensor. This behavior is deprecated and will be removed in a future version of PyTorch. Use a boolean condition instead. (Triggered internally at ../aten/src/ATen/native/TensorCompare.cpp:530.)
-  score = torch.where(mask[i].unsqueeze(1), next_score, score)
-/usr/local/lib/python3.8/dist-packages/pytorch_transformers/optimization.py:166: UserWarning: This overload of add_ is deprecated:
-	add_(Number alpha, Tensor other)
-Consider using one of the following signatures instead:
-	add_(Tensor other, *, Number alpha = 1) (Triggered internally at ../torch/csrc/utils/python_arg_parser.cpp:1581.)
-  exp_avg.mul_(beta1).add_(1.0 - beta1, grad)
-
-Iteration:   0%|          | 1/330 [00:01<06:50,  1.25s/it][A
-Iteration:   1%|          | 2/330 [00:02<05:34,  1.02s/it][A
-Iteration:   1%|          | 3/330 [00:02<05:09,  1.06it/s][A
-Iteration:   1%|          | 4/330 [00:03<04:57,  1.10it/s][A
-Iteration:   2%|▏         | 5/330 [00:04<04:50,  1.12it/s][A
-Iteration:   2%|▏         | 6/330 [00:05<04:46,  1.13it/s][A
-Iteration:   2%|▏         | 7/330 [00:06<04:43,  1.14it/s][A
-Iteration:   2%|▏         | 8/330 [00:07<04:40,  1.15it/s][A
-Iteration:   3%|▎         | 9/330 [00:08<04:39,  1.15it/s][A
-Iteration:   3%|▎         | 10/330 [00:09<04:37,  1.15it/s][A
-Iteration:   3%|▎         | 11/330 [00:09<04:36,  1.16it/s][A
-Iteration:   4%|▎         | 12/330 [00:10<04:34,  1.16it/s][A
-Iteration:   4%|▍         | 13/330 [00:11<04:34,  1.16it/s][A
-Iteration:   4%|▍         | 14/330 [00:12<04:33,  1.16it/s][A
-Iteration:   5%|▍         | 15/330 [00:13<04:32,  1.15it/s][A
-Iteration:   5%|▍         | 16/330 [00:14<04:31,  1.16it/s][A
-Iteration:   5%|▌         | 17/330 [00:15<04:30,  1.16it/s][A
-Iteration:   5%|▌         | 18/330 [00:15<04:29,  1.16it/s][A
-Iteration:   6%|▌         | 19/330 [00:16<04:29,  1.16it/s][A
-Iteration:   6%|▌         | 20/330 [00:17<04:27,  1.16it/s][A
-Iteration:   6%|▋         | 21/330 [00:18<04:27,  1.16it/s][A
-Iteration:   7%|▋         | 22/330 [00:19<04:26,  1.16it/s][A
-Iteration:   7%|▋         | 23/330 [00:20<04:25,  1.16it/s][A
-Iteration:   7%|▋         | 24/330 [00:21<04:24,  1.16it/s][A
-Iteration:   8%|▊         | 25/330 [00:21<04:23,  1.16it/s][A
-Iteration:   8%|▊         | 26/330 [00:22<04:22,  1.16it/s][A
-Iteration:   8%|▊         | 27/330 [00:23<04:21,  1.16it/s][A
-Iteration:   8%|▊         | 28/330 [00:24<04:21,  1.16it/s][A
-Iteration:   9%|▉         | 29/330 [00:25<04:20,  1.15it/s][A
-Iteration:   9%|▉         | 30/330 [00:26<04:19,  1.15it/s][A
-Iteration:   9%|▉         | 31/330 [00:27<04:18,  1.16it/s][A
-Iteration:  10%|▉         | 32/330 [00:28<04:18,  1.15it/s][A
-Iteration:  10%|█         | 33/330 [00:28<04:16,  1.16it/s][A
-Iteration:  10%|█         | 34/330 [00:29<04:16,  1.16it/s][A
-Iteration:  11%|█         | 35/330 [00:30<04:15,  1.15it/s][A
-Iteration:  11%|█         | 36/330 [00:31<04:14,  1.15it/s][A
-Iteration:  11%|█         | 37/330 [00:32<04:13,  1.15it/s][A
-Iteration:  12%|█▏        | 38/330 [00:33<04:13,  1.15it/s][A
-Iteration:  12%|█▏        | 39/330 [00:34<04:12,  1.15it/s][A
-Iteration:  12%|█▏        | 40/330 [00:34<04:11,  1.15it/s][A
-Iteration:  12%|█▏        | 41/330 [00:35<04:10,  1.15it/s][A
-Iteration:  13%|█▎        | 42/330 [00:36<04:09,  1.16it/s][A
-Iteration:  13%|█▎        | 43/330 [00:37<04:08,  1.16it/s][A
-Iteration:  13%|█▎        | 44/330 [00:38<04:07,  1.16it/s][A
-Iteration:  14%|█▎        | 45/330 [00:39<04:06,  1.16it/s][A
-Iteration:  14%|█▍        | 46/330 [00:40<04:06,  1.15it/s][A
-Iteration:  14%|█▍        | 47/330 [00:41<04:05,  1.15it/s][A
-Iteration:  15%|█▍        | 48/330 [00:41<04:04,  1.15it/s][A
-Iteration:  15%|█▍        | 49/330 [00:42<04:03,  1.15it/s][A
-Iteration:  15%|█▌        | 50/330 [00:43<04:03,  1.15it/s][A
-Iteration:  15%|█▌        | 51/330 [00:44<04:02,  1.15it/s][A
-Iteration:  16%|█▌        | 52/330 [00:45<04:01,  1.15it/s][A
-Iteration:  16%|█▌        | 53/330 [00:46<04:00,  1.15it/s][A
-Iteration:  16%|█▋        | 54/330 [00:47<03:59,  1.15it/s][A
-Iteration:  17%|█▋        | 55/330 [00:47<03:58,  1.15it/s][A
-Iteration:  17%|█▋        | 56/330 [00:48<03:57,  1.15it/s][A
-Iteration:  17%|█▋        | 57/330 [00:49<03:57,  1.15it/s][A
-Iteration:  18%|█▊        | 58/330 [00:50<03:56,  1.15it/s][A
-Iteration:  18%|█▊        | 59/330 [00:51<03:55,  1.15it/s][A
-Iteration:  18%|█▊        | 60/330 [00:52<03:54,  1.15it/s][A
-Iteration:  18%|█▊        | 61/330 [00:53<03:53,  1.15it/s][A
-Iteration:  19%|█▉        | 62/330 [00:54<03:52,  1.15it/s][A
-Iteration:  19%|█▉        | 63/330 [00:54<03:51,  1.15it/s][A
-Iteration:  19%|█▉        | 64/330 [00:55<03:51,  1.15it/s][A
-Iteration:  20%|█▉        | 65/330 [00:56<03:50,  1.15it/s][A
-Iteration:  20%|██        | 66/330 [00:57<03:49,  1.15it/s][A
-Iteration:  20%|██        | 67/330 [00:58<03:48,  1.15it/s][A
-Iteration:  21%|██        | 68/330 [00:59<03:48,  1.15it/s][A
-Iteration:  21%|██        | 69/330 [01:00<03:46,  1.15it/s][A
-Iteration:  21%|██        | 70/330 [01:01<03:45,  1.15it/s][A
-Iteration:  22%|██▏       | 71/330 [01:01<03:45,  1.15it/s][A
-Iteration:  22%|██▏       | 72/330 [01:02<03:44,  1.15it/s][A
-Iteration:  22%|██▏       | 73/330 [01:03<03:43,  1.15it/s][A
-Iteration:  22%|██▏       | 74/330 [01:04<03:42,  1.15it/s][A
-Iteration:  23%|██▎       | 75/330 [01:05<03:41,  1.15it/s][A
-Iteration:  23%|██▎       | 76/330 [01:06<03:41,  1.15it/s][A
-Iteration:  23%|██▎       | 77/330 [01:07<03:40,  1.15it/s][A
-Iteration:  24%|██▎       | 78/330 [01:07<03:39,  1.15it/s][A
-Iteration:  24%|██▍       | 79/330 [01:08<03:39,  1.15it/s][A
-Iteration:  24%|██▍       | 80/330 [01:09<03:38,  1.15it/s][A
-Iteration:  25%|██▍       | 81/330 [01:10<03:37,  1.15it/s][A
-Iteration:  25%|██▍       | 82/330 [01:11<03:36,  1.15it/s][A
-Iteration:  25%|██▌       | 83/330 [01:12<03:35,  1.15it/s][A
-Iteration:  25%|██▌       | 84/330 [01:13<03:34,  1.15it/s][A
-Iteration:  26%|██▌       | 85/330 [01:14<03:34,  1.14it/s][A
-Iteration:  26%|██▌       | 86/330 [01:14<03:33,  1.14it/s][A
-Iteration:  26%|██▋       | 87/330 [01:15<03:32,  1.15it/s][A
-Iteration:  27%|██▋       | 88/330 [01:16<03:31,  1.14it/s][A
-Iteration:  27%|██▋       | 89/330 [01:17<03:30,  1.15it/s][A
-Iteration:  27%|██▋       | 90/330 [01:18<03:29,  1.15it/s][A
-Iteration:  28%|██▊       | 91/330 [01:19<03:28,  1.15it/s][A
-Iteration:  28%|██▊       | 92/330 [01:20<03:28,  1.14it/s][A
-Iteration:  28%|██▊       | 93/330 [01:21<03:27,  1.14it/s][A
-Iteration:  28%|██▊       | 94/330 [01:21<03:26,  1.14it/s][A
-Iteration:  29%|██▉       | 95/330 [01:22<03:25,  1.14it/s][A
-Iteration:  29%|██▉       | 96/330 [01:23<03:24,  1.14it/s][A
-Iteration:  29%|██▉       | 97/330 [01:24<03:24,  1.14it/s][A
-Iteration:  30%|██▉       | 98/330 [01:25<03:23,  1.14it/s][A
-Iteration:  30%|███       | 99/330 [01:26<03:22,  1.14it/s][A
-Iteration:  30%|███       | 100/330 [01:27<03:22,  1.14it/s][A
-Iteration:  31%|███       | 101/330 [01:28<03:21,  1.14it/s][A
-Iteration:  31%|███       | 102/330 [01:28<03:19,  1.14it/s][A
-Iteration:  31%|███       | 103/330 [01:29<03:18,  1.14it/s][A
-Iteration:  32%|███▏      | 104/330 [01:30<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 105/330 [01:31<03:16,  1.14it/s][A
-Iteration:  32%|███▏      | 106/330 [01:32<03:15,  1.14it/s][A
-Iteration:  32%|███▏      | 107/330 [01:33<03:15,  1.14it/s][A
-Iteration:  33%|███▎      | 108/330 [01:34<03:14,  1.14it/s][A
-Iteration:  33%|███▎      | 109/330 [01:35<03:13,  1.14it/s][A
-Iteration:  33%|███▎      | 110/330 [01:35<03:13,  1.14it/s][A
-Iteration:  34%|███▎      | 111/330 [01:36<03:12,  1.14it/s][A
-Iteration:  34%|███▍      | 112/330 [01:37<03:11,  1.14it/s][A
-Iteration:  34%|███▍      | 113/330 [01:38<03:09,  1.14it/s][A
-Iteration:  35%|███▍      | 114/330 [01:39<03:08,  1.14it/s][A
-Iteration:  35%|███▍      | 115/330 [01:40<03:08,  1.14it/s][A
-Iteration:  35%|███▌      | 116/330 [01:41<03:07,  1.14it/s][A
-Iteration:  35%|███▌      | 117/330 [01:42<03:06,  1.14it/s][A
-Iteration:  36%|███▌      | 118/330 [01:42<03:06,  1.14it/s][A
-Iteration:  36%|███▌      | 119/330 [01:43<03:05,  1.14it/s][A
-Iteration:  36%|███▋      | 120/330 [01:44<03:04,  1.14it/s][A
-Iteration:  37%|███▋      | 121/330 [01:45<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 122/330 [01:46<03:02,  1.14it/s][A
-Iteration:  37%|███▋      | 123/330 [01:47<03:02,  1.14it/s][A
-Iteration:  38%|███▊      | 124/330 [01:48<03:01,  1.14it/s][A
-Iteration:  38%|███▊      | 125/330 [01:49<03:00,  1.14it/s][A
-Iteration:  38%|███▊      | 126/330 [01:50<02:59,  1.14it/s][A
-Iteration:  38%|███▊      | 127/330 [01:50<02:58,  1.14it/s][A
-Iteration:  39%|███▉      | 128/330 [01:51<02:57,  1.14it/s][A
-Iteration:  39%|███▉      | 129/330 [01:52<02:56,  1.14it/s][A
-Iteration:  39%|███▉      | 130/330 [01:53<02:55,  1.14it/s][A
-Iteration:  40%|███▉      | 131/330 [01:54<02:55,  1.14it/s][A
-Iteration:  40%|████      | 132/330 [01:55<02:54,  1.14it/s][A
-Iteration:  40%|████      | 133/330 [01:56<02:53,  1.14it/s][A
-Iteration:  41%|████      | 134/330 [01:57<02:52,  1.14it/s][A
-Iteration:  41%|████      | 135/330 [01:57<02:51,  1.14it/s][A
-Iteration:  41%|████      | 136/330 [01:58<02:50,  1.14it/s][A
-Iteration:  42%|████▏     | 137/330 [01:59<02:49,  1.14it/s][A
-Iteration:  42%|████▏     | 138/330 [02:00<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 139/330 [02:01<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 140/330 [02:02<02:47,  1.14it/s][A
-Iteration:  43%|████▎     | 141/330 [02:03<02:46,  1.14it/s][A
-Iteration:  43%|████▎     | 142/330 [02:04<02:45,  1.14it/s][A
-Iteration:  43%|████▎     | 143/330 [02:04<02:44,  1.14it/s][A
-Iteration:  44%|████▎     | 144/330 [02:05<02:43,  1.14it/s][A
-Iteration:  44%|████▍     | 145/330 [02:06<02:42,  1.14it/s][A
-Iteration:  44%|████▍     | 146/330 [02:07<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 147/330 [02:08<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 148/330 [02:09<02:40,  1.14it/s][A
-Iteration:  45%|████▌     | 149/330 [02:10<02:39,  1.14it/s][A
-Iteration:  45%|████▌     | 150/330 [02:11<02:38,  1.14it/s][A
-Iteration:  46%|████▌     | 151/330 [02:12<02:37,  1.14it/s][A
-Iteration:  46%|████▌     | 152/330 [02:12<02:36,  1.14it/s][A
-Iteration:  46%|████▋     | 153/330 [02:13<02:35,  1.14it/s][A
-Iteration:  47%|████▋     | 154/330 [02:14<02:34,  1.14it/s][A
-Iteration:  47%|████▋     | 155/330 [02:15<02:33,  1.14it/s][A
-Iteration:  47%|████▋     | 156/330 [02:16<02:33,  1.14it/s][A
-Iteration:  48%|████▊     | 157/330 [02:17<02:32,  1.14it/s][A
-Iteration:  48%|████▊     | 158/330 [02:18<02:31,  1.14it/s][A
-Iteration:  48%|████▊     | 159/330 [02:19<02:30,  1.14it/s][A
-Iteration:  48%|████▊     | 160/330 [02:19<02:29,  1.14it/s][A
-Iteration:  49%|████▉     | 161/330 [02:20<02:28,  1.14it/s][A
-Iteration:  49%|████▉     | 162/330 [02:21<02:27,  1.14it/s][A
-Iteration:  49%|████▉     | 163/330 [02:22<02:26,  1.14it/s][A
-Iteration:  50%|████▉     | 164/330 [02:23<02:26,  1.14it/s][A
-Iteration:  50%|█████     | 165/330 [02:24<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 166/330 [02:25<02:24,  1.14it/s][A
-Iteration:  51%|█████     | 167/330 [02:26<02:23,  1.14it/s][A
-Iteration:  51%|█████     | 168/330 [02:26<02:22,  1.14it/s][A
-Iteration:  51%|█████     | 169/330 [02:27<02:21,  1.14it/s][A
-Iteration:  52%|█████▏    | 170/330 [02:28<02:20,  1.14it/s][A
-Iteration:  52%|█████▏    | 171/330 [02:29<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 172/330 [02:30<02:18,  1.14it/s][A
-Iteration:  52%|█████▏    | 173/330 [02:31<02:18,  1.14it/s][A
-Iteration:  53%|█████▎    | 174/330 [02:32<02:17,  1.14it/s][A
-Iteration:  53%|█████▎    | 175/330 [02:33<02:16,  1.14it/s][A
-Iteration:  53%|█████▎    | 176/330 [02:34<02:15,  1.14it/s][A
-Iteration:  54%|█████▎    | 177/330 [02:34<02:14,  1.14it/s][A
-Iteration:  54%|█████▍    | 178/330 [02:35<02:13,  1.14it/s][A
-Iteration:  54%|█████▍    | 179/330 [02:36<02:22,  1.06it/s][A
-Iteration:  55%|█████▍    | 180/330 [02:37<02:18,  1.08it/s][A
-Iteration:  55%|█████▍    | 181/330 [02:38<02:15,  1.10it/s][A
-Iteration:  55%|█████▌    | 182/330 [02:39<02:13,  1.11it/s][A
-Iteration:  55%|█████▌    | 183/330 [02:40<02:11,  1.12it/s][A
-Iteration:  56%|█████▌    | 184/330 [02:41<02:10,  1.12it/s][A
-Iteration:  56%|█████▌    | 185/330 [02:42<02:08,  1.13it/s][A
-Iteration:  56%|█████▋    | 186/330 [02:43<02:07,  1.13it/s][A
-Iteration:  57%|█████▋    | 187/330 [02:43<02:06,  1.13it/s][A
-Iteration:  57%|█████▋    | 188/330 [02:44<02:05,  1.13it/s][A
-Iteration:  57%|█████▋    | 189/330 [02:45<02:04,  1.13it/s][A
-Iteration:  58%|█████▊    | 190/330 [02:46<02:03,  1.14it/s][A
-Iteration:  58%|█████▊    | 191/330 [02:47<02:02,  1.14it/s][A
-Iteration:  58%|█████▊    | 192/330 [02:48<02:01,  1.14it/s][A
-Iteration:  58%|█████▊    | 193/330 [02:49<02:00,  1.14it/s][A
-Iteration:  59%|█████▉    | 194/330 [02:50<01:59,  1.14it/s][A
-Iteration:  59%|█████▉    | 195/330 [02:50<01:58,  1.14it/s][A
-Iteration:  59%|█████▉    | 196/330 [02:51<01:57,  1.14it/s][A
-Iteration:  60%|█████▉    | 197/330 [02:52<01:57,  1.14it/s][A
-Iteration:  60%|██████    | 198/330 [02:53<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 199/330 [02:54<01:55,  1.14it/s][A
-Iteration:  61%|██████    | 200/330 [02:55<01:54,  1.14it/s][A
-Iteration:  61%|██████    | 201/330 [02:56<01:53,  1.14it/s][A
-Iteration:  61%|██████    | 202/330 [02:57<01:52,  1.14it/s][A
-Iteration:  62%|██████▏   | 203/330 [02:57<01:51,  1.14it/s][A
-Iteration:  62%|██████▏   | 204/330 [02:58<01:50,  1.14it/s][A
-Iteration:  62%|██████▏   | 205/330 [02:59<01:49,  1.14it/s][A
-Iteration:  62%|██████▏   | 206/330 [03:00<01:49,  1.14it/s][A
-Iteration:  63%|██████▎   | 207/330 [03:01<01:48,  1.14it/s][A
-Iteration:  63%|██████▎   | 208/330 [03:02<01:47,  1.14it/s][A
-Iteration:  63%|██████▎   | 209/330 [03:03<01:46,  1.14it/s][A
-Iteration:  64%|██████▎   | 210/330 [03:04<01:45,  1.14it/s][A
-Iteration:  64%|██████▍   | 211/330 [03:05<01:44,  1.14it/s][A
-Iteration:  64%|██████▍   | 212/330 [03:05<01:43,  1.14it/s][A
-Iteration:  65%|██████▍   | 213/330 [03:06<01:42,  1.14it/s][A
-Iteration:  65%|██████▍   | 214/330 [03:07<01:42,  1.14it/s][A
-Iteration:  65%|██████▌   | 215/330 [03:08<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 216/330 [03:09<01:40,  1.14it/s][A
-Iteration:  66%|██████▌   | 217/330 [03:10<01:39,  1.14it/s][A
-Iteration:  66%|██████▌   | 218/330 [03:11<01:38,  1.14it/s][A
-Iteration:  66%|██████▋   | 219/330 [03:12<01:37,  1.14it/s][A
-Iteration:  67%|██████▋   | 220/330 [03:12<01:36,  1.14it/s][A
-Iteration:  67%|██████▋   | 221/330 [03:13<01:35,  1.14it/s][A
-Iteration:  67%|██████▋   | 222/330 [03:14<01:35,  1.14it/s][A
-Iteration:  68%|██████▊   | 223/330 [03:15<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 224/330 [03:16<01:33,  1.14it/s][A
-Iteration:  68%|██████▊   | 225/330 [03:17<01:32,  1.14it/s][A
-Iteration:  68%|██████▊   | 226/330 [03:18<01:31,  1.14it/s][A
-Iteration:  69%|██████▉   | 227/330 [03:19<01:30,  1.14it/s][A
-Iteration:  69%|██████▉   | 228/330 [03:19<01:29,  1.14it/s][A
-Iteration:  69%|██████▉   | 229/330 [03:20<01:28,  1.14it/s][A
-Iteration:  70%|██████▉   | 230/330 [03:21<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 231/330 [03:22<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 232/330 [03:23<01:26,  1.14it/s][A
-Iteration:  71%|███████   | 233/330 [03:24<01:25,  1.14it/s][A
-Iteration:  71%|███████   | 234/330 [03:25<01:24,  1.14it/s][A
-Iteration:  71%|███████   | 235/330 [03:26<01:23,  1.14it/s][A
-Iteration:  72%|███████▏  | 236/330 [03:27<01:22,  1.14it/s][A
-Iteration:  72%|███████▏  | 237/330 [03:27<01:21,  1.14it/s][A
-Iteration:  72%|███████▏  | 238/330 [03:28<01:20,  1.14it/s][A
-Iteration:  72%|███████▏  | 239/330 [03:29<01:20,  1.14it/s][A
-Iteration:  73%|███████▎  | 240/330 [03:30<01:19,  1.14it/s][A
-Iteration:  73%|███████▎  | 241/330 [03:31<01:18,  1.14it/s][A
-Iteration:  73%|███████▎  | 242/330 [03:32<01:17,  1.14it/s][A
-Iteration:  74%|███████▎  | 243/330 [03:33<01:16,  1.14it/s][A
-Iteration:  74%|███████▍  | 244/330 [03:34<01:15,  1.14it/s][A
-Iteration:  74%|███████▍  | 245/330 [03:34<01:14,  1.14it/s][A
-Iteration:  75%|███████▍  | 246/330 [03:35<01:13,  1.14it/s][A
-Iteration:  75%|███████▍  | 247/330 [03:36<01:13,  1.14it/s][A
-Iteration:  75%|███████▌  | 248/330 [03:37<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 249/330 [03:38<01:11,  1.14it/s][A
-Iteration:  76%|███████▌  | 250/330 [03:39<01:10,  1.14it/s][A
-Iteration:  76%|███████▌  | 251/330 [03:40<01:09,  1.14it/s][A
-Iteration:  76%|███████▋  | 252/330 [03:41<01:08,  1.14it/s][A
-Iteration:  77%|███████▋  | 253/330 [03:41<01:07,  1.14it/s][A
-Iteration:  77%|███████▋  | 254/330 [03:42<01:06,  1.14it/s][A
-Iteration:  77%|███████▋  | 255/330 [03:43<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 256/330 [03:44<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 257/330 [03:45<01:04,  1.14it/s][A
-Iteration:  78%|███████▊  | 258/330 [03:46<01:03,  1.14it/s][A
-Iteration:  78%|███████▊  | 259/330 [03:47<01:02,  1.14it/s][A
-Iteration:  79%|███████▉  | 260/330 [03:48<01:01,  1.14it/s][A
-Iteration:  79%|███████▉  | 261/330 [03:49<01:00,  1.14it/s][A
-Iteration:  79%|███████▉  | 262/330 [03:49<00:59,  1.14it/s][A
-Iteration:  80%|███████▉  | 263/330 [03:50<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 264/330 [03:51<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 265/330 [03:52<00:57,  1.14it/s][A
-Iteration:  81%|████████  | 266/330 [03:53<00:56,  1.14it/s][A
-Iteration:  81%|████████  | 267/330 [03:54<00:55,  1.14it/s][A
-Iteration:  81%|████████  | 268/330 [03:55<00:54,  1.14it/s][A
-Iteration:  82%|████████▏ | 269/330 [03:56<00:53,  1.14it/s][A
-Iteration:  82%|████████▏ | 270/330 [03:56<00:52,  1.14it/s][A
-Iteration:  82%|████████▏ | 271/330 [03:57<00:51,  1.14it/s][A
-Iteration:  82%|████████▏ | 272/330 [03:58<00:51,  1.14it/s][A
-Iteration:  83%|████████▎ | 273/330 [03:59<00:50,  1.14it/s][A
-Iteration:  83%|████████▎ | 274/330 [04:00<00:49,  1.14it/s][A
-Iteration:  83%|████████▎ | 275/330 [04:01<00:48,  1.14it/s][A
-Iteration:  84%|████████▎ | 276/330 [04:02<00:47,  1.14it/s][A
-Iteration:  84%|████████▍ | 277/330 [04:03<00:46,  1.14it/s][A
-Iteration:  84%|████████▍ | 278/330 [04:03<00:45,  1.14it/s][A
-Iteration:  85%|████████▍ | 279/330 [04:04<00:44,  1.14it/s][A
-Iteration:  85%|████████▍ | 280/330 [04:05<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 281/330 [04:06<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 282/330 [04:07<00:42,  1.14it/s][A
-Iteration:  86%|████████▌ | 283/330 [04:08<00:41,  1.14it/s][A
-Iteration:  86%|████████▌ | 284/330 [04:09<00:40,  1.14it/s][A
-Iteration:  86%|████████▋ | 285/330 [04:10<00:39,  1.14it/s][A
-Iteration:  87%|████████▋ | 286/330 [04:11<00:38,  1.14it/s][A
-Iteration:  87%|████████▋ | 287/330 [04:11<00:37,  1.14it/s][A
-Iteration:  87%|████████▋ | 288/330 [04:12<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 289/330 [04:13<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 290/330 [04:14<00:35,  1.14it/s][A
-Iteration:  88%|████████▊ | 291/330 [04:15<00:34,  1.14it/s][A
-Iteration:  88%|████████▊ | 292/330 [04:16<00:33,  1.14it/s][A
-Iteration:  89%|████████▉ | 293/330 [04:17<00:32,  1.14it/s][A
-Iteration:  89%|████████▉ | 294/330 [04:18<00:31,  1.13it/s][A
-Iteration:  89%|████████▉ | 295/330 [04:18<00:30,  1.13it/s][A
-Iteration:  90%|████████▉ | 296/330 [04:19<00:30,  1.13it/s][A
-Iteration:  90%|█████████ | 297/330 [04:20<00:29,  1.13it/s][A
-Iteration:  90%|█████████ | 298/330 [04:21<00:28,  1.14it/s][A
-Iteration:  91%|█████████ | 299/330 [04:22<00:27,  1.14it/s][A
-Iteration:  91%|█████████ | 300/330 [04:23<00:26,  1.14it/s][A
-Iteration:  91%|█████████ | 301/330 [04:24<00:25,  1.14it/s][A
-Iteration:  92%|█████████▏| 302/330 [04:25<00:24,  1.14it/s][A
-Iteration:  92%|█████████▏| 303/330 [04:25<00:23,  1.14it/s][A
-Iteration:  92%|█████████▏| 304/330 [04:26<00:22,  1.14it/s][A
-Iteration:  92%|█████████▏| 305/330 [04:27<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 306/330 [04:28<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 307/330 [04:29<00:20,  1.14it/s][A
-Iteration:  93%|█████████▎| 308/330 [04:30<00:19,  1.14it/s][A
-Iteration:  94%|█████████▎| 309/330 [04:31<00:18,  1.14it/s][A
-Iteration:  94%|█████████▍| 310/330 [04:32<00:17,  1.14it/s][A
-Iteration:  94%|█████████▍| 311/330 [04:33<00:16,  1.14it/s][A
-Iteration:  95%|█████████▍| 312/330 [04:33<00:15,  1.14it/s][A
-Iteration:  95%|█████████▍| 313/330 [04:34<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 314/330 [04:35<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 315/330 [04:36<00:13,  1.14it/s][A
-Iteration:  96%|█████████▌| 316/330 [04:37<00:12,  1.14it/s][A
-Iteration:  96%|█████████▌| 317/330 [04:38<00:11,  1.14it/s][A
-Iteration:  96%|█████████▋| 318/330 [04:39<00:10,  1.14it/s][A
-Iteration:  97%|█████████▋| 319/330 [04:40<00:09,  1.14it/s][A
-Iteration:  97%|█████████▋| 320/330 [04:40<00:08,  1.14it/s][A
-Iteration:  97%|█████████▋| 321/330 [04:41<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 322/330 [04:42<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 323/330 [04:43<00:06,  1.14it/s][A
-Iteration:  98%|█████████▊| 324/330 [04:44<00:05,  1.14it/s][A
-Iteration:  98%|█████████▊| 325/330 [04:45<00:04,  1.14it/s][A
-Iteration:  99%|█████████▉| 326/330 [04:46<00:03,  1.14it/s][A
-Iteration:  99%|█████████▉| 327/330 [04:47<00:02,  1.14it/s][A
-Iteration:  99%|█████████▉| 328/330 [04:47<00:01,  1.14it/s][A
-Iteration: 100%|█████████▉| 329/330 [04:48<00:00,  1.14it/s][A
-Iteration: 100%|██████████| 330/330 [04:49<00:00,  1.34it/s][AIteration: 100%|██████████| 330/330 [04:49<00:00,  1.14it/s]
-11/03/2024 22:02:59 - INFO - __main__ -   ***** Running eval *****
-
-Evaluating:   0%|          | 0/47 [00:00<?, ?it/s][A
-Evaluating:   2%|▏         | 1/47 [00:00<00:16,  2.82it/s][A
-Evaluating:   4%|▍         | 2/47 [00:00<00:15,  2.83it/s][A
-Evaluating:   6%|▋         | 3/47 [00:01<00:15,  2.83it/s][A
-Evaluating:   9%|▊         | 4/47 [00:01<00:15,  2.84it/s][A
-Evaluating:  11%|█         | 5/47 [00:01<00:14,  2.83it/s][A
-Evaluating:  13%|█▎        | 6/47 [00:02<00:14,  2.83it/s][A
-Evaluating:  15%|█▍        | 7/47 [00:02<00:14,  2.85it/s][A
-Evaluating:  17%|█▋        | 8/47 [00:02<00:13,  2.85it/s][A
-Evaluating:  19%|█▉        | 9/47 [00:03<00:13,  2.85it/s][A
-Evaluating:  21%|██▏       | 10/47 [00:03<00:13,  2.84it/s][A
-Evaluating:  23%|██▎       | 11/47 [00:03<00:12,  2.84it/s][A
-Evaluating:  26%|██▌       | 12/47 [00:04<00:12,  2.84it/s][A
-Evaluating:  28%|██▊       | 13/47 [00:04<00:11,  2.84it/s][A
-Evaluating:  30%|██▉       | 14/47 [00:04<00:11,  2.86it/s][A
-Evaluating:  32%|███▏      | 15/47 [00:05<00:11,  2.85it/s][A
-Evaluating:  34%|███▍      | 16/47 [00:05<00:10,  2.85it/s][A
-Evaluating:  36%|███▌      | 17/47 [00:05<00:10,  2.85it/s][A
-Evaluating:  38%|███▊      | 18/47 [00:06<00:10,  2.86it/s][A
-Evaluating:  40%|████      | 19/47 [00:06<00:09,  2.85it/s][A
-Evaluating:  43%|████▎     | 20/47 [00:07<00:09,  2.86it/s][A
-Evaluating:  45%|████▍     | 21/47 [00:07<00:09,  2.86it/s][A
-Evaluating:  47%|████▋     | 22/47 [00:07<00:08,  2.87it/s][A
-Evaluating:  49%|████▉     | 23/47 [00:08<00:08,  2.86it/s][A
-Evaluating:  51%|█████     | 24/47 [00:08<00:08,  2.86it/s][A
-Evaluating:  53%|█████▎    | 25/47 [00:08<00:07,  2.86it/s][A
-Evaluating:  55%|█████▌    | 26/47 [00:09<00:07,  2.86it/s][A
-Evaluating:  57%|█████▋    | 27/47 [00:09<00:07,  2.85it/s][A
-Evaluating:  60%|█████▉    | 28/47 [00:09<00:06,  2.86it/s][A
-Evaluating:  62%|██████▏   | 29/47 [00:10<00:06,  2.86it/s][A
-Evaluating:  64%|██████▍   | 30/47 [00:10<00:05,  2.85it/s][A
-Evaluating:  66%|██████▌   | 31/47 [00:10<00:05,  2.85it/s][A
-Evaluating:  68%|██████▊   | 32/47 [00:11<00:05,  2.86it/s][A
-Evaluating:  70%|███████   | 33/47 [00:11<00:04,  2.85it/s][A
-Evaluating:  72%|███████▏  | 34/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  74%|███████▍  | 35/47 [00:12<00:04,  2.85it/s][A
-Evaluating:  77%|███████▋  | 36/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  79%|███████▊  | 37/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  81%|████████  | 38/47 [00:13<00:03,  2.86it/s][A
-Evaluating:  83%|████████▎ | 39/47 [00:13<00:02,  2.86it/s][A
-Evaluating:  85%|████████▌ | 40/47 [00:14<00:02,  2.86it/s][A
-Evaluating:  87%|████████▋ | 41/47 [00:14<00:02,  2.85it/s][A
-Evaluating:  89%|████████▉ | 42/47 [00:14<00:01,  2.86it/s][A
-Evaluating:  91%|█████████▏| 43/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  94%|█████████▎| 44/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  96%|█████████▌| 45/47 [00:15<00:00,  2.86it/s][A
-Evaluating:  98%|█████████▊| 46/47 [00:16<00:00,  2.86it/s][A
-Evaluating: 100%|██████████| 47/47 [00:16<00:00,  2.96it/s][AEvaluating: 100%|██████████| 47/47 [00:16<00:00,  2.86it/s]
-processed 37211 tokens with 804 phrases; found: 628 phrases; correct: 51.
-accuracy:  93.51%; precision:   8.12%; recall:   6.34%; FB1:   7.12
-             City: precision:   0.00%; recall:   0.00%; FB1:   0.00  90
-          Country: precision:   0.00%; recall:   0.00%; FB1:   0.00  0
-          Disease: precision:  10.95%; recall:  21.59%; FB1:  14.53  347
-         Province: precision:   0.00%; recall:   0.00%; FB1:   0.00  86
-            Virus: precision:  12.38%; recall:   8.28%; FB1:   9.92  105
-11/03/2024 22:03:15 - INFO - __main__ -   ----------the best f1 is 0.0712290502793296---------
-Epoch:  10%|█         | 1/10 [05:06<45:57, 306.34s/it]
-Iteration:   0%|          | 0/330 [00:00<?, ?it/s][A
-Iteration:   0%|          | 1/330 [00:00<04:47,  1.14it/s][A
-Iteration:   1%|          | 2/330 [00:01<04:47,  1.14it/s][A
-Iteration:   1%|          | 3/330 [00:02<04:47,  1.14it/s][A
-Iteration:   1%|          | 4/330 [00:03<04:46,  1.14it/s][A
-Iteration:   2%|▏         | 5/330 [00:04<04:45,  1.14it/s][A
-Iteration:   2%|▏         | 6/330 [00:05<04:44,  1.14it/s][A
-Iteration:   2%|▏         | 7/330 [00:06<04:44,  1.14it/s][A
-Iteration:   2%|▏         | 8/330 [00:07<04:43,  1.14it/s][A
-Iteration:   3%|▎         | 9/330 [00:07<04:42,  1.14it/s][A
-Iteration:   3%|▎         | 10/330 [00:08<04:41,  1.14it/s][A
-Iteration:   3%|▎         | 11/330 [00:09<04:40,  1.14it/s][A
-Iteration:   4%|▎         | 12/330 [00:10<04:39,  1.14it/s][A
-Iteration:   4%|▍         | 13/330 [00:11<04:38,  1.14it/s][A
-Iteration:   4%|▍         | 14/330 [00:12<04:37,  1.14it/s][A
-Iteration:   5%|▍         | 15/330 [00:13<04:37,  1.14it/s][A
-Iteration:   5%|▍         | 16/330 [00:14<04:36,  1.14it/s][A
-Iteration:   5%|▌         | 17/330 [00:15<04:52,  1.07it/s][A
-Iteration:   5%|▌         | 18/330 [00:16<04:46,  1.09it/s][A
-Iteration:   6%|▌         | 19/330 [00:16<04:41,  1.10it/s][A
-Iteration:   6%|▌         | 20/330 [00:17<04:38,  1.11it/s][A
-Iteration:   6%|▋         | 21/330 [00:18<04:35,  1.12it/s][A
-Iteration:   7%|▋         | 22/330 [00:19<04:33,  1.13it/s][A
-Iteration:   7%|▋         | 23/330 [00:20<04:32,  1.13it/s][A
-Iteration:   7%|▋         | 24/330 [00:21<04:30,  1.13it/s][A
-Iteration:   8%|▊         | 25/330 [00:22<04:29,  1.13it/s][A
-Iteration:   8%|▊         | 26/330 [00:23<04:28,  1.13it/s][A
-Iteration:   8%|▊         | 27/330 [00:23<04:27,  1.13it/s][A
-Iteration:   8%|▊         | 28/330 [00:24<04:26,  1.14it/s][A
-Iteration:   9%|▉         | 29/330 [00:25<04:25,  1.14it/s][A
-Iteration:   9%|▉         | 30/330 [00:26<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 31/330 [00:27<04:23,  1.14it/s][A
-Iteration:  10%|▉         | 32/330 [00:28<04:22,  1.14it/s][A
-Iteration:  10%|█         | 33/330 [00:29<04:21,  1.14it/s][A
-Iteration:  10%|█         | 34/330 [00:30<04:20,  1.14it/s][A
-Iteration:  11%|█         | 35/330 [00:30<04:19,  1.14it/s][A
-Iteration:  11%|█         | 36/330 [00:31<04:18,  1.14it/s][A
-Iteration:  11%|█         | 37/330 [00:32<04:17,  1.14it/s][A
-Iteration:  12%|█▏        | 38/330 [00:33<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 39/330 [00:34<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 40/330 [00:35<04:15,  1.14it/s][A
-Iteration:  12%|█▏        | 41/330 [00:36<04:14,  1.14it/s][A
-Iteration:  13%|█▎        | 42/330 [00:37<04:13,  1.14it/s][A
-Iteration:  13%|█▎        | 43/330 [00:38<04:12,  1.14it/s][A
-Iteration:  13%|█▎        | 44/330 [00:38<04:11,  1.14it/s][A
-Iteration:  14%|█▎        | 45/330 [00:39<04:10,  1.14it/s][A
-Iteration:  14%|█▍        | 46/330 [00:40<04:09,  1.14it/s][A
-Iteration:  14%|█▍        | 47/330 [00:41<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 48/330 [00:42<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 49/330 [00:43<04:07,  1.14it/s][A
-Iteration:  15%|█▌        | 50/330 [00:44<04:06,  1.14it/s][A
-Iteration:  15%|█▌        | 51/330 [00:45<04:05,  1.14it/s][A
-Iteration:  16%|█▌        | 52/330 [00:45<04:04,  1.14it/s][A
-Iteration:  16%|█▌        | 53/330 [00:46<04:03,  1.14it/s][A
-Iteration:  16%|█▋        | 54/330 [00:47<04:02,  1.14it/s][A
-Iteration:  17%|█▋        | 55/330 [00:48<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 56/330 [00:49<04:00,  1.14it/s][A
-Iteration:  17%|█▋        | 57/330 [00:50<04:00,  1.14it/s][A
-Iteration:  18%|█▊        | 58/330 [00:51<03:59,  1.14it/s][A
-Iteration:  18%|█▊        | 59/330 [00:52<03:58,  1.14it/s][A
-Iteration:  18%|█▊        | 60/330 [00:52<03:57,  1.14it/s][A
-Iteration:  18%|█▊        | 61/330 [00:53<03:56,  1.14it/s][A
-Iteration:  19%|█▉        | 62/330 [00:54<03:55,  1.14it/s][A
-Iteration:  19%|█▉        | 63/330 [00:55<03:54,  1.14it/s][A
-Iteration:  19%|█▉        | 64/330 [00:56<03:54,  1.14it/s][A
-Iteration:  20%|█▉        | 65/330 [00:57<03:53,  1.14it/s][A
-Iteration:  20%|██        | 66/330 [00:58<03:52,  1.14it/s][A
-Iteration:  20%|██        | 67/330 [00:59<03:51,  1.14it/s][A
-Iteration:  21%|██        | 68/330 [00:59<03:50,  1.14it/s][A
-Iteration:  21%|██        | 69/330 [01:00<03:49,  1.14it/s][A
-Iteration:  21%|██        | 70/330 [01:01<03:48,  1.14it/s][A
-Iteration:  22%|██▏       | 71/330 [01:02<03:47,  1.14it/s][A
-Iteration:  22%|██▏       | 72/330 [01:03<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 73/330 [01:04<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 74/330 [01:05<03:45,  1.14it/s][A
-Iteration:  23%|██▎       | 75/330 [01:06<03:44,  1.14it/s][A
-Iteration:  23%|██▎       | 76/330 [01:07<03:43,  1.14it/s][A
-Iteration:  23%|██▎       | 77/330 [01:07<03:42,  1.14it/s][A
-Iteration:  24%|██▎       | 78/330 [01:08<03:41,  1.14it/s][A
-Iteration:  24%|██▍       | 79/330 [01:09<03:40,  1.14it/s][A
-Iteration:  24%|██▍       | 80/330 [01:10<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 81/330 [01:11<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 82/330 [01:12<03:38,  1.14it/s][A
-Iteration:  25%|██▌       | 83/330 [01:13<03:37,  1.14it/s][A
-Iteration:  25%|██▌       | 84/330 [01:14<03:36,  1.14it/s][A
-Iteration:  26%|██▌       | 85/330 [01:14<03:35,  1.14it/s][A
-Iteration:  26%|██▌       | 86/330 [01:15<03:34,  1.14it/s][A
-Iteration:  26%|██▋       | 87/330 [01:16<03:33,  1.14it/s][A
-Iteration:  27%|██▋       | 88/330 [01:17<03:33,  1.14it/s][A
-Iteration:  27%|██▋       | 89/330 [01:18<03:32,  1.14it/s][A
-Iteration:  27%|██▋       | 90/330 [01:19<03:31,  1.14it/s][A
-Iteration:  28%|██▊       | 91/330 [01:20<03:30,  1.14it/s][A
-Iteration:  28%|██▊       | 92/330 [01:21<03:29,  1.14it/s][A
-Iteration:  28%|██▊       | 93/330 [01:21<03:28,  1.14it/s][A
-Iteration:  28%|██▊       | 94/330 [01:22<03:27,  1.14it/s][A
-Iteration:  29%|██▉       | 95/330 [01:23<03:26,  1.14it/s][A
-Iteration:  29%|██▉       | 96/330 [01:24<03:25,  1.14it/s][A
-Iteration:  29%|██▉       | 97/330 [01:25<03:24,  1.14it/s][A
-Iteration:  30%|██▉       | 98/330 [01:26<03:24,  1.14it/s][A
-Iteration:  30%|███       | 99/330 [01:27<03:23,  1.14it/s][A
-Iteration:  30%|███       | 100/330 [01:28<03:22,  1.14it/s][A
-Iteration:  31%|███       | 101/330 [01:29<03:21,  1.14it/s][A
-Iteration:  31%|███       | 102/330 [01:29<03:20,  1.14it/s][A
-Iteration:  31%|███       | 103/330 [01:30<03:19,  1.14it/s][A
-Iteration:  32%|███▏      | 104/330 [01:31<03:18,  1.14it/s][A
-Iteration:  32%|███▏      | 105/330 [01:32<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 106/330 [01:33<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 107/330 [01:34<03:16,  1.14it/s][A
-Iteration:  33%|███▎      | 108/330 [01:35<03:15,  1.14it/s][A
-Iteration:  33%|███▎      | 109/330 [01:36<03:14,  1.14it/s][A
-Iteration:  33%|███▎      | 110/330 [01:36<03:13,  1.14it/s][A
-Iteration:  34%|███▎      | 111/330 [01:37<03:12,  1.14it/s][A
-Iteration:  34%|███▍      | 112/330 [01:38<03:11,  1.14it/s][A
-Iteration:  34%|███▍      | 113/330 [01:39<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 114/330 [01:40<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 115/330 [01:41<03:09,  1.14it/s][A
-Iteration:  35%|███▌      | 116/330 [01:42<03:08,  1.14it/s][A
-Iteration:  35%|███▌      | 117/330 [01:43<03:07,  1.14it/s][A
-Iteration:  36%|███▌      | 118/330 [01:43<03:06,  1.14it/s][A
-Iteration:  36%|███▌      | 119/330 [01:44<03:05,  1.14it/s][A
-Iteration:  36%|███▋      | 120/330 [01:45<03:04,  1.14it/s][A
-Iteration:  37%|███▋      | 121/330 [01:46<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 122/330 [01:47<03:02,  1.14it/s][A
-Iteration:  37%|███▋      | 123/330 [01:48<03:02,  1.14it/s][A
-Iteration:  38%|███▊      | 124/330 [01:49<03:01,  1.14it/s][A
-Iteration:  38%|███▊      | 125/330 [01:50<03:00,  1.14it/s][A
-Iteration:  38%|███▊      | 126/330 [01:51<02:59,  1.14it/s][A
-Iteration:  38%|███▊      | 127/330 [01:51<02:58,  1.14it/s][A
-Iteration:  39%|███▉      | 128/330 [01:52<02:57,  1.14it/s][A
-Iteration:  39%|███▉      | 129/330 [01:53<02:56,  1.14it/s][A
-Iteration:  39%|███▉      | 130/330 [01:54<02:55,  1.14it/s][A
-Iteration:  40%|███▉      | 131/330 [01:55<02:55,  1.14it/s][A
-Iteration:  40%|████      | 132/330 [01:56<02:54,  1.14it/s][A
-Iteration:  40%|████      | 133/330 [01:57<02:53,  1.14it/s][A
-Iteration:  41%|████      | 134/330 [01:58<02:52,  1.14it/s][A
-Iteration:  41%|████      | 135/330 [01:58<02:51,  1.14it/s][A
-Iteration:  41%|████      | 136/330 [01:59<02:50,  1.14it/s][A
-Iteration:  42%|████▏     | 137/330 [02:00<02:49,  1.14it/s][A
-Iteration:  42%|████▏     | 138/330 [02:01<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 139/330 [02:02<02:47,  1.14it/s][A
-Iteration:  42%|████▏     | 140/330 [02:03<02:47,  1.14it/s][A
-Iteration:  43%|████▎     | 141/330 [02:04<02:46,  1.14it/s][A
-Iteration:  43%|████▎     | 142/330 [02:05<02:45,  1.14it/s][A
-Iteration:  43%|████▎     | 143/330 [02:05<02:44,  1.14it/s][A
-Iteration:  44%|████▎     | 144/330 [02:06<02:43,  1.14it/s][A
-Iteration:  44%|████▍     | 145/330 [02:07<02:42,  1.14it/s][A
-Iteration:  44%|████▍     | 146/330 [02:08<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 147/330 [02:09<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 148/330 [02:10<02:40,  1.14it/s][A
-Iteration:  45%|████▌     | 149/330 [02:11<02:39,  1.14it/s][A
-Iteration:  45%|████▌     | 150/330 [02:12<02:38,  1.14it/s][A
-Iteration:  46%|████▌     | 151/330 [02:13<02:37,  1.14it/s][A
-Iteration:  46%|████▌     | 152/330 [02:13<02:36,  1.14it/s][A
-Iteration:  46%|████▋     | 153/330 [02:14<02:35,  1.14it/s][A
-Iteration:  47%|████▋     | 154/330 [02:15<02:34,  1.14it/s][A
-Iteration:  47%|████▋     | 155/330 [02:16<02:33,  1.14it/s][A
-Iteration:  47%|████▋     | 156/330 [02:17<02:33,  1.14it/s][A
-Iteration:  48%|████▊     | 157/330 [02:18<02:32,  1.14it/s][A
-Iteration:  48%|████▊     | 158/330 [02:19<02:31,  1.14it/s][A
-Iteration:  48%|████▊     | 159/330 [02:20<02:30,  1.14it/s][A
-Iteration:  48%|████▊     | 160/330 [02:20<02:29,  1.14it/s][A
-Iteration:  49%|████▉     | 161/330 [02:21<02:28,  1.14it/s][A
-Iteration:  49%|████▉     | 162/330 [02:22<02:27,  1.14it/s][A
-Iteration:  49%|████▉     | 163/330 [02:23<02:26,  1.14it/s][A
-Iteration:  50%|████▉     | 164/330 [02:24<02:26,  1.14it/s][A
-Iteration:  50%|█████     | 165/330 [02:25<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 166/330 [02:26<02:24,  1.14it/s][A
-Iteration:  51%|█████     | 167/330 [02:27<02:23,  1.14it/s][A
-Iteration:  51%|█████     | 168/330 [02:27<02:22,  1.14it/s][A
-Iteration:  51%|█████     | 169/330 [02:28<02:21,  1.14it/s][A
-Iteration:  52%|█████▏    | 170/330 [02:29<02:20,  1.14it/s][A
-Iteration:  52%|█████▏    | 171/330 [02:30<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 172/330 [02:31<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 173/330 [02:32<02:18,  1.14it/s][A
-Iteration:  53%|█████▎    | 174/330 [02:33<02:17,  1.14it/s][A
-Iteration:  53%|█████▎    | 175/330 [02:34<02:16,  1.14it/s][A
-Iteration:  53%|█████▎    | 176/330 [02:35<02:15,  1.14it/s][A
-Iteration:  54%|█████▎    | 177/330 [02:35<02:14,  1.14it/s][A
-Iteration:  54%|█████▍    | 178/330 [02:36<02:13,  1.14it/s][A
-Iteration:  54%|█████▍    | 179/330 [02:37<02:12,  1.14it/s][A
-Iteration:  55%|█████▍    | 180/330 [02:38<02:11,  1.14it/s][A
-Iteration:  55%|█████▍    | 181/330 [02:39<02:11,  1.14it/s][A
-Iteration:  55%|█████▌    | 182/330 [02:40<02:10,  1.14it/s][A
-Iteration:  55%|█████▌    | 183/330 [02:41<02:09,  1.14it/s][A
-Iteration:  56%|█████▌    | 184/330 [02:42<02:08,  1.14it/s][A
-Iteration:  56%|█████▌    | 185/330 [02:42<02:07,  1.14it/s][A
-Iteration:  56%|█████▋    | 186/330 [02:43<02:06,  1.14it/s][A
-Iteration:  57%|█████▋    | 187/330 [02:44<02:05,  1.14it/s][A
-Iteration:  57%|█████▋    | 188/330 [02:45<02:04,  1.14it/s][A
-Iteration:  57%|█████▋    | 189/330 [02:46<02:04,  1.14it/s][A
-Iteration:  58%|█████▊    | 190/330 [02:47<02:03,  1.14it/s][A
-Iteration:  58%|█████▊    | 191/330 [02:48<02:02,  1.14it/s][A
-Iteration:  58%|█████▊    | 192/330 [02:49<02:01,  1.14it/s][A
-Iteration:  58%|█████▊    | 193/330 [02:49<02:00,  1.14it/s][A
-Iteration:  59%|█████▉    | 194/330 [02:50<01:59,  1.14it/s][A
-Iteration:  59%|█████▉    | 195/330 [02:51<01:58,  1.14it/s][A
-Iteration:  59%|█████▉    | 196/330 [02:52<01:57,  1.14it/s][A
-Iteration:  60%|█████▉    | 197/330 [02:53<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 198/330 [02:54<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 199/330 [02:55<01:55,  1.14it/s][A
-Iteration:  61%|██████    | 200/330 [02:56<01:54,  1.14it/s][A
-Iteration:  61%|██████    | 201/330 [02:56<01:53,  1.14it/s][A
-Iteration:  61%|██████    | 202/330 [02:57<01:52,  1.14it/s][A
-Iteration:  62%|██████▏   | 203/330 [02:58<01:51,  1.14it/s][A
-Iteration:  62%|██████▏   | 204/330 [02:59<01:50,  1.14it/s][A
-Iteration:  62%|██████▏   | 205/330 [03:00<01:49,  1.14it/s][A
-Iteration:  62%|██████▏   | 206/330 [03:01<01:49,  1.14it/s][A
-Iteration:  63%|██████▎   | 207/330 [03:02<01:48,  1.14it/s][A
-Iteration:  63%|██████▎   | 208/330 [03:03<01:47,  1.14it/s][A
-Iteration:  63%|██████▎   | 209/330 [03:04<01:46,  1.14it/s][A
-Iteration:  64%|██████▎   | 210/330 [03:04<01:45,  1.14it/s][A
-Iteration:  64%|██████▍   | 211/330 [03:05<01:44,  1.14it/s][A
-Iteration:  64%|██████▍   | 212/330 [03:06<01:43,  1.14it/s][A
-Iteration:  65%|██████▍   | 213/330 [03:07<01:42,  1.14it/s][A
-Iteration:  65%|██████▍   | 214/330 [03:08<01:42,  1.14it/s][A
-Iteration:  65%|██████▌   | 215/330 [03:09<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 216/330 [03:10<01:40,  1.14it/s][A
-Iteration:  66%|██████▌   | 217/330 [03:11<01:39,  1.14it/s][A
-Iteration:  66%|██████▌   | 218/330 [03:11<01:38,  1.14it/s][A
-Iteration:  66%|██████▋   | 219/330 [03:12<01:37,  1.14it/s][A
-Iteration:  67%|██████▋   | 220/330 [03:13<01:36,  1.14it/s][A
-Iteration:  67%|██████▋   | 221/330 [03:14<01:35,  1.14it/s][A
-Iteration:  67%|██████▋   | 222/330 [03:15<01:35,  1.14it/s][A
-Iteration:  68%|██████▊   | 223/330 [03:16<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 224/330 [03:17<01:33,  1.14it/s][A
-Iteration:  68%|██████▊   | 225/330 [03:18<01:32,  1.14it/s][A
-Iteration:  68%|██████▊   | 226/330 [03:18<01:31,  1.14it/s][A
-Iteration:  69%|██████▉   | 227/330 [03:19<01:30,  1.14it/s][A
-Iteration:  69%|██████▉   | 228/330 [03:20<01:29,  1.14it/s][A
-Iteration:  69%|██████▉   | 229/330 [03:21<01:28,  1.14it/s][A
-Iteration:  70%|██████▉   | 230/330 [03:22<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 231/330 [03:23<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 232/330 [03:24<01:26,  1.14it/s][A
-Iteration:  71%|███████   | 233/330 [03:25<01:25,  1.14it/s][A
-Iteration:  71%|███████   | 234/330 [03:26<01:24,  1.14it/s][A
-Iteration:  71%|███████   | 235/330 [03:26<01:23,  1.14it/s][A
-Iteration:  72%|███████▏  | 236/330 [03:27<01:22,  1.14it/s][A
-Iteration:  72%|███████▏  | 237/330 [03:28<01:21,  1.14it/s][A
-Iteration:  72%|███████▏  | 238/330 [03:29<01:20,  1.14it/s][A
-Iteration:  72%|███████▏  | 239/330 [03:30<01:20,  1.14it/s][A
-Iteration:  73%|███████▎  | 240/330 [03:31<01:19,  1.14it/s][A
-Iteration:  73%|███████▎  | 241/330 [03:32<01:18,  1.14it/s][A
-Iteration:  73%|███████▎  | 242/330 [03:33<01:17,  1.14it/s][A
-Iteration:  74%|███████▎  | 243/330 [03:33<01:16,  1.14it/s][A
-Iteration:  74%|███████▍  | 244/330 [03:34<01:15,  1.14it/s][A
-Iteration:  74%|███████▍  | 245/330 [03:35<01:14,  1.14it/s][A
-Iteration:  75%|███████▍  | 246/330 [03:36<01:13,  1.14it/s][A
-Iteration:  75%|███████▍  | 247/330 [03:37<01:13,  1.14it/s][A
-Iteration:  75%|███████▌  | 248/330 [03:38<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 249/330 [03:39<01:11,  1.14it/s][A
-Iteration:  76%|███████▌  | 250/330 [03:40<01:10,  1.14it/s][A
-Iteration:  76%|███████▌  | 251/330 [03:40<01:09,  1.14it/s][A
-Iteration:  76%|███████▋  | 252/330 [03:41<01:08,  1.14it/s][A
-Iteration:  77%|███████▋  | 253/330 [03:42<01:11,  1.07it/s][A
-Iteration:  77%|███████▋  | 254/330 [03:43<01:09,  1.09it/s][A
-Iteration:  77%|███████▋  | 255/330 [03:44<01:07,  1.10it/s][A
-Iteration:  78%|███████▊  | 256/330 [03:45<01:06,  1.11it/s][A
-Iteration:  78%|███████▊  | 257/330 [03:46<01:05,  1.12it/s][A
-Iteration:  78%|███████▊  | 258/330 [03:47<01:03,  1.13it/s][A
-Iteration:  78%|███████▊  | 259/330 [03:48<01:02,  1.13it/s][A
-Iteration:  79%|███████▉  | 260/330 [03:49<01:01,  1.13it/s][A
-Iteration:  79%|███████▉  | 261/330 [03:49<01:00,  1.13it/s][A
-Iteration:  79%|███████▉  | 262/330 [03:50<00:59,  1.13it/s][A
-Iteration:  80%|███████▉  | 263/330 [03:51<00:59,  1.13it/s][A
-Iteration:  80%|████████  | 264/330 [03:52<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 265/330 [03:53<00:57,  1.14it/s][A
-Iteration:  81%|████████  | 266/330 [03:54<00:56,  1.14it/s][A
-Iteration:  81%|████████  | 267/330 [03:55<00:55,  1.14it/s][A
-Iteration:  81%|████████  | 268/330 [03:56<00:54,  1.14it/s][A
-Iteration:  82%|████████▏ | 269/330 [03:56<00:53,  1.14it/s][A
-Iteration:  82%|████████▏ | 270/330 [03:57<00:52,  1.14it/s][A
-Iteration:  82%|████████▏ | 271/330 [03:58<00:51,  1.14it/s][A
-Iteration:  82%|████████▏ | 272/330 [03:59<00:51,  1.14it/s][A
-Iteration:  83%|████████▎ | 273/330 [04:00<00:50,  1.14it/s][A
-Iteration:  83%|████████▎ | 274/330 [04:01<00:49,  1.14it/s][A
-Iteration:  83%|████████▎ | 275/330 [04:02<00:48,  1.14it/s][A
-Iteration:  84%|████████▎ | 276/330 [04:03<00:47,  1.14it/s][A
-Iteration:  84%|████████▍ | 277/330 [04:04<00:46,  1.14it/s][A
-Iteration:  84%|████████▍ | 278/330 [04:04<00:45,  1.14it/s][A
-Iteration:  85%|████████▍ | 279/330 [04:05<00:44,  1.14it/s][A
-Iteration:  85%|████████▍ | 280/330 [04:06<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 281/330 [04:07<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 282/330 [04:08<00:42,  1.14it/s][A
-Iteration:  86%|████████▌ | 283/330 [04:09<00:41,  1.14it/s][A
-Iteration:  86%|████████▌ | 284/330 [04:10<00:40,  1.14it/s][A
-Iteration:  86%|████████▋ | 285/330 [04:11<00:39,  1.14it/s][A
-Iteration:  87%|████████▋ | 286/330 [04:11<00:38,  1.14it/s][A
-Iteration:  87%|████████▋ | 287/330 [04:12<00:37,  1.14it/s][A
-Iteration:  87%|████████▋ | 288/330 [04:13<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 289/330 [04:14<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 290/330 [04:15<00:35,  1.14it/s][A
-Iteration:  88%|████████▊ | 291/330 [04:16<00:34,  1.14it/s][A
-Iteration:  88%|████████▊ | 292/330 [04:17<00:33,  1.14it/s][A
-Iteration:  89%|████████▉ | 293/330 [04:18<00:32,  1.14it/s][A
-Iteration:  89%|████████▉ | 294/330 [04:18<00:31,  1.14it/s][A
-Iteration:  89%|████████▉ | 295/330 [04:19<00:30,  1.14it/s][A
-Iteration:  90%|████████▉ | 296/330 [04:20<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 297/330 [04:21<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 298/330 [04:22<00:28,  1.14it/s][A
-Iteration:  91%|█████████ | 299/330 [04:23<00:27,  1.14it/s][A
-Iteration:  91%|█████████ | 300/330 [04:24<00:26,  1.14it/s][A
-Iteration:  91%|█████████ | 301/330 [04:25<00:25,  1.14it/s][A
-Iteration:  92%|█████████▏| 302/330 [04:26<00:24,  1.14it/s][A
-Iteration:  92%|█████████▏| 303/330 [04:26<00:23,  1.14it/s][A
-Iteration:  92%|█████████▏| 304/330 [04:27<00:22,  1.14it/s][A
-Iteration:  92%|█████████▏| 305/330 [04:28<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 306/330 [04:29<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 307/330 [04:30<00:20,  1.14it/s][A
-Iteration:  93%|█████████▎| 308/330 [04:31<00:19,  1.14it/s][A
-Iteration:  94%|█████████▎| 309/330 [04:32<00:18,  1.14it/s][A
-Iteration:  94%|█████████▍| 310/330 [04:33<00:17,  1.14it/s][A
-Iteration:  94%|█████████▍| 311/330 [04:33<00:16,  1.14it/s][A
-Iteration:  95%|█████████▍| 312/330 [04:34<00:15,  1.14it/s][A
-Iteration:  95%|█████████▍| 313/330 [04:35<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 314/330 [04:36<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 315/330 [04:37<00:13,  1.14it/s][A
-Iteration:  96%|█████████▌| 316/330 [04:38<00:12,  1.14it/s][A
-Iteration:  96%|█████████▌| 317/330 [04:39<00:11,  1.14it/s][A
-Iteration:  96%|█████████▋| 318/330 [04:40<00:10,  1.14it/s][A
-Iteration:  97%|█████████▋| 319/330 [04:40<00:09,  1.14it/s][A
-Iteration:  97%|█████████▋| 320/330 [04:41<00:08,  1.14it/s][A
-Iteration:  97%|█████████▋| 321/330 [04:42<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 322/330 [04:43<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 323/330 [04:44<00:06,  1.14it/s][A
-Iteration:  98%|█████████▊| 324/330 [04:45<00:05,  1.14it/s][A
-Iteration:  98%|█████████▊| 325/330 [04:46<00:04,  1.14it/s][A
-Iteration:  99%|█████████▉| 326/330 [04:47<00:03,  1.14it/s][A
-Iteration:  99%|█████████▉| 327/330 [04:48<00:02,  1.14it/s][A
-Iteration:  99%|█████████▉| 328/330 [04:48<00:01,  1.14it/s][A
-Iteration: 100%|█████████▉| 329/330 [04:49<00:00,  1.14it/s][A
-Iteration: 100%|██████████| 330/330 [04:50<00:00,  1.34it/s][AIteration: 100%|██████████| 330/330 [04:50<00:00,  1.14it/s]
-11/03/2024 22:08:06 - INFO - __main__ -   ***** Running eval *****
-
-Evaluating:   0%|          | 0/47 [00:00<?, ?it/s][A
-Evaluating:   2%|▏         | 1/47 [00:00<00:16,  2.85it/s][A
-Evaluating:   4%|▍         | 2/47 [00:00<00:15,  2.85it/s][A
-Evaluating:   6%|▋         | 3/47 [00:01<00:15,  2.85it/s][A
-Evaluating:   9%|▊         | 4/47 [00:01<00:15,  2.85it/s][A
-Evaluating:  11%|█         | 5/47 [00:01<00:14,  2.86it/s][A
-Evaluating:  13%|█▎        | 6/47 [00:02<00:14,  2.86it/s][A
-Evaluating:  15%|█▍        | 7/47 [00:02<00:13,  2.87it/s][A
-Evaluating:  17%|█▋        | 8/47 [00:02<00:13,  2.87it/s][A
-Evaluating:  19%|█▉        | 9/47 [00:03<00:13,  2.87it/s][A
-Evaluating:  21%|██▏       | 10/47 [00:03<00:12,  2.86it/s][A
-Evaluating:  23%|██▎       | 11/47 [00:03<00:12,  2.86it/s][A
-Evaluating:  26%|██▌       | 12/47 [00:04<00:12,  2.86it/s][A
-Evaluating:  28%|██▊       | 13/47 [00:04<00:11,  2.87it/s][A
-Evaluating:  30%|██▉       | 14/47 [00:04<00:11,  2.87it/s][A
-Evaluating:  32%|███▏      | 15/47 [00:05<00:11,  2.86it/s][A
-Evaluating:  34%|███▍      | 16/47 [00:05<00:10,  2.86it/s][A
-Evaluating:  36%|███▌      | 17/47 [00:05<00:10,  2.86it/s][A
-Evaluating:  38%|███▊      | 18/47 [00:06<00:10,  2.86it/s][A
-Evaluating:  40%|████      | 19/47 [00:06<00:09,  2.86it/s][A
-Evaluating:  43%|████▎     | 20/47 [00:06<00:09,  2.86it/s][A
-Evaluating:  45%|████▍     | 21/47 [00:07<00:09,  2.86it/s][A
-Evaluating:  47%|████▋     | 22/47 [00:07<00:08,  2.87it/s][A
-Evaluating:  49%|████▉     | 23/47 [00:08<00:08,  2.87it/s][A
-Evaluating:  51%|█████     | 24/47 [00:08<00:07,  2.88it/s][A
-Evaluating:  53%|█████▎    | 25/47 [00:08<00:07,  2.88it/s][A
-Evaluating:  55%|█████▌    | 26/47 [00:09<00:07,  2.88it/s][A
-Evaluating:  57%|█████▋    | 27/47 [00:09<00:06,  2.88it/s][A
-Evaluating:  60%|█████▉    | 28/47 [00:09<00:06,  2.87it/s][A
-Evaluating:  62%|██████▏   | 29/47 [00:10<00:06,  2.87it/s][A
-Evaluating:  64%|██████▍   | 30/47 [00:10<00:05,  2.87it/s][A
-Evaluating:  66%|██████▌   | 31/47 [00:10<00:05,  2.86it/s][A
-Evaluating:  68%|██████▊   | 32/47 [00:11<00:05,  2.86it/s][A
-Evaluating:  70%|███████   | 33/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  72%|███████▏  | 34/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  74%|███████▍  | 35/47 [00:12<00:04,  2.86it/s][A
-Evaluating:  77%|███████▋  | 36/47 [00:12<00:03,  2.85it/s][A
-Evaluating:  79%|███████▊  | 37/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  81%|████████  | 38/47 [00:13<00:03,  2.86it/s][A
-Evaluating:  83%|████████▎ | 39/47 [00:13<00:02,  2.87it/s][A
-Evaluating:  85%|████████▌ | 40/47 [00:13<00:02,  2.87it/s][A
-Evaluating:  87%|████████▋ | 41/47 [00:14<00:02,  2.87it/s][A
-Evaluating:  89%|████████▉ | 42/47 [00:14<00:01,  2.87it/s][A
-Evaluating:  91%|█████████▏| 43/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  94%|█████████▎| 44/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  96%|█████████▌| 45/47 [00:15<00:00,  2.86it/s][A
-Evaluating:  98%|█████████▊| 46/47 [00:16<00:00,  2.86it/s][A
-Evaluating: 100%|██████████| 47/47 [00:16<00:00,  2.97it/s][AEvaluating: 100%|██████████| 47/47 [00:16<00:00,  2.87it/s]
-processed 37211 tokens with 804 phrases; found: 934 phrases; correct: 399.
-accuracy:  95.76%; precision:  42.72%; recall:  49.63%; FB1:  45.91
-             City: precision:  25.41%; recall:  36.67%; FB1:  30.02  303
-          Country: precision:  40.00%; recall:  37.25%; FB1:  38.58  95
-          Disease: precision:  62.76%; recall:  69.89%; FB1:  66.13  196
-         Province: precision:  25.61%; recall:  26.42%; FB1:  26.01  164
-            Virus: precision:  67.61%; recall:  75.80%; FB1:  71.47  176
-11/03/2024 22:08:22 - INFO - __main__ -   ----------the best f1 is 0.4591484464902186---------
-Epoch:  20%|██        | 2/10 [10:13<40:55, 306.94s/it]
-Iteration:   0%|          | 0/330 [00:00<?, ?it/s][A
-Iteration:   0%|          | 1/330 [00:00<04:50,  1.13it/s][A
-Iteration:   1%|          | 2/330 [00:01<04:49,  1.13it/s][A
-Iteration:   1%|          | 3/330 [00:02<04:48,  1.13it/s][A
-Iteration:   1%|          | 4/330 [00:03<04:47,  1.13it/s][A
-Iteration:   2%|▏         | 5/330 [00:04<04:46,  1.14it/s][A
-Iteration:   2%|▏         | 6/330 [00:05<04:45,  1.14it/s][A
-Iteration:   2%|▏         | 7/330 [00:06<04:44,  1.14it/s][A
-Iteration:   2%|▏         | 8/330 [00:07<04:43,  1.14it/s][A
-Iteration:   3%|▎         | 9/330 [00:07<04:42,  1.14it/s][A
-Iteration:   3%|▎         | 10/330 [00:08<04:41,  1.14it/s][A
-Iteration:   3%|▎         | 11/330 [00:09<04:40,  1.14it/s][A
-Iteration:   4%|▎         | 12/330 [00:10<04:39,  1.14it/s][A
-Iteration:   4%|▍         | 13/330 [00:11<04:38,  1.14it/s][A
-Iteration:   4%|▍         | 14/330 [00:12<04:38,  1.14it/s][A
-Iteration:   5%|▍         | 15/330 [00:13<04:37,  1.14it/s][A
-Iteration:   5%|▍         | 16/330 [00:14<04:36,  1.14it/s][A
-Iteration:   5%|▌         | 17/330 [00:14<04:35,  1.14it/s][A
-Iteration:   5%|▌         | 18/330 [00:15<04:34,  1.14it/s][A
-Iteration:   6%|▌         | 19/330 [00:16<04:33,  1.14it/s][A
-Iteration:   6%|▌         | 20/330 [00:17<04:32,  1.14it/s][A
-Iteration:   6%|▋         | 21/330 [00:18<04:31,  1.14it/s][A
-Iteration:   7%|▋         | 22/330 [00:19<04:30,  1.14it/s][A
-Iteration:   7%|▋         | 23/330 [00:20<04:30,  1.14it/s][A
-Iteration:   7%|▋         | 24/330 [00:21<04:29,  1.14it/s][A
-Iteration:   8%|▊         | 25/330 [00:22<04:28,  1.14it/s][A
-Iteration:   8%|▊         | 26/330 [00:22<04:27,  1.14it/s][A
-Iteration:   8%|▊         | 27/330 [00:23<04:26,  1.14it/s][A
-Iteration:   8%|▊         | 28/330 [00:24<04:25,  1.14it/s][A
-Iteration:   9%|▉         | 29/330 [00:25<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 30/330 [00:26<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 31/330 [00:27<04:23,  1.14it/s][A
-Iteration:  10%|▉         | 32/330 [00:28<04:21,  1.14it/s][A
-Iteration:  10%|█         | 33/330 [00:29<04:21,  1.14it/s][A
-Iteration:  10%|█         | 34/330 [00:29<04:20,  1.14it/s][A
-Iteration:  11%|█         | 35/330 [00:30<04:19,  1.14it/s][A
-Iteration:  11%|█         | 36/330 [00:31<04:18,  1.14it/s][A
-Iteration:  11%|█         | 37/330 [00:32<04:17,  1.14it/s][A
-Iteration:  12%|█▏        | 38/330 [00:33<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 39/330 [00:34<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 40/330 [00:35<04:15,  1.14it/s][A
-Iteration:  12%|█▏        | 41/330 [00:36<04:14,  1.14it/s][A
-Iteration:  13%|█▎        | 42/330 [00:36<04:13,  1.14it/s][A
-Iteration:  13%|█▎        | 43/330 [00:37<04:12,  1.14it/s][A
-Iteration:  13%|█▎        | 44/330 [00:38<04:11,  1.14it/s][A
-Iteration:  14%|█▎        | 45/330 [00:39<04:10,  1.14it/s][A
-Iteration:  14%|█▍        | 46/330 [00:40<04:09,  1.14it/s][A
-Iteration:  14%|█▍        | 47/330 [00:41<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 48/330 [00:42<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 49/330 [00:43<04:07,  1.14it/s][A
-Iteration:  15%|█▌        | 50/330 [00:43<04:06,  1.14it/s][A
-Iteration:  15%|█▌        | 51/330 [00:44<04:05,  1.14it/s][A
-Iteration:  16%|█▌        | 52/330 [00:45<04:04,  1.14it/s][A
-Iteration:  16%|█▌        | 53/330 [00:46<04:03,  1.14it/s][A
-Iteration:  16%|█▋        | 54/330 [00:47<04:02,  1.14it/s][A
-Iteration:  17%|█▋        | 55/330 [00:48<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 56/330 [00:49<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 57/330 [00:50<04:00,  1.14it/s][A
-Iteration:  18%|█▊        | 58/330 [00:51<03:59,  1.14it/s][A
-Iteration:  18%|█▊        | 59/330 [00:51<03:58,  1.14it/s][A
-Iteration:  18%|█▊        | 60/330 [00:52<03:57,  1.14it/s][A
-Iteration:  18%|█▊        | 61/330 [00:53<03:56,  1.14it/s][A
-Iteration:  19%|█▉        | 62/330 [00:54<03:55,  1.14it/s][A
-Iteration:  19%|█▉        | 63/330 [00:55<03:54,  1.14it/s][A
-Iteration:  19%|█▉        | 64/330 [00:56<03:53,  1.14it/s][A
-Iteration:  20%|█▉        | 65/330 [00:57<03:53,  1.14it/s][A
-Iteration:  20%|██        | 66/330 [00:58<03:52,  1.14it/s][A
-Iteration:  20%|██        | 67/330 [00:58<03:51,  1.14it/s][A
-Iteration:  21%|██        | 68/330 [00:59<03:50,  1.14it/s][A
-Iteration:  21%|██        | 69/330 [01:00<03:49,  1.14it/s][A
-Iteration:  21%|██        | 70/330 [01:01<03:48,  1.14it/s][A
-Iteration:  22%|██▏       | 71/330 [01:02<03:47,  1.14it/s][A
-Iteration:  22%|██▏       | 72/330 [01:03<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 73/330 [01:04<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 74/330 [01:05<03:45,  1.14it/s][A
-Iteration:  23%|██▎       | 75/330 [01:05<03:44,  1.14it/s][A
-Iteration:  23%|██▎       | 76/330 [01:06<03:43,  1.14it/s][A
-Iteration:  23%|██▎       | 77/330 [01:07<03:42,  1.14it/s][A
-Iteration:  24%|██▎       | 78/330 [01:08<03:41,  1.14it/s][A
-Iteration:  24%|██▍       | 79/330 [01:09<03:40,  1.14it/s][A
-Iteration:  24%|██▍       | 80/330 [01:10<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 81/330 [01:11<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 82/330 [01:12<03:38,  1.14it/s][A
-Iteration:  25%|██▌       | 83/330 [01:13<03:37,  1.14it/s][A
-Iteration:  25%|██▌       | 84/330 [01:13<03:36,  1.14it/s][A
-Iteration:  26%|██▌       | 85/330 [01:14<03:35,  1.14it/s][A
-Iteration:  26%|██▌       | 86/330 [01:15<03:34,  1.14it/s][A
-Iteration:  26%|██▋       | 87/330 [01:16<03:33,  1.14it/s][A
-Iteration:  27%|██▋       | 88/330 [01:17<03:32,  1.14it/s][A
-Iteration:  27%|██▋       | 89/330 [01:18<03:32,  1.14it/s][A
-Iteration:  27%|██▋       | 90/330 [01:19<03:31,  1.14it/s][A
-Iteration:  28%|██▊       | 91/330 [01:20<03:30,  1.14it/s][A
-Iteration:  28%|██▊       | 92/330 [01:20<03:29,  1.14it/s][A
-Iteration:  28%|██▊       | 93/330 [01:21<03:28,  1.14it/s][A
-Iteration:  28%|██▊       | 94/330 [01:22<03:27,  1.14it/s][A
-Iteration:  29%|██▉       | 95/330 [01:23<03:26,  1.14it/s][A
-Iteration:  29%|██▉       | 96/330 [01:24<03:25,  1.14it/s][A
-Iteration:  29%|██▉       | 97/330 [01:25<03:24,  1.14it/s][A
-Iteration:  30%|██▉       | 98/330 [01:26<03:24,  1.14it/s][A
-Iteration:  30%|███       | 99/330 [01:27<03:23,  1.14it/s][A
-Iteration:  30%|███       | 100/330 [01:27<03:22,  1.14it/s][A
-Iteration:  31%|███       | 101/330 [01:28<03:21,  1.14it/s][A
-Iteration:  31%|███       | 102/330 [01:29<03:20,  1.14it/s][A
-Iteration:  31%|███       | 103/330 [01:30<03:19,  1.14it/s][A
-Iteration:  32%|███▏      | 104/330 [01:31<03:18,  1.14it/s][A
-Iteration:  32%|███▏      | 105/330 [01:32<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 106/330 [01:33<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 107/330 [01:34<03:16,  1.14it/s][A
-Iteration:  33%|███▎      | 108/330 [01:35<03:15,  1.14it/s][A
-Iteration:  33%|███▎      | 109/330 [01:35<03:14,  1.14it/s][A
-Iteration:  33%|███▎      | 110/330 [01:36<03:13,  1.14it/s][A
-Iteration:  34%|███▎      | 111/330 [01:37<03:12,  1.14it/s][A
-Iteration:  34%|███▍      | 112/330 [01:38<03:11,  1.14it/s][A
-Iteration:  34%|███▍      | 113/330 [01:39<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 114/330 [01:40<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 115/330 [01:41<03:09,  1.14it/s][A
-Iteration:  35%|███▌      | 116/330 [01:42<03:08,  1.14it/s][A
-Iteration:  35%|███▌      | 117/330 [01:42<03:07,  1.14it/s][A
-Iteration:  36%|███▌      | 118/330 [01:43<03:06,  1.14it/s][A
-Iteration:  36%|███▌      | 119/330 [01:44<03:05,  1.14it/s][A
-Iteration:  36%|███▋      | 120/330 [01:45<03:04,  1.14it/s][A
-Iteration:  37%|███▋      | 121/330 [01:46<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 122/330 [01:47<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 123/330 [01:48<03:02,  1.14it/s][A
-Iteration:  38%|███▊      | 124/330 [01:49<03:01,  1.14it/s][A
-Iteration:  38%|███▊      | 125/330 [01:49<03:00,  1.14it/s][A
-Iteration:  38%|███▊      | 126/330 [01:50<02:59,  1.14it/s][A
-Iteration:  38%|███▊      | 127/330 [01:51<02:58,  1.14it/s][A
-Iteration:  39%|███▉      | 128/330 [01:52<02:57,  1.14it/s][A
-Iteration:  39%|███▉      | 129/330 [01:53<02:56,  1.14it/s][A
-Iteration:  39%|███▉      | 130/330 [01:54<02:56,  1.14it/s][A
-Iteration:  40%|███▉      | 131/330 [01:55<02:55,  1.14it/s][A
-Iteration:  40%|████      | 132/330 [01:56<02:54,  1.14it/s][A
-Iteration:  40%|████      | 133/330 [01:57<02:53,  1.14it/s][A
-Iteration:  41%|████      | 134/330 [01:57<02:52,  1.14it/s][A
-Iteration:  41%|████      | 135/330 [01:58<02:51,  1.14it/s][A
-Iteration:  41%|████      | 136/330 [01:59<02:50,  1.14it/s][A
-Iteration:  42%|████▏     | 137/330 [02:00<02:49,  1.14it/s][A
-Iteration:  42%|████▏     | 138/330 [02:01<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 139/330 [02:02<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 140/330 [02:03<02:47,  1.14it/s][A
-Iteration:  43%|████▎     | 141/330 [02:04<02:46,  1.14it/s][A
-Iteration:  43%|████▎     | 142/330 [02:04<02:45,  1.14it/s][A
-Iteration:  43%|████▎     | 143/330 [02:05<02:44,  1.14it/s][A
-Iteration:  44%|████▎     | 144/330 [02:06<02:43,  1.14it/s][A
-Iteration:  44%|████▍     | 145/330 [02:07<02:42,  1.14it/s][A
-Iteration:  44%|████▍     | 146/330 [02:08<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 147/330 [02:09<02:40,  1.14it/s][A
-Iteration:  45%|████▍     | 148/330 [02:10<02:40,  1.14it/s][A
-Iteration:  45%|████▌     | 149/330 [02:11<02:39,  1.14it/s][A
-Iteration:  45%|████▌     | 150/330 [02:11<02:38,  1.14it/s][A
-Iteration:  46%|████▌     | 151/330 [02:12<02:37,  1.14it/s][A
-Iteration:  46%|████▌     | 152/330 [02:13<02:36,  1.14it/s][A
-Iteration:  46%|████▋     | 153/330 [02:14<02:35,  1.14it/s][A
-Iteration:  47%|████▋     | 154/330 [02:15<02:34,  1.14it/s][A
-Iteration:  47%|████▋     | 155/330 [02:16<02:33,  1.14it/s][A
-Iteration:  47%|████▋     | 156/330 [02:17<02:33,  1.14it/s][A
-Iteration:  48%|████▊     | 157/330 [02:18<02:32,  1.14it/s][A
-Iteration:  48%|████▊     | 158/330 [02:19<02:31,  1.13it/s][A
-Iteration:  48%|████▊     | 159/330 [02:19<02:31,  1.13it/s][A
-Iteration:  48%|████▊     | 160/330 [02:20<02:30,  1.13it/s][A
-Iteration:  49%|████▉     | 161/330 [02:21<02:29,  1.13it/s][A
-Iteration:  49%|████▉     | 162/330 [02:22<02:28,  1.13it/s][A
-Iteration:  49%|████▉     | 163/330 [02:23<02:27,  1.14it/s][A
-Iteration:  50%|████▉     | 164/330 [02:24<02:26,  1.14it/s][A
-Iteration:  50%|█████     | 165/330 [02:25<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 166/330 [02:26<02:24,  1.14it/s][A
-Iteration:  51%|█████     | 167/330 [02:26<02:23,  1.14it/s][A
-Iteration:  51%|█████     | 168/330 [02:27<02:22,  1.14it/s][A
-Iteration:  51%|█████     | 169/330 [02:28<02:21,  1.14it/s][A
-Iteration:  52%|█████▏    | 170/330 [02:29<02:20,  1.14it/s][A
-Iteration:  52%|█████▏    | 171/330 [02:30<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 172/330 [02:31<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 173/330 [02:32<02:18,  1.14it/s][A
-Iteration:  53%|█████▎    | 174/330 [02:33<02:17,  1.14it/s][A
-Iteration:  53%|█████▎    | 175/330 [02:33<02:16,  1.14it/s][A
-Iteration:  53%|█████▎    | 176/330 [02:34<02:15,  1.14it/s][A
-Iteration:  54%|█████▎    | 177/330 [02:35<02:14,  1.14it/s][A
-Iteration:  54%|█████▍    | 178/330 [02:36<02:13,  1.14it/s][A
-Iteration:  54%|█████▍    | 179/330 [02:37<02:12,  1.14it/s][A
-Iteration:  55%|█████▍    | 180/330 [02:38<02:11,  1.14it/s][A
-Iteration:  55%|█████▍    | 181/330 [02:39<02:11,  1.14it/s][A
-Iteration:  55%|█████▌    | 182/330 [02:40<02:10,  1.14it/s][A
-Iteration:  55%|█████▌    | 183/330 [02:41<02:09,  1.14it/s][A
-Iteration:  56%|█████▌    | 184/330 [02:41<02:08,  1.14it/s][A
-Iteration:  56%|█████▌    | 185/330 [02:42<02:07,  1.14it/s][A
-Iteration:  56%|█████▋    | 186/330 [02:43<02:06,  1.14it/s][A
-Iteration:  57%|█████▋    | 187/330 [02:44<02:05,  1.14it/s][A
-Iteration:  57%|█████▋    | 188/330 [02:45<02:04,  1.14it/s][A
-Iteration:  57%|█████▋    | 189/330 [02:46<02:04,  1.14it/s][A
-Iteration:  58%|█████▊    | 190/330 [02:47<02:03,  1.14it/s][A
-Iteration:  58%|█████▊    | 191/330 [02:48<02:02,  1.14it/s][A
-Iteration:  58%|█████▊    | 192/330 [02:48<02:01,  1.14it/s][A
-Iteration:  58%|█████▊    | 193/330 [02:49<02:00,  1.14it/s][A
-Iteration:  59%|█████▉    | 194/330 [02:50<01:59,  1.14it/s][A
-Iteration:  59%|█████▉    | 195/330 [02:51<01:58,  1.14it/s][A
-Iteration:  59%|█████▉    | 196/330 [02:52<01:57,  1.14it/s][A
-Iteration:  60%|█████▉    | 197/330 [02:53<01:57,  1.14it/s][A
-Iteration:  60%|██████    | 198/330 [02:54<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 199/330 [02:55<01:55,  1.14it/s][A
-Iteration:  61%|██████    | 200/330 [02:55<01:54,  1.14it/s][A
-Iteration:  61%|██████    | 201/330 [02:56<01:53,  1.14it/s][A
-Iteration:  61%|██████    | 202/330 [02:57<01:52,  1.14it/s][A
-Iteration:  62%|██████▏   | 203/330 [02:58<01:51,  1.14it/s][A
-Iteration:  62%|██████▏   | 204/330 [02:59<01:50,  1.14it/s][A
-Iteration:  62%|██████▏   | 205/330 [03:00<01:49,  1.14it/s][A
-Iteration:  62%|██████▏   | 206/330 [03:01<01:49,  1.14it/s][A
-Iteration:  63%|██████▎   | 207/330 [03:02<01:48,  1.14it/s][A
-Iteration:  63%|██████▎   | 208/330 [03:03<01:47,  1.14it/s][A
-Iteration:  63%|██████▎   | 209/330 [03:03<01:46,  1.14it/s][A
-Iteration:  64%|██████▎   | 210/330 [03:04<01:45,  1.14it/s][A
-Iteration:  64%|██████▍   | 211/330 [03:05<01:44,  1.14it/s][A
-Iteration:  64%|██████▍   | 212/330 [03:06<01:43,  1.14it/s][A
-Iteration:  65%|██████▍   | 213/330 [03:07<01:42,  1.14it/s][A
-Iteration:  65%|██████▍   | 214/330 [03:08<01:42,  1.14it/s][A
-Iteration:  65%|██████▌   | 215/330 [03:09<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 216/330 [03:10<01:40,  1.14it/s][A
-Iteration:  66%|██████▌   | 217/330 [03:10<01:39,  1.14it/s][A
-Iteration:  66%|██████▌   | 218/330 [03:11<01:38,  1.14it/s][A
-Iteration:  66%|██████▋   | 219/330 [03:12<01:37,  1.14it/s][A
-Iteration:  67%|██████▋   | 220/330 [03:13<01:36,  1.14it/s][A
-Iteration:  67%|██████▋   | 221/330 [03:14<01:35,  1.14it/s][A
-Iteration:  67%|██████▋   | 222/330 [03:15<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 223/330 [03:16<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 224/330 [03:17<01:33,  1.14it/s][A
-Iteration:  68%|██████▊   | 225/330 [03:17<01:32,  1.14it/s][A
-Iteration:  68%|██████▊   | 226/330 [03:18<01:31,  1.14it/s][A
-Iteration:  69%|██████▉   | 227/330 [03:19<01:30,  1.14it/s][A
-Iteration:  69%|██████▉   | 228/330 [03:20<01:29,  1.14it/s][A
-Iteration:  69%|██████▉   | 229/330 [03:21<01:28,  1.14it/s][A
-Iteration:  70%|██████▉   | 230/330 [03:22<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 231/330 [03:23<01:32,  1.07it/s][A
-Iteration:  70%|███████   | 232/330 [03:24<01:29,  1.09it/s][A
-Iteration:  71%|███████   | 233/330 [03:25<01:27,  1.10it/s][A
-Iteration:  71%|███████   | 234/330 [03:26<01:26,  1.11it/s][A
-Iteration:  71%|███████   | 235/330 [03:26<01:24,  1.12it/s][A
-Iteration:  72%|███████▏  | 236/330 [03:27<01:23,  1.13it/s][A
-Iteration:  72%|███████▏  | 237/330 [03:28<01:22,  1.13it/s][A
-Iteration:  72%|███████▏  | 238/330 [03:29<01:21,  1.13it/s][A
-Iteration:  72%|███████▏  | 239/330 [03:30<01:20,  1.13it/s][A
-Iteration:  73%|███████▎  | 240/330 [03:31<01:19,  1.13it/s][A
-Iteration:  73%|███████▎  | 241/330 [03:32<01:18,  1.13it/s][A
-Iteration:  73%|███████▎  | 242/330 [03:33<01:17,  1.14it/s][A
-Iteration:  74%|███████▎  | 243/330 [03:33<01:16,  1.14it/s][A
-Iteration:  74%|███████▍  | 244/330 [03:34<01:15,  1.14it/s][A
-Iteration:  74%|███████▍  | 245/330 [03:35<01:14,  1.14it/s][A
-Iteration:  75%|███████▍  | 246/330 [03:36<01:13,  1.14it/s][A
-Iteration:  75%|███████▍  | 247/330 [03:37<01:13,  1.14it/s][A
-Iteration:  75%|███████▌  | 248/330 [03:38<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 249/330 [03:39<01:11,  1.14it/s][A
-Iteration:  76%|███████▌  | 250/330 [03:40<01:10,  1.14it/s][A
-Iteration:  76%|███████▌  | 251/330 [03:41<01:09,  1.14it/s][A
-Iteration:  76%|███████▋  | 252/330 [03:41<01:08,  1.14it/s][A
-Iteration:  77%|███████▋  | 253/330 [03:42<01:07,  1.14it/s][A
-Iteration:  77%|███████▋  | 254/330 [03:43<01:06,  1.14it/s][A
-Iteration:  77%|███████▋  | 255/330 [03:44<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 256/330 [03:45<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 257/330 [03:46<01:04,  1.14it/s][A
-Iteration:  78%|███████▊  | 258/330 [03:47<01:03,  1.14it/s][A
-Iteration:  78%|███████▊  | 259/330 [03:48<01:02,  1.14it/s][A
-Iteration:  79%|███████▉  | 260/330 [03:48<01:01,  1.14it/s][A
-Iteration:  79%|███████▉  | 261/330 [03:49<01:00,  1.14it/s][A
-Iteration:  79%|███████▉  | 262/330 [03:50<00:59,  1.14it/s][A
-Iteration:  80%|███████▉  | 263/330 [03:51<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 264/330 [03:52<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 265/330 [03:53<00:57,  1.14it/s][A
-Iteration:  81%|████████  | 266/330 [03:54<00:56,  1.14it/s][A
-Iteration:  81%|████████  | 267/330 [03:55<00:55,  1.14it/s][A
-Iteration:  81%|████████  | 268/330 [03:55<00:54,  1.14it/s][A
-Iteration:  82%|████████▏ | 269/330 [03:56<00:53,  1.14it/s][A
-Iteration:  82%|████████▏ | 270/330 [03:57<00:52,  1.14it/s][A
-Iteration:  82%|████████▏ | 271/330 [03:58<00:51,  1.14it/s][A
-Iteration:  82%|████████▏ | 272/330 [03:59<00:51,  1.14it/s][A
-Iteration:  83%|████████▎ | 273/330 [04:00<00:50,  1.14it/s][A
-Iteration:  83%|████████▎ | 274/330 [04:01<00:49,  1.14it/s][A
-Iteration:  83%|████████▎ | 275/330 [04:02<00:48,  1.14it/s][A
-Iteration:  84%|████████▎ | 276/330 [04:03<00:47,  1.14it/s][A
-Iteration:  84%|████████▍ | 277/330 [04:03<00:46,  1.14it/s][A
-Iteration:  84%|████████▍ | 278/330 [04:04<00:45,  1.14it/s][A
-Iteration:  85%|████████▍ | 279/330 [04:05<00:44,  1.14it/s][A
-Iteration:  85%|████████▍ | 280/330 [04:06<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 281/330 [04:07<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 282/330 [04:08<00:42,  1.14it/s][A
-Iteration:  86%|████████▌ | 283/330 [04:09<00:41,  1.14it/s][A
-Iteration:  86%|████████▌ | 284/330 [04:10<00:40,  1.14it/s][A
-Iteration:  86%|████████▋ | 285/330 [04:10<00:39,  1.14it/s][A
-Iteration:  87%|████████▋ | 286/330 [04:11<00:38,  1.14it/s][A
-Iteration:  87%|████████▋ | 287/330 [04:12<00:37,  1.14it/s][A
-Iteration:  87%|████████▋ | 288/330 [04:13<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 289/330 [04:14<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 290/330 [04:15<00:35,  1.14it/s][A
-Iteration:  88%|████████▊ | 291/330 [04:16<00:34,  1.14it/s][A
-Iteration:  88%|████████▊ | 292/330 [04:17<00:33,  1.14it/s][A
-Iteration:  89%|████████▉ | 293/330 [04:17<00:32,  1.14it/s][A
-Iteration:  89%|████████▉ | 294/330 [04:18<00:31,  1.14it/s][A
-Iteration:  89%|████████▉ | 295/330 [04:19<00:30,  1.14it/s][A
-Iteration:  90%|████████▉ | 296/330 [04:20<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 297/330 [04:21<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 298/330 [04:22<00:28,  1.14it/s][A
-Iteration:  91%|█████████ | 299/330 [04:23<00:27,  1.14it/s][A
-Iteration:  91%|█████████ | 300/330 [04:24<00:26,  1.14it/s][A
-Iteration:  91%|█████████ | 301/330 [04:25<00:25,  1.14it/s][A
-Iteration:  92%|█████████▏| 302/330 [04:25<00:24,  1.14it/s][A
-Iteration:  92%|█████████▏| 303/330 [04:26<00:23,  1.14it/s][A
-Iteration:  92%|█████████▏| 304/330 [04:27<00:22,  1.14it/s][A
-Iteration:  92%|█████████▏| 305/330 [04:28<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 306/330 [04:29<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 307/330 [04:30<00:20,  1.14it/s][A
-Iteration:  93%|█████████▎| 308/330 [04:31<00:19,  1.14it/s][A
-Iteration:  94%|█████████▎| 309/330 [04:32<00:18,  1.14it/s][A
-Iteration:  94%|█████████▍| 310/330 [04:32<00:17,  1.14it/s][A
-Iteration:  94%|█████████▍| 311/330 [04:33<00:16,  1.14it/s][A
-Iteration:  95%|█████████▍| 312/330 [04:34<00:15,  1.14it/s][A
-Iteration:  95%|█████████▍| 313/330 [04:35<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 314/330 [04:36<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 315/330 [04:37<00:13,  1.14it/s][A
-Iteration:  96%|█████████▌| 316/330 [04:38<00:12,  1.14it/s][A
-Iteration:  96%|█████████▌| 317/330 [04:39<00:11,  1.14it/s][A
-Iteration:  96%|█████████▋| 318/330 [04:39<00:10,  1.14it/s][A
-Iteration:  97%|█████████▋| 319/330 [04:40<00:09,  1.14it/s][A
-Iteration:  97%|█████████▋| 320/330 [04:41<00:08,  1.14it/s][A
-Iteration:  97%|█████████▋| 321/330 [04:42<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 322/330 [04:43<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 323/330 [04:44<00:06,  1.14it/s][A
-Iteration:  98%|█████████▊| 324/330 [04:45<00:05,  1.14it/s][A
-Iteration:  98%|█████████▊| 325/330 [04:46<00:04,  1.14it/s][A
-Iteration:  99%|█████████▉| 326/330 [04:46<00:03,  1.14it/s][A
-Iteration:  99%|█████████▉| 327/330 [04:47<00:02,  1.14it/s][A
-Iteration:  99%|█████████▉| 328/330 [04:48<00:01,  1.14it/s][A
-Iteration: 100%|█████████▉| 329/330 [04:49<00:00,  1.14it/s][A
-Iteration: 100%|██████████| 330/330 [04:50<00:00,  1.34it/s][AIteration: 100%|██████████| 330/330 [04:50<00:00,  1.14it/s]
-11/03/2024 22:13:13 - INFO - __main__ -   ***** Running eval *****
-
-Evaluating:   0%|          | 0/47 [00:00<?, ?it/s][A
-Evaluating:   2%|▏         | 1/47 [00:00<00:16,  2.84it/s][A
-Evaluating:   4%|▍         | 2/47 [00:00<00:15,  2.83it/s][A
-Evaluating:   6%|▋         | 3/47 [00:01<00:15,  2.84it/s][A
-Evaluating:   9%|▊         | 4/47 [00:01<00:15,  2.85it/s][A
-Evaluating:  11%|█         | 5/47 [00:01<00:14,  2.85it/s][A
-Evaluating:  13%|█▎        | 6/47 [00:02<00:14,  2.85it/s][A
-Evaluating:  15%|█▍        | 7/47 [00:02<00:13,  2.86it/s][A
-Evaluating:  17%|█▋        | 8/47 [00:02<00:13,  2.86it/s][A
-Evaluating:  19%|█▉        | 9/47 [00:03<00:13,  2.86it/s][A
-Evaluating:  21%|██▏       | 10/47 [00:03<00:12,  2.85it/s][A
-Evaluating:  23%|██▎       | 11/47 [00:03<00:12,  2.85it/s][A
-Evaluating:  26%|██▌       | 12/47 [00:04<00:12,  2.86it/s][A
-Evaluating:  28%|██▊       | 13/47 [00:04<00:11,  2.86it/s][A
-Evaluating:  30%|██▉       | 14/47 [00:04<00:11,  2.86it/s][A
-Evaluating:  32%|███▏      | 15/47 [00:05<00:11,  2.86it/s][A
-Evaluating:  34%|███▍      | 16/47 [00:05<00:10,  2.85it/s][A
-Evaluating:  36%|███▌      | 17/47 [00:05<00:10,  2.85it/s][A
-Evaluating:  38%|███▊      | 18/47 [00:06<00:10,  2.86it/s][A
-Evaluating:  40%|████      | 19/47 [00:06<00:09,  2.86it/s][A
-Evaluating:  43%|████▎     | 20/47 [00:07<00:09,  2.86it/s][A
-Evaluating:  45%|████▍     | 21/47 [00:07<00:09,  2.86it/s][A
-Evaluating:  47%|████▋     | 22/47 [00:07<00:08,  2.86it/s][A
-Evaluating:  49%|████▉     | 23/47 [00:08<00:08,  2.86it/s][A
-Evaluating:  51%|█████     | 24/47 [00:08<00:08,  2.86it/s][A
-Evaluating:  53%|█████▎    | 25/47 [00:08<00:07,  2.86it/s][A
-Evaluating:  55%|█████▌    | 26/47 [00:09<00:07,  2.86it/s][A
-Evaluating:  57%|█████▋    | 27/47 [00:09<00:07,  2.86it/s][A
-Evaluating:  60%|█████▉    | 28/47 [00:09<00:06,  2.85it/s][A
-Evaluating:  62%|██████▏   | 29/47 [00:10<00:06,  2.85it/s][A
-Evaluating:  64%|██████▍   | 30/47 [00:10<00:05,  2.86it/s][A
-Evaluating:  66%|██████▌   | 31/47 [00:10<00:05,  2.86it/s][A
-Evaluating:  68%|██████▊   | 32/47 [00:11<00:05,  2.85it/s][A
-Evaluating:  70%|███████   | 33/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  72%|███████▏  | 34/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  74%|███████▍  | 35/47 [00:12<00:04,  2.86it/s][A
-Evaluating:  77%|███████▋  | 36/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  79%|███████▊  | 37/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  81%|████████  | 38/47 [00:13<00:03,  2.87it/s][A
-Evaluating:  83%|████████▎ | 39/47 [00:13<00:02,  2.87it/s][A
-Evaluating:  85%|████████▌ | 40/47 [00:13<00:02,  2.87it/s][A
-Evaluating:  87%|████████▋ | 41/47 [00:14<00:02,  2.87it/s][A
-Evaluating:  89%|████████▉ | 42/47 [00:14<00:01,  2.87it/s][A
-Evaluating:  91%|█████████▏| 43/47 [00:15<00:01,  2.87it/s][A
-Evaluating:  94%|█████████▎| 44/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  96%|█████████▌| 45/47 [00:15<00:00,  2.87it/s][A
-Evaluating:  98%|█████████▊| 46/47 [00:16<00:00,  2.86it/s][A
-Evaluating: 100%|██████████| 47/47 [00:16<00:00,  2.96it/s][AEvaluating: 100%|██████████| 47/47 [00:16<00:00,  2.87it/s]
-processed 37211 tokens with 804 phrases; found: 973 phrases; correct: 526.
-accuracy:  96.03%; precision:  54.06%; recall:  65.42%; FB1:  59.20
-             City: precision:  36.00%; recall:  34.29%; FB1:  35.12  200
-          Country: precision:  53.55%; recall:  81.37%; FB1:  64.59  155
-          Disease: precision:  67.58%; recall:  84.09%; FB1:  74.94  219
-         Province: precision:  46.43%; recall:  57.23%; FB1:  51.27  196
-            Virus: precision:  65.02%; recall:  84.08%; FB1:  73.33  203
-11/03/2024 22:13:30 - INFO - __main__ -   ----------the best f1 is 0.5920090039392235---------
-Epoch:  30%|███       | 3/10 [15:20<35:49, 307.09s/it]
-Iteration:   0%|          | 0/330 [00:00<?, ?it/s][A
-Iteration:   0%|          | 1/330 [00:00<04:49,  1.14it/s][A
-Iteration:   1%|          | 2/330 [00:01<04:48,  1.14it/s][A
-Iteration:   1%|          | 3/330 [00:02<04:47,  1.14it/s][A
-Iteration:   1%|          | 4/330 [00:03<04:46,  1.14it/s][A
-Iteration:   2%|▏         | 5/330 [00:04<04:46,  1.14it/s][A
-Iteration:   2%|▏         | 6/330 [00:05<04:45,  1.14it/s][A
-Iteration:   2%|▏         | 7/330 [00:06<04:44,  1.14it/s][A
-Iteration:   2%|▏         | 8/330 [00:07<04:43,  1.14it/s][A
-Iteration:   3%|▎         | 9/330 [00:07<04:42,  1.14it/s][A
-Iteration:   3%|▎         | 10/330 [00:08<04:41,  1.14it/s][A
-Iteration:   3%|▎         | 11/330 [00:09<04:40,  1.14it/s][A
-Iteration:   4%|▎         | 12/330 [00:10<04:39,  1.14it/s][A
-Iteration:   4%|▍         | 13/330 [00:11<04:38,  1.14it/s][A
-Iteration:   4%|▍         | 14/330 [00:12<04:38,  1.14it/s][A
-Iteration:   5%|▍         | 15/330 [00:13<04:37,  1.14it/s][A
-Iteration:   5%|▍         | 16/330 [00:14<04:36,  1.14it/s][A
-Iteration:   5%|▌         | 17/330 [00:14<04:35,  1.14it/s][A
-Iteration:   5%|▌         | 18/330 [00:15<04:34,  1.14it/s][A
-Iteration:   6%|▌         | 19/330 [00:16<04:33,  1.14it/s][A
-Iteration:   6%|▌         | 20/330 [00:17<04:32,  1.14it/s][A
-Iteration:   6%|▋         | 21/330 [00:18<04:31,  1.14it/s][A
-Iteration:   7%|▋         | 22/330 [00:19<04:30,  1.14it/s][A
-Iteration:   7%|▋         | 23/330 [00:20<04:30,  1.14it/s][A
-Iteration:   7%|▋         | 24/330 [00:21<04:29,  1.14it/s][A
-Iteration:   8%|▊         | 25/330 [00:21<04:28,  1.14it/s][A
-Iteration:   8%|▊         | 26/330 [00:22<04:27,  1.14it/s][A
-Iteration:   8%|▊         | 27/330 [00:23<04:26,  1.14it/s][A
-Iteration:   8%|▊         | 28/330 [00:24<04:25,  1.14it/s][A
-Iteration:   9%|▉         | 29/330 [00:25<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 30/330 [00:26<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 31/330 [00:27<04:23,  1.14it/s][A
-Iteration:  10%|▉         | 32/330 [00:28<04:22,  1.14it/s][A
-Iteration:  10%|█         | 33/330 [00:29<04:21,  1.14it/s][A
-Iteration:  10%|█         | 34/330 [00:29<04:20,  1.14it/s][A
-Iteration:  11%|█         | 35/330 [00:30<04:19,  1.14it/s][A
-Iteration:  11%|█         | 36/330 [00:31<04:18,  1.14it/s][A
-Iteration:  11%|█         | 37/330 [00:32<04:17,  1.14it/s][A
-Iteration:  12%|█▏        | 38/330 [00:33<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 39/330 [00:34<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 40/330 [00:35<04:15,  1.14it/s][A
-Iteration:  12%|█▏        | 41/330 [00:36<04:14,  1.14it/s][A
-Iteration:  13%|█▎        | 42/330 [00:36<04:13,  1.14it/s][A
-Iteration:  13%|█▎        | 43/330 [00:37<04:12,  1.14it/s][A
-Iteration:  13%|█▎        | 44/330 [00:38<04:11,  1.14it/s][A
-Iteration:  14%|█▎        | 45/330 [00:39<04:10,  1.14it/s][A
-Iteration:  14%|█▍        | 46/330 [00:40<04:09,  1.14it/s][A
-Iteration:  14%|█▍        | 47/330 [00:41<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 48/330 [00:42<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 49/330 [00:43<04:07,  1.14it/s][A
-Iteration:  15%|█▌        | 50/330 [00:43<04:06,  1.14it/s][A
-Iteration:  15%|█▌        | 51/330 [00:44<04:05,  1.14it/s][A
-Iteration:  16%|█▌        | 52/330 [00:45<04:04,  1.14it/s][A
-Iteration:  16%|█▌        | 53/330 [00:46<04:03,  1.14it/s][A
-Iteration:  16%|█▋        | 54/330 [00:47<04:02,  1.14it/s][A
-Iteration:  17%|█▋        | 55/330 [00:48<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 56/330 [00:49<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 57/330 [00:50<04:00,  1.14it/s][A
-Iteration:  18%|█▊        | 58/330 [00:51<03:59,  1.14it/s][A
-Iteration:  18%|█▊        | 59/330 [00:51<03:58,  1.14it/s][A
-Iteration:  18%|█▊        | 60/330 [00:52<03:57,  1.14it/s][A
-Iteration:  18%|█▊        | 61/330 [00:53<03:56,  1.14it/s][A
-Iteration:  19%|█▉        | 62/330 [00:54<03:55,  1.14it/s][A
-Iteration:  19%|█▉        | 63/330 [00:55<03:54,  1.14it/s][A
-Iteration:  19%|█▉        | 64/330 [00:56<03:53,  1.14it/s][A
-Iteration:  20%|█▉        | 65/330 [00:57<03:53,  1.14it/s][A
-Iteration:  20%|██        | 66/330 [00:58<03:52,  1.14it/s][A
-Iteration:  20%|██        | 67/330 [00:58<03:51,  1.14it/s][A
-Iteration:  21%|██        | 68/330 [00:59<03:50,  1.14it/s][A
-Iteration:  21%|██        | 69/330 [01:00<03:49,  1.14it/s][A
-Iteration:  21%|██        | 70/330 [01:01<03:48,  1.14it/s][A
-Iteration:  22%|██▏       | 71/330 [01:02<03:47,  1.14it/s][A
-Iteration:  22%|██▏       | 72/330 [01:03<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 73/330 [01:04<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 74/330 [01:05<03:45,  1.14it/s][A
-Iteration:  23%|██▎       | 75/330 [01:05<03:44,  1.14it/s][A
-Iteration:  23%|██▎       | 76/330 [01:06<03:43,  1.14it/s][A
-Iteration:  23%|██▎       | 77/330 [01:07<03:42,  1.14it/s][A
-Iteration:  24%|██▎       | 78/330 [01:08<03:41,  1.14it/s][A
-Iteration:  24%|██▍       | 79/330 [01:09<03:40,  1.14it/s][A
-Iteration:  24%|██▍       | 80/330 [01:10<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 81/330 [01:11<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 82/330 [01:12<03:38,  1.14it/s][A
-Iteration:  25%|██▌       | 83/330 [01:13<03:37,  1.14it/s][A
-Iteration:  25%|██▌       | 84/330 [01:13<03:36,  1.14it/s][A
-Iteration:  26%|██▌       | 85/330 [01:14<03:35,  1.14it/s][A
-Iteration:  26%|██▌       | 86/330 [01:15<03:34,  1.14it/s][A
-Iteration:  26%|██▋       | 87/330 [01:16<03:33,  1.14it/s][A
-Iteration:  27%|██▋       | 88/330 [01:17<03:32,  1.14it/s][A
-Iteration:  27%|██▋       | 89/330 [01:18<03:31,  1.14it/s][A
-Iteration:  27%|██▋       | 90/330 [01:19<03:31,  1.14it/s][A
-Iteration:  28%|██▊       | 91/330 [01:20<03:30,  1.14it/s][A
-Iteration:  28%|██▊       | 92/330 [01:20<03:29,  1.14it/s][A
-Iteration:  28%|██▊       | 93/330 [01:21<03:41,  1.07it/s][A
-Iteration:  28%|██▊       | 94/330 [01:22<03:36,  1.09it/s][A
-Iteration:  29%|██▉       | 95/330 [01:23<03:32,  1.10it/s][A
-Iteration:  29%|██▉       | 96/330 [01:24<03:30,  1.11it/s][A
-Iteration:  29%|██▉       | 97/330 [01:25<03:27,  1.12it/s][A
-Iteration:  30%|██▉       | 98/330 [01:26<03:26,  1.12it/s][A
-Iteration:  30%|███       | 99/330 [01:27<03:24,  1.13it/s][A
-Iteration:  30%|███       | 100/330 [01:28<03:23,  1.13it/s][A
-Iteration:  31%|███       | 101/330 [01:29<03:22,  1.13it/s][A
-Iteration:  31%|███       | 102/330 [01:29<03:21,  1.13it/s][A
-Iteration:  31%|███       | 103/330 [01:30<03:20,  1.13it/s][A
-Iteration:  32%|███▏      | 104/330 [01:31<03:19,  1.14it/s][A
-Iteration:  32%|███▏      | 105/330 [01:32<03:18,  1.14it/s][A
-Iteration:  32%|███▏      | 106/330 [01:33<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 107/330 [01:34<03:16,  1.14it/s][A
-Iteration:  33%|███▎      | 108/330 [01:35<03:15,  1.14it/s][A
-Iteration:  33%|███▎      | 109/330 [01:36<03:14,  1.13it/s][A
-Iteration:  33%|███▎      | 110/330 [01:36<03:14,  1.13it/s][A
-Iteration:  34%|███▎      | 111/330 [01:37<03:13,  1.13it/s][A
-Iteration:  34%|███▍      | 112/330 [01:38<03:12,  1.13it/s][A
-Iteration:  34%|███▍      | 113/330 [01:39<03:11,  1.13it/s][A
-Iteration:  35%|███▍      | 114/330 [01:40<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 115/330 [01:41<03:09,  1.14it/s][A
-Iteration:  35%|███▌      | 116/330 [01:42<03:08,  1.14it/s][A
-Iteration:  35%|███▌      | 117/330 [01:43<03:07,  1.14it/s][A
-Iteration:  36%|███▌      | 118/330 [01:44<03:06,  1.14it/s][A
-Iteration:  36%|███▌      | 119/330 [01:44<03:05,  1.14it/s][A
-Iteration:  36%|███▋      | 120/330 [01:45<03:04,  1.14it/s][A
-Iteration:  37%|███▋      | 121/330 [01:46<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 122/330 [01:47<03:03,  1.14it/s][A
-Iteration:  37%|███▋      | 123/330 [01:48<03:02,  1.14it/s][A
-Iteration:  38%|███▊      | 124/330 [01:49<03:01,  1.14it/s][A
-Iteration:  38%|███▊      | 125/330 [01:50<03:00,  1.14it/s][A
-Iteration:  38%|███▊      | 126/330 [01:51<02:59,  1.14it/s][A
-Iteration:  38%|███▊      | 127/330 [01:51<02:58,  1.14it/s][A
-Iteration:  39%|███▉      | 128/330 [01:52<02:57,  1.14it/s][A
-Iteration:  39%|███▉      | 129/330 [01:53<02:56,  1.14it/s][A
-Iteration:  39%|███▉      | 130/330 [01:54<02:55,  1.14it/s][A
-Iteration:  40%|███▉      | 131/330 [01:55<02:55,  1.14it/s][A
-Iteration:  40%|████      | 132/330 [01:56<02:54,  1.14it/s][A
-Iteration:  40%|████      | 133/330 [01:57<02:53,  1.14it/s][A
-Iteration:  41%|████      | 134/330 [01:58<02:52,  1.14it/s][A
-Iteration:  41%|████      | 135/330 [01:58<02:51,  1.14it/s][A
-Iteration:  41%|████      | 136/330 [01:59<02:50,  1.14it/s][A
-Iteration:  42%|████▏     | 137/330 [02:00<02:49,  1.14it/s][A
-Iteration:  42%|████▏     | 138/330 [02:01<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 139/330 [02:02<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 140/330 [02:03<02:47,  1.14it/s][A
-Iteration:  43%|████▎     | 141/330 [02:04<02:46,  1.14it/s][A
-Iteration:  43%|████▎     | 142/330 [02:05<02:45,  1.14it/s][A
-Iteration:  43%|████▎     | 143/330 [02:06<02:44,  1.14it/s][A
-Iteration:  44%|████▎     | 144/330 [02:06<02:43,  1.14it/s][A
-Iteration:  44%|████▍     | 145/330 [02:07<02:42,  1.14it/s][A
-Iteration:  44%|████▍     | 146/330 [02:08<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 147/330 [02:09<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 148/330 [02:10<02:40,  1.14it/s][A
-Iteration:  45%|████▌     | 149/330 [02:11<02:39,  1.14it/s][A
-Iteration:  45%|████▌     | 150/330 [02:12<02:38,  1.14it/s][A
-Iteration:  46%|████▌     | 151/330 [02:13<02:37,  1.14it/s][A
-Iteration:  46%|████▌     | 152/330 [02:13<02:36,  1.14it/s][A
-Iteration:  46%|████▋     | 153/330 [02:14<02:35,  1.14it/s][A
-Iteration:  47%|████▋     | 154/330 [02:15<02:34,  1.14it/s][A
-Iteration:  47%|████▋     | 155/330 [02:16<02:33,  1.14it/s][A
-Iteration:  47%|████▋     | 156/330 [02:17<02:33,  1.14it/s][A
-Iteration:  48%|████▊     | 157/330 [02:18<02:32,  1.14it/s][A
-Iteration:  48%|████▊     | 158/330 [02:19<02:31,  1.14it/s][A
-Iteration:  48%|████▊     | 159/330 [02:20<02:30,  1.14it/s][A
-Iteration:  48%|████▊     | 160/330 [02:20<02:29,  1.14it/s][A
-Iteration:  49%|████▉     | 161/330 [02:21<02:28,  1.14it/s][A
-Iteration:  49%|████▉     | 162/330 [02:22<02:27,  1.14it/s][A
-Iteration:  49%|████▉     | 163/330 [02:23<02:26,  1.14it/s][A
-Iteration:  50%|████▉     | 164/330 [02:24<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 165/330 [02:25<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 166/330 [02:26<02:24,  1.14it/s][A
-Iteration:  51%|█████     | 167/330 [02:27<02:23,  1.14it/s][A
-Iteration:  51%|█████     | 168/330 [02:27<02:22,  1.14it/s][A
-Iteration:  51%|█████     | 169/330 [02:28<02:21,  1.14it/s][A
-Iteration:  52%|█████▏    | 170/330 [02:29<02:20,  1.14it/s][A
-Iteration:  52%|█████▏    | 171/330 [02:30<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 172/330 [02:31<02:18,  1.14it/s][A
-Iteration:  52%|█████▏    | 173/330 [02:32<02:18,  1.14it/s][A
-Iteration:  53%|█████▎    | 174/330 [02:33<02:17,  1.14it/s][A
-Iteration:  53%|█████▎    | 175/330 [02:34<02:16,  1.14it/s][A
-Iteration:  53%|█████▎    | 176/330 [02:35<02:15,  1.14it/s][A
-Iteration:  54%|█████▎    | 177/330 [02:35<02:14,  1.14it/s][A
-Iteration:  54%|█████▍    | 178/330 [02:36<02:13,  1.14it/s][A
-Iteration:  54%|█████▍    | 179/330 [02:37<02:12,  1.14it/s][A
-Iteration:  55%|█████▍    | 180/330 [02:38<02:11,  1.14it/s][A
-Iteration:  55%|█████▍    | 181/330 [02:39<02:11,  1.14it/s][A
-Iteration:  55%|█████▌    | 182/330 [02:40<02:10,  1.14it/s][A
-Iteration:  55%|█████▌    | 183/330 [02:41<02:09,  1.14it/s][A
-Iteration:  56%|█████▌    | 184/330 [02:42<02:08,  1.14it/s][A
-Iteration:  56%|█████▌    | 185/330 [02:42<02:07,  1.14it/s][A
-Iteration:  56%|█████▋    | 186/330 [02:43<02:06,  1.14it/s][A
-Iteration:  57%|█████▋    | 187/330 [02:44<02:05,  1.14it/s][A
-Iteration:  57%|█████▋    | 188/330 [02:45<02:04,  1.14it/s][A
-Iteration:  57%|█████▋    | 189/330 [02:46<02:04,  1.14it/s][A
-Iteration:  58%|█████▊    | 190/330 [02:47<02:03,  1.14it/s][A
-Iteration:  58%|█████▊    | 191/330 [02:48<02:02,  1.14it/s][A
-Iteration:  58%|█████▊    | 192/330 [02:49<02:01,  1.14it/s][A
-Iteration:  58%|█████▊    | 193/330 [02:49<02:00,  1.14it/s][A
-Iteration:  59%|█████▉    | 194/330 [02:50<01:59,  1.14it/s][A
-Iteration:  59%|█████▉    | 195/330 [02:51<01:58,  1.14it/s][A
-Iteration:  59%|█████▉    | 196/330 [02:52<01:57,  1.14it/s][A
-Iteration:  60%|█████▉    | 197/330 [02:53<01:57,  1.14it/s][A
-Iteration:  60%|██████    | 198/330 [02:54<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 199/330 [02:55<01:55,  1.14it/s][A
-Iteration:  61%|██████    | 200/330 [02:56<01:54,  1.14it/s][A
-Iteration:  61%|██████    | 201/330 [02:57<01:53,  1.14it/s][A
-Iteration:  61%|██████    | 202/330 [02:57<01:52,  1.14it/s][A
-Iteration:  62%|██████▏   | 203/330 [02:58<01:51,  1.14it/s][A
-Iteration:  62%|██████▏   | 204/330 [02:59<01:50,  1.14it/s][A
-Iteration:  62%|██████▏   | 205/330 [03:00<01:49,  1.14it/s][A
-Iteration:  62%|██████▏   | 206/330 [03:01<01:49,  1.14it/s][A
-Iteration:  63%|██████▎   | 207/330 [03:02<01:48,  1.14it/s][A
-Iteration:  63%|██████▎   | 208/330 [03:03<01:47,  1.14it/s][A
-Iteration:  63%|██████▎   | 209/330 [03:04<01:46,  1.14it/s][A
-Iteration:  64%|██████▎   | 210/330 [03:04<01:45,  1.14it/s][A
-Iteration:  64%|██████▍   | 211/330 [03:05<01:44,  1.14it/s][A
-Iteration:  64%|██████▍   | 212/330 [03:06<01:43,  1.14it/s][A
-Iteration:  65%|██████▍   | 213/330 [03:07<01:42,  1.14it/s][A
-Iteration:  65%|██████▍   | 214/330 [03:08<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 215/330 [03:09<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 216/330 [03:10<01:40,  1.14it/s][A
-Iteration:  66%|██████▌   | 217/330 [03:11<01:39,  1.14it/s][A
-Iteration:  66%|██████▌   | 218/330 [03:11<01:38,  1.14it/s][A
-Iteration:  66%|██████▋   | 219/330 [03:12<01:37,  1.14it/s][A
-Iteration:  67%|██████▋   | 220/330 [03:13<01:36,  1.14it/s][A
-Iteration:  67%|██████▋   | 221/330 [03:14<01:35,  1.14it/s][A
-Iteration:  67%|██████▋   | 222/330 [03:15<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 223/330 [03:16<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 224/330 [03:17<01:33,  1.14it/s][A
-Iteration:  68%|██████▊   | 225/330 [03:18<01:32,  1.14it/s][A
-Iteration:  68%|██████▊   | 226/330 [03:19<01:31,  1.14it/s][A
-Iteration:  69%|██████▉   | 227/330 [03:19<01:30,  1.14it/s][A
-Iteration:  69%|██████▉   | 228/330 [03:20<01:29,  1.14it/s][A
-Iteration:  69%|██████▉   | 229/330 [03:21<01:28,  1.14it/s][A
-Iteration:  70%|██████▉   | 230/330 [03:22<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 231/330 [03:23<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 232/330 [03:24<01:26,  1.14it/s][A
-Iteration:  71%|███████   | 233/330 [03:25<01:25,  1.14it/s][A
-Iteration:  71%|███████   | 234/330 [03:26<01:24,  1.14it/s][A
-Iteration:  71%|███████   | 235/330 [03:26<01:23,  1.14it/s][A
-Iteration:  72%|███████▏  | 236/330 [03:27<01:22,  1.14it/s][A
-Iteration:  72%|███████▏  | 237/330 [03:28<01:21,  1.14it/s][A
-Iteration:  72%|███████▏  | 238/330 [03:29<01:20,  1.14it/s][A
-Iteration:  72%|███████▏  | 239/330 [03:30<01:20,  1.14it/s][A
-Iteration:  73%|███████▎  | 240/330 [03:31<01:19,  1.14it/s][A
-Iteration:  73%|███████▎  | 241/330 [03:32<01:18,  1.14it/s][A
-Iteration:  73%|███████▎  | 242/330 [03:33<01:17,  1.14it/s][A
-Iteration:  74%|███████▎  | 243/330 [03:33<01:16,  1.14it/s][A
-Iteration:  74%|███████▍  | 244/330 [03:34<01:15,  1.14it/s][A
-Iteration:  74%|███████▍  | 245/330 [03:35<01:14,  1.14it/s][A
-Iteration:  75%|███████▍  | 246/330 [03:36<01:13,  1.14it/s][A
-Iteration:  75%|███████▍  | 247/330 [03:37<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 248/330 [03:38<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 249/330 [03:39<01:11,  1.14it/s][A
-Iteration:  76%|███████▌  | 250/330 [03:40<01:10,  1.14it/s][A
-Iteration:  76%|███████▌  | 251/330 [03:41<01:09,  1.14it/s][A
-Iteration:  76%|███████▋  | 252/330 [03:41<01:08,  1.14it/s][A
-Iteration:  77%|███████▋  | 253/330 [03:42<01:07,  1.14it/s][A
-Iteration:  77%|███████▋  | 254/330 [03:43<01:06,  1.14it/s][A
-Iteration:  77%|███████▋  | 255/330 [03:44<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 256/330 [03:45<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 257/330 [03:46<01:04,  1.14it/s][A
-Iteration:  78%|███████▊  | 258/330 [03:47<01:03,  1.14it/s][A
-Iteration:  78%|███████▊  | 259/330 [03:48<01:02,  1.14it/s][A
-Iteration:  79%|███████▉  | 260/330 [03:48<01:01,  1.14it/s][A
-Iteration:  79%|███████▉  | 261/330 [03:49<01:00,  1.14it/s][A
-Iteration:  79%|███████▉  | 262/330 [03:50<00:59,  1.14it/s][A
-Iteration:  80%|███████▉  | 263/330 [03:51<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 264/330 [03:52<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 265/330 [03:53<00:57,  1.14it/s][A
-Iteration:  81%|████████  | 266/330 [03:54<00:56,  1.14it/s][A
-Iteration:  81%|████████  | 267/330 [03:55<00:55,  1.14it/s][A
-Iteration:  81%|████████  | 268/330 [03:55<00:54,  1.14it/s][A
-Iteration:  82%|████████▏ | 269/330 [03:56<00:53,  1.14it/s][A
-Iteration:  82%|████████▏ | 270/330 [03:57<00:52,  1.14it/s][A
-Iteration:  82%|████████▏ | 271/330 [03:58<00:51,  1.14it/s][A
-Iteration:  82%|████████▏ | 272/330 [03:59<00:51,  1.14it/s][A
-Iteration:  83%|████████▎ | 273/330 [04:00<00:50,  1.14it/s][A
-Iteration:  83%|████████▎ | 274/330 [04:01<00:49,  1.14it/s][A
-Iteration:  83%|████████▎ | 275/330 [04:02<00:48,  1.14it/s][A
-Iteration:  84%|████████▎ | 276/330 [04:03<00:47,  1.14it/s][A
-Iteration:  84%|████████▍ | 277/330 [04:03<00:46,  1.14it/s][A
-Iteration:  84%|████████▍ | 278/330 [04:04<00:45,  1.14it/s][A
-Iteration:  85%|████████▍ | 279/330 [04:05<00:44,  1.14it/s][A
-Iteration:  85%|████████▍ | 280/330 [04:06<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 281/330 [04:07<00:43,  1.14it/s][A
-Iteration:  85%|████████▌ | 282/330 [04:08<00:42,  1.14it/s][A
-Iteration:  86%|████████▌ | 283/330 [04:09<00:41,  1.14it/s][A
-Iteration:  86%|████████▌ | 284/330 [04:10<00:40,  1.14it/s][A
-Iteration:  86%|████████▋ | 285/330 [04:10<00:39,  1.14it/s][A
-Iteration:  87%|████████▋ | 286/330 [04:11<00:38,  1.14it/s][A
-Iteration:  87%|████████▋ | 287/330 [04:12<00:37,  1.14it/s][A
-Iteration:  87%|████████▋ | 288/330 [04:13<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 289/330 [04:14<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 290/330 [04:15<00:35,  1.14it/s][A
-Iteration:  88%|████████▊ | 291/330 [04:16<00:34,  1.14it/s][A
-Iteration:  88%|████████▊ | 292/330 [04:17<00:33,  1.14it/s][A
-Iteration:  89%|████████▉ | 293/330 [04:17<00:32,  1.14it/s][A
-Iteration:  89%|████████▉ | 294/330 [04:18<00:31,  1.14it/s][A
-Iteration:  89%|████████▉ | 295/330 [04:19<00:30,  1.14it/s][A
-Iteration:  90%|████████▉ | 296/330 [04:20<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 297/330 [04:21<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 298/330 [04:22<00:28,  1.14it/s][A
-Iteration:  91%|█████████ | 299/330 [04:23<00:27,  1.14it/s][A
-Iteration:  91%|█████████ | 300/330 [04:24<00:26,  1.14it/s][A
-Iteration:  91%|█████████ | 301/330 [04:24<00:25,  1.14it/s][A
-Iteration:  92%|█████████▏| 302/330 [04:25<00:24,  1.14it/s][A
-Iteration:  92%|█████████▏| 303/330 [04:26<00:23,  1.14it/s][A
-Iteration:  92%|█████████▏| 304/330 [04:27<00:22,  1.14it/s][A
-Iteration:  92%|█████████▏| 305/330 [04:28<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 306/330 [04:29<00:21,  1.14it/s][A
-Iteration:  93%|█████████▎| 307/330 [04:30<00:20,  1.14it/s][A
-Iteration:  93%|█████████▎| 308/330 [04:31<00:19,  1.14it/s][A
-Iteration:  94%|█████████▎| 309/330 [04:32<00:18,  1.14it/s][A
-Iteration:  94%|█████████▍| 310/330 [04:32<00:17,  1.14it/s][A
-Iteration:  94%|█████████▍| 311/330 [04:33<00:16,  1.14it/s][A
-Iteration:  95%|█████████▍| 312/330 [04:34<00:15,  1.14it/s][A
-Iteration:  95%|█████████▍| 313/330 [04:35<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 314/330 [04:36<00:14,  1.14it/s][A
-Iteration:  95%|█████████▌| 315/330 [04:37<00:13,  1.14it/s][A
-Iteration:  96%|█████████▌| 316/330 [04:38<00:12,  1.14it/s][A
-Iteration:  96%|█████████▌| 317/330 [04:39<00:11,  1.14it/s][A
-Iteration:  96%|█████████▋| 318/330 [04:39<00:10,  1.14it/s][A
-Iteration:  97%|█████████▋| 319/330 [04:40<00:09,  1.14it/s][A
-Iteration:  97%|█████████▋| 320/330 [04:41<00:08,  1.14it/s][A
-Iteration:  97%|█████████▋| 321/330 [04:42<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 322/330 [04:43<00:07,  1.14it/s][A
-Iteration:  98%|█████████▊| 323/330 [04:44<00:06,  1.14it/s][A
-Iteration:  98%|█████████▊| 324/330 [04:45<00:05,  1.14it/s][A
-Iteration:  98%|█████████▊| 325/330 [04:46<00:04,  1.14it/s][A
-Iteration:  99%|█████████▉| 326/330 [04:46<00:03,  1.14it/s][A
-Iteration:  99%|█████████▉| 327/330 [04:47<00:02,  1.14it/s][A
-Iteration:  99%|█████████▉| 328/330 [04:48<00:01,  1.14it/s][A
-Iteration: 100%|█████████▉| 329/330 [04:49<00:00,  1.14it/s][A
-Iteration: 100%|██████████| 330/330 [04:50<00:00,  1.34it/s][AIteration: 100%|██████████| 330/330 [04:50<00:00,  1.14it/s]
-11/03/2024 22:18:20 - INFO - __main__ -   ***** Running eval *****
-
-Evaluating:   0%|          | 0/47 [00:00<?, ?it/s][A
-Evaluating:   2%|▏         | 1/47 [00:00<00:16,  2.84it/s][A
-Evaluating:   4%|▍         | 2/47 [00:00<00:15,  2.84it/s][A
-Evaluating:   6%|▋         | 3/47 [00:01<00:15,  2.84it/s][A
-Evaluating:   9%|▊         | 4/47 [00:01<00:15,  2.85it/s][A
-Evaluating:  11%|█         | 5/47 [00:01<00:14,  2.84it/s][A
-Evaluating:  13%|█▎        | 6/47 [00:02<00:14,  2.85it/s][A
-Evaluating:  15%|█▍        | 7/47 [00:02<00:13,  2.86it/s][A
-Evaluating:  17%|█▋        | 8/47 [00:02<00:13,  2.86it/s][A
-Evaluating:  19%|█▉        | 9/47 [00:03<00:13,  2.86it/s][A
-Evaluating:  21%|██▏       | 10/47 [00:03<00:12,  2.86it/s][A
-Evaluating:  23%|██▎       | 11/47 [00:03<00:12,  2.85it/s][A
-Evaluating:  26%|██▌       | 12/47 [00:04<00:12,  2.86it/s][A
-Evaluating:  28%|██▊       | 13/47 [00:04<00:11,  2.86it/s][A
-Evaluating:  30%|██▉       | 14/47 [00:04<00:11,  2.87it/s][A
-Evaluating:  32%|███▏      | 15/47 [00:05<00:11,  2.87it/s][A
-Evaluating:  34%|███▍      | 16/47 [00:05<00:10,  2.86it/s][A
-Evaluating:  36%|███▌      | 17/47 [00:05<00:10,  2.86it/s][A
-Evaluating:  38%|███▊      | 18/47 [00:06<00:10,  2.86it/s][A
-Evaluating:  40%|████      | 19/47 [00:06<00:09,  2.86it/s][A
-Evaluating:  43%|████▎     | 20/47 [00:06<00:09,  2.86it/s][A
-Evaluating:  45%|████▍     | 21/47 [00:07<00:09,  2.87it/s][A
-Evaluating:  47%|████▋     | 22/47 [00:07<00:08,  2.87it/s][A
-Evaluating:  49%|████▉     | 23/47 [00:08<00:08,  2.87it/s][A
-Evaluating:  51%|█████     | 24/47 [00:08<00:08,  2.87it/s][A
-Evaluating:  53%|█████▎    | 25/47 [00:08<00:07,  2.86it/s][A
-Evaluating:  55%|█████▌    | 26/47 [00:09<00:07,  2.86it/s][A
-Evaluating:  57%|█████▋    | 27/47 [00:09<00:07,  2.85it/s][A
-Evaluating:  60%|█████▉    | 28/47 [00:09<00:06,  2.86it/s][A
-Evaluating:  62%|██████▏   | 29/47 [00:10<00:06,  2.86it/s][A
-Evaluating:  64%|██████▍   | 30/47 [00:10<00:05,  2.86it/s][A
-Evaluating:  66%|██████▌   | 31/47 [00:10<00:05,  2.86it/s][A
-Evaluating:  68%|██████▊   | 32/47 [00:11<00:05,  2.86it/s][A
-Evaluating:  70%|███████   | 33/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  72%|███████▏  | 34/47 [00:11<00:04,  2.86it/s][A
-Evaluating:  74%|███████▍  | 35/47 [00:12<00:04,  2.86it/s][A
-Evaluating:  77%|███████▋  | 36/47 [00:12<00:03,  2.85it/s][A
-Evaluating:  79%|███████▊  | 37/47 [00:12<00:03,  2.86it/s][A
-Evaluating:  81%|████████  | 38/47 [00:13<00:03,  2.86it/s][A
-Evaluating:  83%|████████▎ | 39/47 [00:13<00:02,  2.86it/s][A
-Evaluating:  85%|████████▌ | 40/47 [00:13<00:02,  2.86it/s][A
-Evaluating:  87%|████████▋ | 41/47 [00:14<00:02,  2.86it/s][A
-Evaluating:  89%|████████▉ | 42/47 [00:14<00:01,  2.85it/s][A
-Evaluating:  91%|█████████▏| 43/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  94%|█████████▎| 44/47 [00:15<00:01,  2.86it/s][A
-Evaluating:  96%|█████████▌| 45/47 [00:15<00:00,  2.86it/s][A
-Evaluating:  98%|█████████▊| 46/47 [00:16<00:00,  2.86it/s][A
-Evaluating: 100%|██████████| 47/47 [00:16<00:00,  2.96it/s][AEvaluating: 100%|██████████| 47/47 [00:16<00:00,  2.87it/s]
-processed 37211 tokens with 804 phrases; found: 869 phrases; correct: 518.
-accuracy:  96.50%; precision:  59.61%; recall:  64.43%; FB1:  61.92
-             City: precision:  40.30%; recall:  38.57%; FB1:  39.42  201
-          Country: precision:  61.24%; recall:  77.45%; FB1:  68.40  129
-          Disease: precision:  71.05%; recall:  76.70%; FB1:  73.77  190
-         Province: precision:  54.17%; recall:  57.23%; FB1:  55.66  168
-            Virus: precision:  72.93%; recall:  84.08%; FB1:  78.11  181
-11/03/2024 22:18:37 - INFO - __main__ -   ----------the best f1 is 0.6192468619246861---------
-Epoch:  40%|████      | 4/10 [20:28<30:42, 307.16s/it]
-Iteration:   0%|          | 0/330 [00:00<?, ?it/s][A
-Iteration:   0%|          | 1/330 [00:00<04:50,  1.13it/s][A
-Iteration:   1%|          | 2/330 [00:01<04:49,  1.13it/s][A
-Iteration:   1%|          | 3/330 [00:02<04:48,  1.14it/s][A
-Iteration:   1%|          | 4/330 [00:03<04:47,  1.14it/s][A
-Iteration:   2%|▏         | 5/330 [00:04<04:46,  1.14it/s][A
-Iteration:   2%|▏         | 6/330 [00:05<04:45,  1.13it/s][A
-Iteration:   2%|▏         | 7/330 [00:06<04:45,  1.13it/s][A
-Iteration:   2%|▏         | 8/330 [00:07<04:44,  1.13it/s][A
-Iteration:   3%|▎         | 9/330 [00:07<04:43,  1.13it/s][A
-Iteration:   3%|▎         | 10/330 [00:08<04:42,  1.13it/s][A
-Iteration:   3%|▎         | 11/330 [00:09<04:41,  1.14it/s][A
-Iteration:   4%|▎         | 12/330 [00:10<04:40,  1.14it/s][A
-Iteration:   4%|▍         | 13/330 [00:11<04:39,  1.14it/s][A
-Iteration:   4%|▍         | 14/330 [00:12<04:38,  1.14it/s][A
-Iteration:   5%|▍         | 15/330 [00:13<04:37,  1.13it/s][A
-Iteration:   5%|▍         | 16/330 [00:14<04:38,  1.13it/s][A
-Iteration:   5%|▌         | 17/330 [00:14<04:36,  1.13it/s][A
-Iteration:   5%|▌         | 18/330 [00:15<04:35,  1.13it/s][A
-Iteration:   6%|▌         | 19/330 [00:16<04:34,  1.13it/s][A
-Iteration:   6%|▌         | 20/330 [00:17<04:33,  1.14it/s][A
-Iteration:   6%|▋         | 21/330 [00:18<04:32,  1.14it/s][A
-Iteration:   7%|▋         | 22/330 [00:19<04:31,  1.14it/s][A
-Iteration:   7%|▋         | 23/330 [00:20<04:30,  1.14it/s][A
-Iteration:   7%|▋         | 24/330 [00:21<04:29,  1.14it/s][A
-Iteration:   8%|▊         | 25/330 [00:22<04:28,  1.14it/s][A
-Iteration:   8%|▊         | 26/330 [00:22<04:27,  1.14it/s][A
-Iteration:   8%|▊         | 27/330 [00:23<04:26,  1.14it/s][A
-Iteration:   8%|▊         | 28/330 [00:24<04:25,  1.14it/s][A
-Iteration:   9%|▉         | 29/330 [00:25<04:24,  1.14it/s][A
-Iteration:   9%|▉         | 30/330 [00:26<04:23,  1.14it/s][A
-Iteration:   9%|▉         | 31/330 [00:27<04:23,  1.14it/s][A
-Iteration:  10%|▉         | 32/330 [00:28<04:22,  1.14it/s][A
-Iteration:  10%|█         | 33/330 [00:29<04:21,  1.14it/s][A
-Iteration:  10%|█         | 34/330 [00:29<04:20,  1.14it/s][A
-Iteration:  11%|█         | 35/330 [00:30<04:19,  1.14it/s][A
-Iteration:  11%|█         | 36/330 [00:31<04:18,  1.14it/s][A
-Iteration:  11%|█         | 37/330 [00:32<04:17,  1.14it/s][A
-Iteration:  12%|█▏        | 38/330 [00:33<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 39/330 [00:34<04:16,  1.14it/s][A
-Iteration:  12%|█▏        | 40/330 [00:35<04:15,  1.14it/s][A
-Iteration:  12%|█▏        | 41/330 [00:36<04:14,  1.14it/s][A
-Iteration:  13%|█▎        | 42/330 [00:36<04:13,  1.14it/s][A
-Iteration:  13%|█▎        | 43/330 [00:37<04:12,  1.14it/s][A
-Iteration:  13%|█▎        | 44/330 [00:38<04:11,  1.14it/s][A
-Iteration:  14%|█▎        | 45/330 [00:39<04:10,  1.14it/s][A
-Iteration:  14%|█▍        | 46/330 [00:40<04:09,  1.14it/s][A
-Iteration:  14%|█▍        | 47/330 [00:41<04:09,  1.14it/s][A
-Iteration:  15%|█▍        | 48/330 [00:42<04:08,  1.14it/s][A
-Iteration:  15%|█▍        | 49/330 [00:43<04:07,  1.14it/s][A
-Iteration:  15%|█▌        | 50/330 [00:44<04:06,  1.14it/s][A
-Iteration:  15%|█▌        | 51/330 [00:44<04:05,  1.14it/s][A
-Iteration:  16%|█▌        | 52/330 [00:45<04:04,  1.14it/s][A
-Iteration:  16%|█▌        | 53/330 [00:46<04:03,  1.14it/s][A
-Iteration:  16%|█▋        | 54/330 [00:47<04:02,  1.14it/s][A
-Iteration:  17%|█▋        | 55/330 [00:48<04:01,  1.14it/s][A
-Iteration:  17%|█▋        | 56/330 [00:49<04:00,  1.14it/s][A
-Iteration:  17%|█▋        | 57/330 [00:50<04:00,  1.14it/s][A
-Iteration:  18%|█▊        | 58/330 [00:51<03:59,  1.14it/s][A
-Iteration:  18%|█▊        | 59/330 [00:51<03:58,  1.14it/s][A
-Iteration:  18%|█▊        | 60/330 [00:52<03:57,  1.14it/s][A
-Iteration:  18%|█▊        | 61/330 [00:53<03:56,  1.14it/s][A
-Iteration:  19%|█▉        | 62/330 [00:54<03:55,  1.14it/s][A
-Iteration:  19%|█▉        | 63/330 [00:55<03:54,  1.14it/s][A
-Iteration:  19%|█▉        | 64/330 [00:56<03:53,  1.14it/s][A
-Iteration:  20%|█▉        | 65/330 [00:57<03:53,  1.14it/s][A
-Iteration:  20%|██        | 66/330 [00:58<03:52,  1.14it/s][A
-Iteration:  20%|██        | 67/330 [00:58<03:51,  1.14it/s][A
-Iteration:  21%|██        | 68/330 [00:59<03:50,  1.14it/s][A
-Iteration:  21%|██        | 69/330 [01:00<03:49,  1.14it/s][A
-Iteration:  21%|██        | 70/330 [01:01<03:48,  1.14it/s][A
-Iteration:  22%|██▏       | 71/330 [01:02<03:47,  1.14it/s][A
-Iteration:  22%|██▏       | 72/330 [01:03<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 73/330 [01:04<03:46,  1.14it/s][A
-Iteration:  22%|██▏       | 74/330 [01:05<03:45,  1.14it/s][A
-Iteration:  23%|██▎       | 75/330 [01:06<03:44,  1.14it/s][A
-Iteration:  23%|██▎       | 76/330 [01:06<03:43,  1.14it/s][A
-Iteration:  23%|██▎       | 77/330 [01:07<03:42,  1.14it/s][A
-Iteration:  24%|██▎       | 78/330 [01:08<03:41,  1.14it/s][A
-Iteration:  24%|██▍       | 79/330 [01:09<03:40,  1.14it/s][A
-Iteration:  24%|██▍       | 80/330 [01:10<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 81/330 [01:11<03:39,  1.14it/s][A
-Iteration:  25%|██▍       | 82/330 [01:12<03:38,  1.14it/s][A
-Iteration:  25%|██▌       | 83/330 [01:13<03:37,  1.14it/s][A
-Iteration:  25%|██▌       | 84/330 [01:13<03:36,  1.14it/s][A
-Iteration:  26%|██▌       | 85/330 [01:14<03:35,  1.14it/s][A
-Iteration:  26%|██▌       | 86/330 [01:15<03:34,  1.14it/s][A
-Iteration:  26%|██▋       | 87/330 [01:16<03:33,  1.14it/s][A
-Iteration:  27%|██▋       | 88/330 [01:17<03:32,  1.14it/s][A
-Iteration:  27%|██▋       | 89/330 [01:18<03:31,  1.14it/s][A
-Iteration:  27%|██▋       | 90/330 [01:19<03:31,  1.14it/s][A
-Iteration:  28%|██▊       | 91/330 [01:20<03:30,  1.14it/s][A
-Iteration:  28%|██▊       | 92/330 [01:20<03:29,  1.14it/s][A
-Iteration:  28%|██▊       | 93/330 [01:21<03:28,  1.14it/s][A
-Iteration:  28%|██▊       | 94/330 [01:22<03:27,  1.14it/s][A
-Iteration:  29%|██▉       | 95/330 [01:23<03:26,  1.14it/s][A
-Iteration:  29%|██▉       | 96/330 [01:24<03:25,  1.14it/s][A
-Iteration:  29%|██▉       | 97/330 [01:25<03:24,  1.14it/s][A
-Iteration:  30%|██▉       | 98/330 [01:26<03:24,  1.14it/s][A
-Iteration:  30%|███       | 99/330 [01:27<03:23,  1.14it/s][A
-Iteration:  30%|███       | 100/330 [01:28<03:22,  1.14it/s][A
-Iteration:  31%|███       | 101/330 [01:28<03:21,  1.14it/s][A
-Iteration:  31%|███       | 102/330 [01:29<03:20,  1.14it/s][A
-Iteration:  31%|███       | 103/330 [01:30<03:19,  1.14it/s][A
-Iteration:  32%|███▏      | 104/330 [01:31<03:18,  1.14it/s][A
-Iteration:  32%|███▏      | 105/330 [01:32<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 106/330 [01:33<03:17,  1.14it/s][A
-Iteration:  32%|███▏      | 107/330 [01:34<03:16,  1.14it/s][A
-Iteration:  33%|███▎      | 108/330 [01:35<03:15,  1.14it/s][A
-Iteration:  33%|███▎      | 109/330 [01:35<03:14,  1.14it/s][A
-Iteration:  33%|███▎      | 110/330 [01:36<03:13,  1.14it/s][A
-Iteration:  34%|███▎      | 111/330 [01:37<03:12,  1.14it/s][A
-Iteration:  34%|███▍      | 112/330 [01:38<03:11,  1.14it/s][A
-Iteration:  34%|███▍      | 113/330 [01:39<03:10,  1.14it/s][A
-Iteration:  35%|███▍      | 114/330 [01:40<03:22,  1.06it/s][A
-Iteration:  35%|███▍      | 115/330 [01:41<03:18,  1.08it/s][A
-Iteration:  35%|███▌      | 116/330 [01:42<03:14,  1.10it/s][A
-Iteration:  35%|███▌      | 117/330 [01:43<03:11,  1.11it/s][A
-Iteration:  36%|███▌      | 118/330 [01:44<03:09,  1.12it/s][A
-Iteration:  36%|███▌      | 119/330 [01:44<03:07,  1.12it/s][A
-Iteration:  36%|███▋      | 120/330 [01:45<03:06,  1.13it/s][A
-Iteration:  37%|███▋      | 121/330 [01:46<03:04,  1.13it/s][A
-Iteration:  37%|███▋      | 122/330 [01:47<03:03,  1.13it/s][A
-Iteration:  37%|███▋      | 123/330 [01:48<03:02,  1.13it/s][A
-Iteration:  38%|███▊      | 124/330 [01:49<03:01,  1.13it/s][A
-Iteration:  38%|███▊      | 125/330 [01:50<03:00,  1.14it/s][A
-Iteration:  38%|███▊      | 126/330 [01:51<02:59,  1.14it/s][A
-Iteration:  38%|███▊      | 127/330 [01:51<02:58,  1.14it/s][A
-Iteration:  39%|███▉      | 128/330 [01:52<02:57,  1.14it/s][A
-Iteration:  39%|███▉      | 129/330 [01:53<02:56,  1.14it/s][A
-Iteration:  39%|███▉      | 130/330 [01:54<02:55,  1.14it/s][A
-Iteration:  40%|███▉      | 131/330 [01:55<02:55,  1.14it/s][A
-Iteration:  40%|████      | 132/330 [01:56<02:54,  1.14it/s][A
-Iteration:  40%|████      | 133/330 [01:57<02:53,  1.14it/s][A
-Iteration:  41%|████      | 134/330 [01:58<02:52,  1.14it/s][A
-Iteration:  41%|████      | 135/330 [01:59<02:51,  1.14it/s][A
-Iteration:  41%|████      | 136/330 [01:59<02:50,  1.14it/s][A
-Iteration:  42%|████▏     | 137/330 [02:00<02:49,  1.14it/s][A
-Iteration:  42%|████▏     | 138/330 [02:01<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 139/330 [02:02<02:48,  1.14it/s][A
-Iteration:  42%|████▏     | 140/330 [02:03<02:47,  1.14it/s][A
-Iteration:  43%|████▎     | 141/330 [02:04<02:46,  1.14it/s][A
-Iteration:  43%|████▎     | 142/330 [02:05<02:45,  1.14it/s][A
-Iteration:  43%|████▎     | 143/330 [02:06<02:44,  1.14it/s][A
-Iteration:  44%|████▎     | 144/330 [02:06<02:43,  1.14it/s][A
-Iteration:  44%|████▍     | 145/330 [02:07<02:42,  1.14it/s][A
-Iteration:  44%|████▍     | 146/330 [02:08<02:41,  1.14it/s][A
-Iteration:  45%|████▍     | 147/330 [02:09<02:40,  1.14it/s][A
-Iteration:  45%|████▍     | 148/330 [02:10<02:40,  1.14it/s][A
-Iteration:  45%|████▌     | 149/330 [02:11<02:39,  1.14it/s][A
-Iteration:  45%|████▌     | 150/330 [02:12<02:38,  1.14it/s][A
-Iteration:  46%|████▌     | 151/330 [02:13<02:37,  1.14it/s][A
-Iteration:  46%|████▌     | 152/330 [02:13<02:36,  1.14it/s][A
-Iteration:  46%|████▋     | 153/330 [02:14<02:35,  1.14it/s][A
-Iteration:  47%|████▋     | 154/330 [02:15<02:34,  1.14it/s][A
-Iteration:  47%|████▋     | 155/330 [02:16<02:33,  1.14it/s][A
-Iteration:  47%|████▋     | 156/330 [02:17<02:33,  1.14it/s][A
-Iteration:  48%|████▊     | 157/330 [02:18<02:32,  1.14it/s][A
-Iteration:  48%|████▊     | 158/330 [02:19<02:31,  1.14it/s][A
-Iteration:  48%|████▊     | 159/330 [02:20<02:30,  1.14it/s][A
-Iteration:  48%|████▊     | 160/330 [02:20<02:29,  1.14it/s][A
-Iteration:  49%|████▉     | 161/330 [02:21<02:28,  1.14it/s][A
-Iteration:  49%|████▉     | 162/330 [02:22<02:27,  1.14it/s][A
-Iteration:  49%|████▉     | 163/330 [02:23<02:26,  1.14it/s][A
-Iteration:  50%|████▉     | 164/330 [02:24<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 165/330 [02:25<02:25,  1.14it/s][A
-Iteration:  50%|█████     | 166/330 [02:26<02:24,  1.14it/s][A
-Iteration:  51%|█████     | 167/330 [02:27<02:23,  1.14it/s][A
-Iteration:  51%|█████     | 168/330 [02:28<02:22,  1.14it/s][A
-Iteration:  51%|█████     | 169/330 [02:28<02:21,  1.14it/s][A
-Iteration:  52%|█████▏    | 170/330 [02:29<02:20,  1.14it/s][A
-Iteration:  52%|█████▏    | 171/330 [02:30<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 172/330 [02:31<02:19,  1.14it/s][A
-Iteration:  52%|█████▏    | 173/330 [02:32<02:18,  1.14it/s][A
-Iteration:  53%|█████▎    | 174/330 [02:33<02:17,  1.14it/s][A
-Iteration:  53%|█████▎    | 175/330 [02:34<02:16,  1.14it/s][A
-Iteration:  53%|█████▎    | 176/330 [02:35<02:15,  1.14it/s][A
-Iteration:  54%|█████▎    | 177/330 [02:35<02:14,  1.14it/s][A
-Iteration:  54%|█████▍    | 178/330 [02:36<02:13,  1.14it/s][A
-Iteration:  54%|█████▍    | 179/330 [02:37<02:12,  1.14it/s][A
-Iteration:  55%|█████▍    | 180/330 [02:38<02:11,  1.14it/s][A
-Iteration:  55%|█████▍    | 181/330 [02:39<02:11,  1.14it/s][A
-Iteration:  55%|█████▌    | 182/330 [02:40<02:10,  1.14it/s][A
-Iteration:  55%|█████▌    | 183/330 [02:41<02:09,  1.14it/s][A
-Iteration:  56%|█████▌    | 184/330 [02:42<02:08,  1.14it/s][A
-Iteration:  56%|█████▌    | 185/330 [02:42<02:07,  1.14it/s][A
-Iteration:  56%|█████▋    | 186/330 [02:43<02:06,  1.14it/s][A
-Iteration:  57%|█████▋    | 187/330 [02:44<02:05,  1.14it/s][A
-Iteration:  57%|█████▋    | 188/330 [02:45<02:04,  1.14it/s][A
-Iteration:  57%|█████▋    | 189/330 [02:46<02:04,  1.14it/s][A
-Iteration:  58%|█████▊    | 190/330 [02:47<02:03,  1.14it/s][A
-Iteration:  58%|█████▊    | 191/330 [02:48<02:02,  1.14it/s][A
-Iteration:  58%|█████▊    | 192/330 [02:49<02:01,  1.14it/s][A
-Iteration:  58%|█████▊    | 193/330 [02:50<02:00,  1.14it/s][A
-Iteration:  59%|█████▉    | 194/330 [02:50<01:59,  1.14it/s][A
-Iteration:  59%|█████▉    | 195/330 [02:51<01:58,  1.14it/s][A
-Iteration:  59%|█████▉    | 196/330 [02:52<01:57,  1.14it/s][A
-Iteration:  60%|█████▉    | 197/330 [02:53<01:57,  1.14it/s][A
-Iteration:  60%|██████    | 198/330 [02:54<01:56,  1.14it/s][A
-Iteration:  60%|██████    | 199/330 [02:55<01:55,  1.14it/s][A
-Iteration:  61%|██████    | 200/330 [02:56<01:54,  1.14it/s][A
-Iteration:  61%|██████    | 201/330 [02:57<01:53,  1.14it/s][A
-Iteration:  61%|██████    | 202/330 [02:57<01:52,  1.14it/s][A
-Iteration:  62%|██████▏   | 203/330 [02:58<01:51,  1.14it/s][A
-Iteration:  62%|██████▏   | 204/330 [02:59<01:50,  1.14it/s][A
-Iteration:  62%|██████▏   | 205/330 [03:00<01:49,  1.14it/s][A
-Iteration:  62%|██████▏   | 206/330 [03:01<01:49,  1.14it/s][A
-Iteration:  63%|██████▎   | 207/330 [03:02<01:48,  1.14it/s][A
-Iteration:  63%|██████▎   | 208/330 [03:03<01:47,  1.14it/s][A
-Iteration:  63%|██████▎   | 209/330 [03:04<01:46,  1.14it/s][A
-Iteration:  64%|██████▎   | 210/330 [03:04<01:45,  1.14it/s][A
-Iteration:  64%|██████▍   | 211/330 [03:05<01:44,  1.14it/s][A
-Iteration:  64%|██████▍   | 212/330 [03:06<01:43,  1.14it/s][A
-Iteration:  65%|██████▍   | 213/330 [03:07<01:42,  1.14it/s][A
-Iteration:  65%|██████▍   | 214/330 [03:08<01:42,  1.14it/s][A
-Iteration:  65%|██████▌   | 215/330 [03:09<01:41,  1.14it/s][A
-Iteration:  65%|██████▌   | 216/330 [03:10<01:40,  1.14it/s][A
-Iteration:  66%|██████▌   | 217/330 [03:11<01:39,  1.14it/s][A
-Iteration:  66%|██████▌   | 218/330 [03:12<01:38,  1.14it/s][A
-Iteration:  66%|██████▋   | 219/330 [03:12<01:37,  1.14it/s][A
-Iteration:  67%|██████▋   | 220/330 [03:13<01:36,  1.14it/s][A
-Iteration:  67%|██████▋   | 221/330 [03:14<01:35,  1.14it/s][A
-Iteration:  67%|██████▋   | 222/330 [03:15<01:35,  1.14it/s][A
-Iteration:  68%|██████▊   | 223/330 [03:16<01:34,  1.14it/s][A
-Iteration:  68%|██████▊   | 224/330 [03:17<01:33,  1.14it/s][A
-Iteration:  68%|██████▊   | 225/330 [03:18<01:32,  1.14it/s][A
-Iteration:  68%|██████▊   | 226/330 [03:19<01:31,  1.14it/s][A
-Iteration:  69%|██████▉   | 227/330 [03:19<01:30,  1.14it/s][A
-Iteration:  69%|██████▉   | 228/330 [03:20<01:29,  1.14it/s][A
-Iteration:  69%|██████▉   | 229/330 [03:21<01:28,  1.14it/s][A
-Iteration:  70%|██████▉   | 230/330 [03:22<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 231/330 [03:23<01:27,  1.14it/s][A
-Iteration:  70%|███████   | 232/330 [03:24<01:26,  1.14it/s][A
-Iteration:  71%|███████   | 233/330 [03:25<01:25,  1.14it/s][A
-Iteration:  71%|███████   | 234/330 [03:26<01:24,  1.14it/s][A
-Iteration:  71%|███████   | 235/330 [03:26<01:23,  1.14it/s][A
-Iteration:  72%|███████▏  | 236/330 [03:27<01:22,  1.14it/s][A
-Iteration:  72%|███████▏  | 237/330 [03:28<01:21,  1.14it/s][A
-Iteration:  72%|███████▏  | 238/330 [03:29<01:20,  1.14it/s][A
-Iteration:  72%|███████▏  | 239/330 [03:30<01:20,  1.14it/s][A
-Iteration:  73%|███████▎  | 240/330 [03:31<01:19,  1.14it/s][A
-Iteration:  73%|███████▎  | 241/330 [03:32<01:18,  1.14it/s][A
-Iteration:  73%|███████▎  | 242/330 [03:33<01:17,  1.14it/s][A
-Iteration:  74%|███████▎  | 243/330 [03:34<01:16,  1.14it/s][A
-Iteration:  74%|███████▍  | 244/330 [03:34<01:15,  1.14it/s][A
-Iteration:  74%|███████▍  | 245/330 [03:35<01:14,  1.14it/s][A
-Iteration:  75%|███████▍  | 246/330 [03:36<01:13,  1.14it/s][A
-Iteration:  75%|███████▍  | 247/330 [03:37<01:13,  1.14it/s][A
-Iteration:  75%|███████▌  | 248/330 [03:38<01:12,  1.14it/s][A
-Iteration:  75%|███████▌  | 249/330 [03:39<01:11,  1.14it/s][A
-Iteration:  76%|███████▌  | 250/330 [03:40<01:10,  1.14it/s][A
-Iteration:  76%|███████▌  | 251/330 [03:41<01:09,  1.14it/s][A
-Iteration:  76%|███████▋  | 252/330 [03:41<01:08,  1.14it/s][A
-Iteration:  77%|███████▋  | 253/330 [03:42<01:07,  1.14it/s][A
-Iteration:  77%|███████▋  | 254/330 [03:43<01:06,  1.14it/s][A
-Iteration:  77%|███████▋  | 255/330 [03:44<01:06,  1.14it/s][A
-Iteration:  78%|███████▊  | 256/330 [03:45<01:05,  1.14it/s][A
-Iteration:  78%|███████▊  | 257/330 [03:46<01:04,  1.14it/s][A
-Iteration:  78%|███████▊  | 258/330 [03:47<01:03,  1.14it/s][A
-Iteration:  78%|███████▊  | 259/330 [03:48<01:02,  1.14it/s][A
-Iteration:  79%|███████▉  | 260/330 [03:48<01:01,  1.14it/s][A
-Iteration:  79%|███████▉  | 261/330 [03:49<01:00,  1.14it/s][A
-Iteration:  79%|███████▉  | 262/330 [03:50<00:59,  1.14it/s][A
-Iteration:  80%|███████▉  | 263/330 [03:51<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 264/330 [03:52<00:58,  1.14it/s][A
-Iteration:  80%|████████  | 265/330 [03:53<00:57,  1.14it/s][A
-Iteration:  81%|████████  | 266/330 [03:54<00:56,  1.14it/s][A
-Iteration:  81%|████████  | 267/330 [03:55<00:55,  1.14it/s][A
-Iteration:  81%|████████  | 268/330 [03:56<00:54,  1.14it/s][A
-Iteration:  82%|████████▏ | 269/330 [03:56<00:53,  1.14it/s][A
-Iteration:  82%|████████▏ | 270/330 [03:57<00:52,  1.14it/s][A
-Iteration:  82%|████████▏ | 271/330 [03:58<00:51,  1.14it/s][A
-Iteration:  82%|████████▏ | 272/330 [03:59<00:51,  1.14it/s][A
-Iteration:  83%|████████▎ | 273/330 [04:00<00:50,  1.14it/s][A
-Iteration:  83%|████████▎ | 274/330 [04:01<00:49,  1.14it/s][A
-Iteration:  83%|████████▎ | 275/330 [04:02<00:51,  1.07it/s][A
-Iteration:  84%|████████▎ | 276/330 [04:03<00:49,  1.09it/s][A
-Iteration:  84%|████████▍ | 277/330 [04:04<00:48,  1.10it/s][A
-Iteration:  84%|████████▍ | 278/330 [04:04<00:46,  1.11it/s][A
-Iteration:  85%|████████▍ | 279/330 [04:05<00:45,  1.12it/s][A
-Iteration:  85%|████████▍ | 280/330 [04:06<00:44,  1.12it/s][A
-Iteration:  85%|████████▌ | 281/330 [04:07<00:43,  1.13it/s][A
-Iteration:  85%|████████▌ | 282/330 [04:08<00:42,  1.13it/s][A
-Iteration:  86%|████████▌ | 283/330 [04:09<00:41,  1.13it/s][A
-Iteration:  86%|████████▌ | 284/330 [04:10<00:40,  1.13it/s][A
-Iteration:  86%|████████▋ | 285/330 [04:11<00:39,  1.14it/s][A
-Iteration:  87%|████████▋ | 286/330 [04:12<00:38,  1.14it/s][A
-Iteration:  87%|████████▋ | 287/330 [04:12<00:37,  1.14it/s][A
-Iteration:  87%|████████▋ | 288/330 [04:13<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 289/330 [04:14<00:36,  1.14it/s][A
-Iteration:  88%|████████▊ | 290/330 [04:15<00:35,  1.14it/s][A
-Iteration:  88%|████████▊ | 291/330 [04:16<00:34,  1.14it/s][A
-Iteration:  88%|████████▊ | 292/330 [04:17<00:33,  1.14it/s][A
-Iteration:  89%|████████▉ | 293/330 [04:18<00:32,  1.14it/s][A
-Iteration:  89%|████████▉ | 294/330 [04:19<00:31,  1.14it/s][A
-Iteration:  89%|████████▉ | 295/330 [04:19<00:30,  1.14it/s][A
-Iteration:  90%|████████▉ | 296/330 [04:20<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 297/330 [04:21<00:29,  1.14it/s][A
-Iteration:  90%|█████████ | 298/330 [04:22<00:28,  1.14it/s][A
-Iteration:  91%|█████████ | 299/330 [04:23<00:27,  1.14it/s][A
-Iteration:  91%|█████████ | 300/330 [04:24<00:26,  1.14it/s][A
-Iteration:  91%|█████████ | 301/330 [04:25<00:25,  1.14it/s][A
-Iteration:  92%|█████████▏| 302/330 [04:26<00:24,  1.14it/s][A
-Iteration:  92%|█████████▏| 303/330 [04:26<00:23,  1.14it/s][A
-Iteration:  92%|█████████▏| 304/330 [04:27<00:22,  1.14it/s][A
-Iteration:  92%|█████████▏| 305/330 [04:28<00:21,  1.14it/s][A
