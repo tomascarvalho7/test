@@ -14,7 +14,7 @@ docker run --gpus all --name "ner-pipeline-container" "ner-pipeline-image"
 #get the script to run to define the output folder and results file name
 
 # Source and destination dirs for all results
-SOURCE_DIR="/usr/src/app/test/ner/output"
+SOURCE_DIR="./output"
 DEST_DIR="output"
 mkdir -p ${DEST_DIR}
 

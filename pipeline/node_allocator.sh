@@ -7,7 +7,7 @@
 #i want to run stratified, random, for each script
 # should i deploy one container per each(6), or one per python script? the computations are nothing special, so ill occupy 6 nodes
 
-TYPES=("crf" "token" "span")
+TYPES=("crf" "token")
 DATA_SPLITS=("rand" "stratified")
 ALLOCATION_TIME="1"  # in hours
 

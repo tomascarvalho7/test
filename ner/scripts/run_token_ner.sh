@@ -17,7 +17,7 @@ mkdir -p $OUTPUT_DIR
 
 # Run the Python script with specified arguments
 python3 src/tf_ner.py \
-  --model_name_or_path bert-base-cased \
+  --model_name_or_path bert-base-NER \
   --output_dir $OUTPUT_DIR \
   --do_train \
   --do_eval \
