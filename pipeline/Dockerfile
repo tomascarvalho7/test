@@ -1,7 +1,3 @@
-# This Dockerfile builds an image that is able to train a model with CUDA. It installs the necessary packages,
-# dependencies, and GitHub repository, and then runs a script that trains the model for NER. It is NOT meant to
-# be interactive.
-
 # Use the NVIDIA CUDA runtime as a parent image
 FROM nvidia/cuda:11.4.3-cudnn8-runtime-ubuntu20.04
 
@@ -18,5 +14,13 @@ RUN apt-get update && apt-get install -y \
 # Clone GitHub repo
 RUN git clone https://github.com/tomascarvalho7/test
 
+# Set the working directory to the cloned repository's NER folder
+WORKDIR /usr/src/app/test/ner
+
+# Install Python packages from requirements.txt
+RUN python3 -m pip install --upgrade pip && \
+    pip install -r requirements.txt
+
 # Run the training script
-CMD cd test/band_testing/ner && ./setup_and_run.sh;
+CMD ["./scripts/run_token_ner.sh"]
+
