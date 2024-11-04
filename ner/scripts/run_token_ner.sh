@@ -10,7 +10,7 @@ fi
 # Combine TYPE and DATA_SPLIT to form the DATA variable
 DATA=bandtoken${DATA_SPLIT}
 EXP=$DATA
-MODEL=dslim/bert-base-NER
+MODEL=bert-base-multilingual-cased
 
 # Set output directory
 OUTPUT_DIR=output/$EXP
@@ -27,7 +27,6 @@ python3 src/tf_ner.py \
   --save_steps 10000000000 \
   --train_file data/$DATA/train.json \
   --validation_file data/$DATA/dev.json \
-  --test_file data/$DATA/test.json 2>&1 | tee $OUTPUT_DIR/log.txt
-
+  --test_file data/$DATA/test.json 2>&1 | tee $OUTPUT_DIR/log.txt \
 
 #python3 src/tf_ner.py --model_name_or_path bert-base-uncased --dataset_name conll2003 --output_dir output/tf_ner --do_train --do_eval --overwrite_output_dir --save_steps 10000000000

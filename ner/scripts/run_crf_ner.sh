@@ -15,7 +15,7 @@ OUTPUT_DIR=output/"$DATA"
 mkdir -p $OUTPUT_DIR
 echo "Output directory: $OUTPUT_DIR"
 
-BERT_BASE_DIR=dslim/bert-base-NER
+BERT_BASE_DIR=bert-base-multilingual-cased
 
 python3 -u $DBG BERT-BiLSTM-CRF-NER-pytorch/ner.py \
     --model_name_or_path ${BERT_BASE_DIR} \
