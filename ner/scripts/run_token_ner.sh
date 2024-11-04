@@ -10,6 +10,7 @@ fi
 # Combine TYPE and DATA_SPLIT to form the DATA variable
 DATA=bandtoken${DATA_SPLIT}
 EXP=$DATA
+MODEL=dslim/bert-base-NER
 
 # Set output directory
 OUTPUT_DIR=output/$EXP
@@ -17,7 +18,7 @@ mkdir -p $OUTPUT_DIR
 
 # Run the Python script with specified arguments
 python3 src/tf_ner.py \
-  --model_name_or_path bert-base-NER \
+  --model_name_or_path $MODEL \
   --output_dir $OUTPUT_DIR \
   --do_train \
   --do_eval \
