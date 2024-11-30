@@ -10,7 +10,7 @@ fi
 # Combine TYPE and DATA_SPLIT to form the DATA variable
 DATA=bandtoken${DATA_SPLIT}
 EXP=$DATA
-MODEL=bert-base-multilingual-cased
+MODEL=bert-base-cased
 
 # Set output directory
 OUTPUT_DIR=output/$EXP
